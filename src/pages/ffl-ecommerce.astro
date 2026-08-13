@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaRow from "../components/CtaRow.astro";
+import CommercialLine from "../components/CommercialLine.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import { FAQ_ECOMMERCE } from "../lib/faq";
+import { FROZEN } from "../lib/frozen";
+import { withBase } from "../lib/base";
+import { linkClass } from "../lib/links";
+---
+
+<BaseLayout
+  title="FFL Ecommerce as a Service — Managed WooCommerce | FFL Accelerator"
+  description="FFL ecommerce as a service: Coriolis builds and hosts WooCommerce you own for FFL transfers, catalogs, and growth. FFL Accelerator is $569/mo and includes GunSearchAgent Pro."
+  path="/ffl-ecommerce"
+  faq={FAQ_ECOMMERCE}
+>
+  <section class="border-b border-zinc-800/80 py-12 sm:py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <p
+        class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400"
+      >
+        FFL ecommerce
+      </p>
+      <h1 class="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+        FFL ecommerce as a service — a store you own
+      </h1>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
+        Generic carts were never designed for serialized inventory, ship-to-FFL
+        checkout, state restrictions, or distributor catalogs. FFL Accelerator
+        is Coriolis’s managed WooCommerce program for that job: $569/mo, FFL
+        workflows, and GunSearchAgent Pro on the domain. {FROZEN.commercialLine}
+      </p>
+      <div class="mt-8">
+        <CtaRow />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-zinc-800/80 py-12">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-xl font-semibold text-white">What you get</h2>
+      <p class="mt-2 max-w-2xl text-sm text-zinc-400">
+        A storefront that can still be yours in year three — no lock-in, no
+        revenue penalty on cancel.
+      </p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          [
+            {
+              t: "Storefront you own",
+              d: "Dedicated WordPress + WooCommerce, custom domain, full data ownership and backup on cancel.",
+            },
+            {
+              t: "FFL-aware checkout",
+              d: "Transfer-to-FFL flows, age and shipping guardrails, structured for real dealer operations.",
+            },
+            {
+              t: "Search that converts",
+              d: "Category structure, filters, and merchandising built for firearms catalogs — plus Betsy.",
+            },
+            {
+              t: "Optional endless aisle",
+              d: "Live distributor catalogs via FFL Cockpit on Militia and above. Sell without drowning in dead SKUs.",
+            },
+            {
+              t: "POS when you need it",
+              d: "API sync path with AIM, MicroBiz, Corestore, AXIS, Trident, Rapid, and more on Warlord+.",
+            },
+            {
+              t: "Demand intelligence",
+              d: "GunSearchAgent Pro included on Accelerator — what shoppers asked for, not vanity bounce rate.",
+            },
+          ].map((c) => (
+            <div class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5">
+              <h3 class="text-sm font-semibold text-white">{c.t}</h3>
+              <p class="mt-2 text-sm text-zinc-400">{c.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="mx-auto max-w-6xl px-4 space-y-4">
+      <CommercialLine />
+      <p class="text-sm text-zinc-400">
+        Related:{" "}
+        <a href={withBase("ffl-dropshipping")} class={linkClass}>Dropshipping</a>
+        {" · "}
+        <a href={withBase("plan")} class={linkClass}>Plan ladder</a>
+        {" · "}
+        <a href={withBase("switch")} class={linkClass}
+          >Switch from Gearfire / AmmoReady</a
+        >
+        {" · "}
+        <a href={withBase("guides/gun-store-software")} class={linkClass}
+          >Stack literacy</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <FaqBlock items={FAQ_ECOMMERCE} />
+</BaseLayout>

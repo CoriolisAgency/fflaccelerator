@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fflaccelerator.com/sitemap-index.xml

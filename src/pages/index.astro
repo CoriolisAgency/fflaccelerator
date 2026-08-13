@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaRow from "../components/CtaRow.astro";
+import CommercialLine from "../components/CommercialLine.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import { FAQ_HOME } from "../lib/faq";
+import { FROZEN } from "../lib/frozen";
+import { LINKS, linkClass } from "../lib/links";
+import { withBase } from "../lib/base";
+---
+
+<BaseLayout
+  title="FFL Accelerator — FFL Ecommerce as a Service | $569/mo, Betsy included"
+  description="FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). GunSearchAgent Pro is included. The site is yours. Betsy on it is included."
+  path="/"
+  faq={FAQ_HOME}
+>
+  <section class="relative overflow-hidden border-b border-zinc-800/80">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.12),transparent_50%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <p
+        class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400"
+      >
+        Coriolis Agency · FFL ecommerce as a service
+      </p>
+      <h1
+        class="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl leading-[1.15]"
+      >
+        Your site. Betsy included.
+      </h1>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-[15px]">
+        {FROZEN.fflAccelerator}
+      </p>
+      <p class="mt-3 max-w-2xl text-sm text-zinc-400">
+        $569/mo. Setup $500 Basic / $2,500 Retail from Coriolis. Checkout lives
+        on Coriolis — this site is the retailer door, not a second cart.
+      </p>
+      <div class="mt-8">
+        <CtaRow />
+      </div>
+      <ul class="mt-6 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-500">
+        <li>✓ WooCommerce you own</li>
+        <li>✓ GunSearchAgent Pro included</li>
+        <li>✓ Dropshipping + POS path</li>
+        <li>✓ No long-term contract</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:py-14">
+    <p
+      class="mb-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-400/90"
+    >
+      What the $569 plan is for
+    </p>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        [
+          {
+            t: "Storefront you own",
+            d: "Managed WooCommerce with FFL checkout, catalogs, and hosting. Cancel and take the site with you.",
+            href: withBase("ffl-ecommerce"),
+            cta: "FFL ecommerce →",
+          },
+          {
+            t: "GSA Pro on the domain",
+            d: "Betsy on the dealer site is included. Know what shoppers asked for — including zeros. That feed is Brand Intelligence.",
+            href: withBase("gunsearchagent-included"),
+            cta: "Why the sensor is in the plan →",
+          },
+          {
+            t: "Leave a rented website",
+            d: "Gearfire, AmmoReady, and similar storefronts. Own Woo + Betsy. Keep RetailBI if you still feed it.",
+            href: withBase("switch"),
+            cta: "Switch →",
+          },
+          {
+            t: "FFL dropshipping",
+            d: "21 distributor catalogs and lowest-cost routing on Militia and above. Accelerator instruments the aisle.",
+            href: withBase("ffl-dropshipping"),
+            cta: "Dropshipping →",
+          },
+          {
+            t: "RetailBI & AXIS",
+            d: "You already feed the register series via AXIS. The website is still dark. We do not say switch off RetailBI.",
+            href: withBase("retailbi-and-axis"),
+            cta: "AXIS dealers →",
+          },
+        ].map((card) => (
+          <a
+            href={card.href}
+            class="group rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5 transition hover:border-sky-500/40 hover:bg-zinc-900/60"
+          >
+            <h2 class="text-sm font-semibold text-white group-hover:text-sky-100">
+              {card.t}
+            </h2>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">
+              {card.d}
+            </p>
+            <p class="mt-3 text-xs font-medium text-sky-400">{card.cta}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-zinc-800/80 bg-zinc-950/40">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:py-14">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div class="space-y-4">
+          <h2 class="text-xl font-semibold tracking-tight text-white">
+            Already on AXIS? Your register is lit. Your website is dark.
+          </h2>
+          <p class="text-sm leading-relaxed text-zinc-400">
+            {FROZEN.retailBi}
+          </p>
+          <p class="text-sm leading-relaxed text-zinc-400">
+            {FROZEN.doctrine} If you already report units through AXIS, keep
+            that series. Add the missing one — search intent on a site you own.
+          </p>
+          <p class="text-sm">
+            <a href={withBase("retailbi-and-axis")} class={linkClass}
+              >RetailBI, AXIS, and a website that can see →</a
+            >
+          </p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800 bg-ink/40 p-6 space-y-3">
+          <h3 class="text-sm font-semibold text-white">The flywheel</h3>
+          <ol class="space-y-2 text-sm text-zinc-400">
+            <li>1. Coriolis runs WooCommerce you own.</li>
+            <li>2. Betsy sits on that domain (GSA Pro).</li>
+            <li>3. Shoppers ask. Zeros count.</li>
+            <li>4. OEMs buy that anonymized feed as Brand Intelligence.</li>
+          </ol>
+          <CommercialLine />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div
+      class="rounded-2xl border border-emerald-500/25 bg-emerald-950/15 px-5 py-6 sm:px-8 sm:py-8"
+    >
+      <h2 class="text-lg font-semibold text-emerald-50">
+        $569/mo · checkout on Coriolis
+      </h2>
+      <p class="mt-2 max-w-2xl text-sm text-zinc-400">
+        Compare Minute Man ($169) through Accelerator ($569), then subscribe
+        where the contract lives. This site does not clone the cart.
+      </p>
+      <div class="mt-5">
+        <CtaRow />
+      </div>
+      <p class="mt-4 text-xs text-zinc-500">
+        <a href={withBase("plan")} class={linkClass}>See the plan ladder →</a>
+      </p>
+    </div>
+  </section>
+
+  <FaqBlock items={FAQ_HOME} />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import type { FaqItem } from "../lib/faq";
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+}
+
+const { items, title = "Questions dealers actually ask" } = Astro.props;
+---
+
+<section class="border-t border-zinc-800/80 py-12">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-xl font-semibold text-white">{title}</h2>
+    <dl class="mt-6 space-y-4">
+      {
+        items.map((item) => (
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5">
+            <dt class="text-sm font-semibold text-white">{item.q}</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-zinc-400">{item.a}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

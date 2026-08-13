@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { LINKS, linkClass } from "../../lib/links";
+import { FROZEN } from "../../lib/frozen";
+import { withBase } from "../../lib/base";
+---
+
+<BaseLayout
+  title="Firearm and Accessory Sales Trends in Q2 2025 | FFL Accelerator"
+  description="Q2 2025 firearms conversation: less panic, more purpose — carry guns, suppressor talk, and accessories. AR and pumps still slower. Keep NICS, RetailBI same-store, and search intent apart."
+  path="/trends/2025-q2"
+>
+  <article class="mx-auto max-w-2xl px-4 py-12 sm:py-14">
+    <p
+      class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-400"
+    >
+      Trends · Q2 2025
+    </p>
+    <h1 class="mb-4 text-3xl font-semibold tracking-tight text-white">
+      Firearm and accessory sales trends in Q2 2025
+    </h1>
+    <p class="mb-6 text-sm leading-relaxed text-zinc-300">
+      The second quarter of 2025 felt less like a crash and more like a
+      market that had stopped pretending every week was 2020. Carry pistols
+      and the kit around them still moved. Long guns and bulk ammo did not
+      suddenly get interesting again. Treat that as a floor read. It is not a
+      NICS count and it is not a RetailBI Index print.
+    </p>
+    <p class="mb-8 text-xs text-zinc-500">
+      Rewrite of the old WordPress post at this URL. Unsourced “4.2 million
+      units / +3%” copy from that draft is retired.
+    </p>
+
+    <h2 class="text-lg font-semibold text-white">Stabilization is not a rebound</h2>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      “Quieter than the surge, busier than January panic headlines” is how a
+      lot of independent shops described June. Purpose-driven tickets —
+      something to carry, something to hear-protect, something to train with —
+      beat “add another rifle.” Average ticket chatter stayed in the mid-tier
+      handgun band. That is qualitative. For a sourced 2025 unit series, see
+      the close.
+    </p>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">What kept selling</h2>
+    <ul class="mt-3 space-y-3 text-sm text-zinc-400">
+      <li>
+        <strong class="text-zinc-200">Carry guns and the ecosystem.</strong>{" "}
+        P365-class and Glock 43X-class demand did not need a new panic. Holsters,
+        red dots, and magazines did more work than another duty-size pistol.
+      </li>
+      <li>
+        <strong class="text-zinc-200">Suppressors as a conversation.</strong>{" "}
+        Form times and tax-stamp politics were the story on the counter. We are
+        not printing an 85% “industry” number we cannot source. If NFA is your
+        aisle, sell packages and education — and keep the bound book in real
+        compliance software, not the website CMS.
+      </li>
+      <li>
+        <strong class="text-zinc-200">Gadgets with a demo.</strong> Chronographs,
+        fusion optics, and range toys from the winter show circuit sold when
+        someone could try them. They are not a national unit series.
+      </li>
+    </ul>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">What stayed soft</h2>
+    <ul class="mt-3 space-y-3 text-sm text-zinc-400">
+      <li>
+        <strong class="text-zinc-200">AR-pattern rifles.</strong> Saturation
+        from the early-2020s does not unwind in a quarter. Younger range
+        traffic still asked about PCCs and .22s.
+      </li>
+      <li>
+        <strong class="text-zinc-200">Pump shotguns.</strong> Semis kept winning
+        the “home defense, less recoil” sentence.
+      </li>
+      <li>
+        <strong class="text-zinc-200">Bulk ammo.</strong> Same pattern as Q1:
+        this-weekend boxes over pallet cases.
+      </li>
+    </ul>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">
+      If you mention 2025 units, say which number
+    </h2>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      NSSF, citing Gearfire’s 2025 Annual Industry Report (23 Feb 2026), put
+      same-store new firearm units at about <strong class="text-zinc-200"
+        >−13% vs 2024</strong
+      >. That is a full-year register / same-store figure — useful context, not
+      a Q2 NICS total. We do not invent monthly Index prints on this page.
+      {FROZEN.retailBiIndex}
+    </p>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">Three numbers, not one</h2>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      {FROZEN.doctrine} NICS is background checks, not sales. RetailBI
+      same-store is units at the register, not search. Betsy asks are product
+      discovery — including the zeros your AXIS feed will never see.
+    </p>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      <a
+        href={LINKS.fflintelMethodology}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">FFLIntel methodology</a
+      >
+      {" · "}
+      <a
+        href={LINKS.betsyVsRetailBi}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">Betsy vs RetailBI</a
+      >
+      {" · "}
+      <a href={withBase("retailbi-and-axis")} class={linkClass}
+        >AXIS and a dark website</a
+      >.
+    </p>
+
+    <p class="mt-10 text-sm text-zinc-500">
+      Previous:{" "}
+      <a href={withBase("trends/2025-q1")} class={linkClass}>Q1 2025 →</a>
+    </p>
+  </article>
+</BaseLayout>

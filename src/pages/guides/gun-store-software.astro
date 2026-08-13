@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { LINKS, linkClass, btnPlan, btnSecondary } from "../../lib/links";
+import { withBase } from "../../lib/base";
+---
+
+<BaseLayout
+  title="Gun Store Software — Stack Literacy for FFLs | FFL Accelerator"
+  description="Gun store software is several jobs: 4473/bound book, POS, ecommerce, and demand. FFL Accelerator is managed WooCommerce — not 4473 or ATF software. Point compliance tools elsewhere."
+  path="/guides/gun-store-software"
+>
+  <article class="mx-auto max-w-5xl px-4 py-12 sm:py-14">
+    <p
+      class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-400"
+    >
+      Stack literacy
+    </p>
+    <h1 class="mb-4 text-3xl font-semibold tracking-tight text-white">
+      Gun store software is not one product
+    </h1>
+    <p class="mb-6 text-sm leading-relaxed text-zinc-300">
+      Dealers search “best software for a gun store” and get a pile of
+      unrelated tools. Bound-book and 4473 systems are not ecommerce. A POS is
+      not a website. A website is not a sales index. FFL Accelerator is
+      Coriolis’s managed WooCommerce program. It is{" "}
+      <strong class="text-white">not 4473 software</strong>, not ATF software,
+      and not a POS.
+    </p>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">Four jobs, four boxes</h2>
+    <div class="mt-4 space-y-3">
+      {
+        [
+          {
+            t: "Compliance / records",
+            d: "A&D book, 4473, e4473, eStorage. This is FastBound, FFL Safe, Orchid-class tools, and counsel — not Coriolis.",
+          },
+          {
+            t: "Point of sale",
+            d: "The register: AXIS, AIM, MicroBiz, Corestore, Trident, Rapid. Some of those stores also feed RetailBI. That is sell-through, not search intent.",
+          },
+          {
+            t: "Ecommerce",
+            d: "The public store you own. WooCommerce + FFL checkout + optional distributor catalogs. That is what FFL Accelerator runs.",
+          },
+          {
+            t: "Demand on the site",
+            d: "What shoppers asked for, including zeros. GunSearchAgent — Pro included on Accelerator. Not a unit-sales index.",
+          },
+        ].map((b) => (
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5">
+            <h3 class="text-sm font-semibold text-white">{b.t}</h3>
+            <p class="mt-2 text-sm text-zinc-400">{b.d}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">
+      Where to look for compliance
+    </h2>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      We do not sell, resell, or automate ATF forms. If you need bound-book or
+      4473 tooling, start with dedicated vendors — for example{" "}
+      <a
+        href={LINKS.fastBound}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">FastBound</a
+      >{" "}
+      for serialized workflows, plus category specialists such as FFL Safe or
+      Orchid Advisors for records and training. Evaluate them on current ATF
+      rules, your volume, and your counsel. This page is literacy, not a
+      recommendation engine and not legal advice.
+    </p>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">
+      What Coriolis will not claim
+    </h2>
+    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-zinc-400">
+      <li>No 4473 automation.</li>
+      <li>No “we replace your bound book.”</li>
+      <li>No “switch off RetailBI.”</li>
+      <li>
+        Ecommerce and Betsy coexist with the compliance stack you already trust.
+      </li>
+    </ul>
+
+    <h2 class="mt-10 text-lg font-semibold text-white">If the gap is the website</h2>
+    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+      You already have a register and a records system. The public site is
+      still rented, slow, or dark. That is the FFL Accelerator job: WooCommerce
+      you own, $569/mo, GunSearchAgent Pro included. Soft next step — read the
+      plan, or put free GSA on the site you have today.
+    </p>
+    <div class="mt-6 flex flex-col gap-2.5 sm:flex-row">
+      <a
+        href={LINKS.plans}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={btnPlan}
+      >
+        Coriolis plans →
+      </a>
+      <a
+        href={LINKS.gsa}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={btnSecondary}
+      >
+        Free GunSearchAgent
+      </a>
+    </div>
+    <p class="mt-6 text-sm text-zinc-500">
+      <a href={withBase("ffl-ecommerce")} class={linkClass}>FFL ecommerce →</a>
+      {" · "}
+      <a href={withBase("retailbi-and-axis")} class={linkClass}
+        >AXIS / RetailBI →</a
+      >
+    </p>
+  </article>
+</BaseLayout>
