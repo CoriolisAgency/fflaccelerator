@@ -17,9 +17,14 @@ export const LINKS = {
   retailBiIndex: "https://www.gunsearchengine.com/retailbi-firearm-sales-index",
   nicsVsSales: "https://www.gunsearchengine.com/nics-vs-firearm-sales",
   brandIntel: "https://www.gunsearchengine.com/betsy/enterprise",
+  oemDemand: "https://www.gunsearchengine.com/oem-firearms-demand-analytics",
+  copilot: "https://www.gunsearchengine.com/betsy/enterprise-copilot",
+  betsyLive: "https://www.gunsearchengine.com/betsy-live",
   betsy: "https://2abetsy.com",
+  artOfDemand: "https://2abetsy.com/art-of-demand-retailbi",
   fflintel: "https://fflintel.com",
   fflintelMethodology: "https://fflintel.com/methodology",
+  acceleratorAxis: "https://fflaccelerator.com/retailbi-and-axis",
   x: "https://x.com/2ABetsy",
   youtube: "https://www.youtube.com/@BetsyAI",
   fflCockpit: "https://fflcockpit.com",
@@ -41,10 +46,10 @@ export const linkClass =
   "font-medium text-sky-400 hover:underline underline-offset-2";
 
 export const btnPlan =
-  "inline-flex items-center justify-center rounded-xl border border-emerald-500/35 bg-emerald-500/10 px-5 py-3 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-500/20";
+  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-gold/70 bg-gold px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300";
 
 export const btnSecondary =
-  "inline-flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-900/50 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:bg-zinc-800";
+  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-zinc-500 bg-transparent px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:bg-zinc-800";
 
 export const btnSky =
-  "inline-flex items-center justify-center rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-900/30 transition hover:bg-sky-400";
+  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-sky-400 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400";

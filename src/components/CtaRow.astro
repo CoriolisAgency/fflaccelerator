@@ -1,9 +1,8 @@
 ---
-import { LINKS, btnPlan, btnSecondary } from "../lib/links";
+import { LINKS, btnPlan, btnSky, btnSecondary } from "../lib/links";
 
 interface Props {
-  primary?: "plans" | "contact" | "gsa";
-  showGsa?: boolean;
+  primary?: "plans" | "gsa";
   showContact?: boolean;
   plansLabel?: string;
   gsaLabel?: string;
@@ -11,10 +10,9 @@ interface Props {
 
 const {
   primary = "plans",
-  showGsa = true,
   showContact = true,
-  plansLabel = "FFL Accelerator — $569/mo",
-  gsaLabel = "Free GunSearchAgent",
+  plansLabel = "Get the $569 plan",
+  gsaLabel = "Put Betsy on a site I already have",
 } = Astro.props;
 ---
 
@@ -27,27 +25,23 @@ const {
   >
     {plansLabel}
   </a>
+  <a
+    href={LINKS.gsa}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={primary === "gsa" ? btnSky : btnSecondary}
+  >
+    {gsaLabel}
+  </a>
   {
     showContact && (
       <a
         href={LINKS.contact}
         target="_blank"
         rel="noopener noreferrer"
-        class={primary === "contact" ? btnPlan : btnSecondary}
+        class={btnSecondary}
       >
-        Contact Coriolis
-      </a>
-    )
-  }
-  {
-    showGsa && (
-      <a
-        href={LINKS.gsa}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={primary === "gsa" ? btnPlan : btnSecondary}
-      >
-        {gsaLabel}
+        Talk to Coriolis
       </a>
     )
   }
