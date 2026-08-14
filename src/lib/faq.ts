@@ -6,7 +6,7 @@ export interface FaqItem {
 export const FAQ_HOME: FaqItem[] = [
   {
     q: "What is FFL Accelerator?",
-    a: "FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence.",
+    a: "FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.",
   },
   {
     q: "How much does FFL Accelerator cost?",
@@ -18,7 +18,7 @@ export const FAQ_HOME: FaqItem[] = [
   },
   {
     q: "Do I own the website?",
-    a: "Yes. The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence. Cancel anytime; Coriolis will help you migrate or send a backup.",
+    a: "Yes. The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence. Cancel anytime; Coriolis will help you migrate or send a backup.",
   },
   {
     q: "Is FFL Accelerator a separate company?",
@@ -56,7 +56,7 @@ export const FAQ_SWITCH: FaqItem[] = [
   },
   {
     q: "Do I keep my domain and data?",
-    a: "Yes. The site is yours. Coriolis migrates the domain, catalog shape, and customer relationship onto open WooCommerce. Betsy on it is included on Accelerator. That feed is what OEMs buy as Brand Intelligence.",
+    a: "Yes. The site is yours. Coriolis migrates the domain, catalog shape, and customer relationship onto open WooCommerce. Betsy on it is included on Accelerator. That feed is what OEMs buy as Demand Intelligence.",
   },
   {
     q: "How much does the switch cost?",
@@ -112,8 +112,8 @@ export const FAQ_GSA: FaqItem[] = [
     a: "Yes. Core is free forever on gunsearchagent.com. Pro is included with the Coriolis FFL Accelerator plan. Self-serve Pro is also available from GSA if you already have a site.",
   },
   {
-    q: "What is Brand Intelligence?",
-    a: "Betsy Brand Intelligence measures anonymized shopper search intent across GunSearchEngine, GunSearchAgent embeds, and floor sensors — including unmet (zero-hit) demand. The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence.",
+    q: "What is Demand Intelligence?",
+    a: "Betsy Demand Intelligence measures anonymized shopper search intent across GunSearchEngine, GunSearchAgent embeds, and floor sensors — including unmet (zero-hit) demand. The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.",
   },
   {
     q: "Is this a POS or a sales index?",

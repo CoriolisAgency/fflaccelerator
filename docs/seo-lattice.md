@@ -27,7 +27,7 @@
 3. FAQ JSON-LD on commercial pillars (`/`, `/plan`, `/switch`, `/ffl-ecommerce`, `/ffl-dropshipping`, `/gunsearchagent-included`, `/retailbi-and-axis`).
 4. Organization `sameAs`: coriolisagency.com, gunsearchengine.com, gunsearchagent.com, 2abetsy.com, fflintel.com, fflaccelerator.com, x.com/2ABetsy, youtube.com/@BetsyAI.
 5. Never H1 “RetailBI alternative.” Never “switch off RetailBI.” Never 4473 automation claims.
-6. Frozen strings from `src/lib/frozen.ts` (entity-kit). Commercial pages include: *The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence.*
+6. Frozen strings from `src/lib/frozen.ts` (entity-kit). Commercial pages include: *The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.*
 7. Pricing honesty: Accelerator **$569/mo**. Setup $500 / $2,500. Old WP $269 was Militia — do not reuse as Accelerator.
 8. Do not invent RetailBI Index numbers. Trend closes separate NICS, RetailBI same-store, and search intent.
 

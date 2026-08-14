@@ -16,7 +16,7 @@ export const LINKS = {
   betsyVsRetailBi: "https://www.gunsearchengine.com/betsy-vs-retailbi",
   retailBiIndex: "https://www.gunsearchengine.com/retailbi-firearm-sales-index",
   nicsVsSales: "https://www.gunsearchengine.com/nics-vs-firearm-sales",
-  brandIntel: "https://www.gunsearchengine.com/betsy/enterprise",
+  demandIntel: "https://www.gunsearchengine.com/demand-intelligence",
   oemDemand: "https://www.gunsearchengine.com/oem-firearms-demand-analytics",
   copilot: "https://www.gunsearchengine.com/betsy/enterprise-copilot",
   betsyLive: "https://www.gunsearchengine.com/betsy-live",

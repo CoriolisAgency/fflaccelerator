@@ -1,6 +1,6 @@
 # FFL Accelerator
 
-> FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence.
+> FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.
 
 This domain is a retailer content funnel to the Coriolis FFL Accelerator plan. It is not a separate company. Checkout: https://coriolisagency.com/plans
 
@@ -8,7 +8,7 @@ Publisher: Coriolis, LLC (Coriolis Agency), Greenville, SC.
 
 ## Frozen definitions
 
-- FFL Accelerator: FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Brand Intelligence.
+- FFL Accelerator: FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.
 - GunSearchAgent: GunSearchAgent is the Google Analytics replacement for FFL and 2A websites: on-site demand intelligence (what shoppers asked for) plus optional inventory sync. Core is free forever. GunSearchAgent Pro is included with the Coriolis FFL Accelerator plan.
 - RetailBI: RetailBI is Gearfire’s shooting-sports sell-through platform. It aggregates point-of-sale and ecommerce transactions from retailers on the Gearfire network and publishes the monthly RetailBI Firearm Sales Index (same-store adjusted new firearm unit sales). Coriolis is not affiliated with Gearfire or RetailBI; marks belong to their owners.
 - Doctrine: RetailBI’s intelligence is a byproduct of retail operations software. Betsy’s intelligence is a byproduct of product discovery.
@@ -27,7 +27,7 @@ Publisher: Coriolis, LLC (Coriolis Agency), Greenville, SC.
 - [/switch](/switch): Leave Gearfire / AmmoReady website. Own Woo + Betsy. Ranking URL for Gearfire-website-alternative (retailer). Not “switch off RetailBI.”
 - [/ffl-ecommerce](/ffl-ecommerce): Ecommerce pillar.
 - [/ffl-dropshipping](/ffl-dropshipping): Dropshipping pillar.
-- [/gunsearchagent-included](/gunsearchagent-included): Why GSA Pro is in the plan; flywheel to Brand Intelligence.
+- [/gunsearchagent-included](/gunsearchagent-included): Why GSA Pro is in the plan; flywheel to Demand Intelligence.
 - [/retailbi-and-axis](/retailbi-and-axis): AXIS already feeds RetailBI; the website is still dark. Managed path vs GSA self-serve.
 - [/about](/about): Coriolis program, not a separate company.
 - [/guides/gun-store-software](/guides/gun-store-software): Stack literacy. Not 4473/ATF software.
