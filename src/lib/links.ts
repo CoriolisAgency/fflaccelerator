@@ -3,9 +3,9 @@
  */
 export const LINKS = {
   home: "https://fflaccelerator.com",
-  plans: "https://coriolisagency.com/plans",
+  plans: "https://coriolisagency.com/ecommerce",
   coriolis: "https://coriolisagency.com",
-  coriolisSwitch: "https://coriolisagency.com/switch",
+  coriolisSwitch: "https://coriolisagency.com/ammoready-alternative",
   contact: "https://coriolisagency.com/contact",
   coriolisContact: "https://coriolisagency.com/contact",
   msa: "https://docs.google.com/document/d/18FcRaIjiZURO5nztD2Tldz9nuZj-cmXwjdcObcjRP3I/edit?usp=sharing",
