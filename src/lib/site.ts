@@ -2,10 +2,10 @@ export const SITE = {
   name: "FFL Accelerator",
   legalName: "Coriolis, LLC",
   titleDefault:
-    "FFL Accelerator — Managed WooCommerce for FFLs | $569/mo, Betsy included",
+    "FFL Accelerator — Managed WooCommerce for FFLs | $569/mo, Betsy AI included",
   description:
-    "FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included.",
-  role: "Managed FFL ecommerce · Betsy included",
+    "FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy AI on the dealer site). The site is yours. Betsy on it is included.",
+  role: "Managed FFL ecommerce · Betsy AI included",
   origin: "Greenville, SC",
 } as const;
 
