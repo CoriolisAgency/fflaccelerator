@@ -8,7 +8,7 @@ export const LINKS = {
   coriolisSwitch: "https://coriolisagency.com/ammoready-alternative",
   contact: "https://coriolisagency.com/contact",
   coriolisContact: "https://coriolisagency.com/contact",
-  msa: "https://docs.google.com/document/d/18FcRaIjiZURO5nztD2Tldz9nuZj-cmXwjdcObcjRP3I/edit?usp=sharing",
+  msa: "https://coriolisagency.com/msa",
   gsa: "https://gunsearchagent.com",
   gsaGa: "https://gunsearchagent.com/google-analytics-alternative-for-ffls",
   gsaRetailBi: "https://gunsearchagent.com/retailbi-and-your-gun-store",

@@ -13,7 +13,7 @@
 | Why GSA Pro is in the plan | **This site** `/gunsearchagent-included` |
 | AXIS already feeds RetailBI; website still dark | **This site** `/retailbi-and-axis` |
 | Gun store software / 4473 literacy (we are not that) | **This site** `/guides/gun-store-software` |
-| Agency HQ / checkout / MSA | **Coriolis** `coriolisagency.com/plans` |
+| Agency HQ / checkout / MSA | **Coriolis** `/ecommerce` + `/msa` |
 | GA for FFLs / free agent install | **GunSearchAgent** |
 | GSA dealer + RetailBI self-serve | **GSA** `/retailbi-and-your-gun-store` |
 | What is RetailBI / Index / NICS vs sales | **GunSearchEngine** `/betsy-vs-retailbi` etc. |
