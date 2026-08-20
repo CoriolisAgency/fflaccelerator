@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Email confirmed — FFL Accelerator"
+  description="Your email is confirmed for Agency intel."
+  path="/confirmed"
+  emailCapture={false}
+>
+  <article class="mx-auto max-w-xl px-4 py-16 sm:px-6">
+    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+      FFL Accelerator
+    </p>
+    <div id="confirm-ok">
+      <h1 class="mt-3 text-3xl font-semibold tracking-tight text-white">
+        You’re on the list
+      </h1>
+      <p class="mt-4 text-sm leading-relaxed text-zinc-400">
+        Email confirmed. Product notes on FFL ecommerce — not a pitch.
+        Unsubscribe anytime from the email footer.
+      </p>
+    </div>
+    <div id="confirm-bad" hidden>
+      <h1 class="mt-3 text-3xl font-semibold tracking-tight text-white">
+        That link did not work
+      </h1>
+      <p class="mt-4 text-sm leading-relaxed text-zinc-400">
+        It may have expired. Open the popup again and we’ll send a fresh
+        confirmation.
+      </p>
+    </div>
+  </article>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ok = params.get("ok") !== "0";
+    const good = document.getElementById("confirm-ok");
+    const bad = document.getElementById("confirm-bad");
+    if (!ok) {
+      if (good) good.hidden = true;
+      if (bad) bad.hidden = false;
+    }
+  </script>
+</BaseLayout>

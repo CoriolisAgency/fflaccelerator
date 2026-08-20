@@ -5,6 +5,8 @@ Conversion: [coriolisagency.com/plans](https://coriolisagency.com/plans).
 
 This domain replaces the WordPress site. It is a Coriolis, LLC program — not a separate company.
 
+Email popup posts CORS to Coriolis OS `POST /api/forms/subscribe` (source `popup_fflaccelerator`). Lead mints only after the confirm link. Localhost posts to `http://localhost:3000` (override with `PUBLIC_CORIOLIS_OS_URL`).
+
 ## Stack
 
 - [Astro](https://astro.build) 7 (static) + Tailwind CSS v4

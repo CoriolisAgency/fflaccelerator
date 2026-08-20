@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import AccelEmailCapture from "../components/AccelEmailCapture.astro";
 import SiteChrome from "../components/SiteChrome.astro";
 import { SITE, CANON_PATHS } from "../lib/site";
 import { LINKS, SAME_AS } from "../lib/links";
@@ -15,6 +16,8 @@ interface Props {
   /** Absolute override when the constructed URL is not enough. */
   canonicalUrl?: string;
   faq?: FaqItem[];
+  /** Email capture modal. Off for confirm. @default true */
+  emailCapture?: boolean;
 }
 
 const {
@@ -24,6 +27,7 @@ const {
   ogImagePath = CANON_PATHS.headshot,
   canonicalUrl,
   faq,
+  emailCapture = true,
 } = Astro.props;
 
 const siteOrigin = Astro.site ?? new URL("https://fflaccelerator.com");
@@ -127,5 +131,6 @@ const jsonLd = {
     <SiteChrome>
       <slot />
     </SiteChrome>
+    {emailCapture ? <AccelEmailCapture /> : null}
   </body>
 </html>

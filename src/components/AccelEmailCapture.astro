@@ -1,0 +1,417 @@
+---
+/**
+ * FFL Accelerator email capture. Preview: ?capture=1
+ * GitHub Pages — posts CORS to Coriolis OS. Confirm-then-mint.
+ */
+import { CANON_PATHS } from "../lib/site";
+import { withBase } from "../lib/base";
+
+const wordmarkSrc = withBase(CANON_PATHS.logo);
+const osSubscribeUrl = "https://ops.coriolisagency.com/api/forms/subscribe";
+const localOsSubscribeUrl =
+  import.meta.env.PUBLIC_CORIOLIS_OS_URL?.replace(/\/$/, "") ||
+  "http://localhost:3000";
+const marketingSource = "popup_fflaccelerator";
+---
+
+<script
+  define:vars={{
+    wordmarkSrc,
+    osSubscribeUrl,
+    localOsSubscribeUrl,
+    marketingSource,
+  }}
+>
+  (function () {
+    const CAPTURE = {
+      minDwellMs: 8000,
+      longDwellMs: 25000,
+      scrollDepth: 0.35,
+      minRoutes: 2,
+      dismissMs: 7 * 24 * 60 * 60 * 1000,
+    };
+    const STORAGE = {
+      subscribed: "accel_mkt_subscribed",
+      dismiss: "accel_mkt_dismiss",
+      shown: "accel_mkt_shown",
+      sessionStart: "accel_mkt_session_start",
+      routes: "accel_mkt_routes",
+    };
+    const PATH_DENY = ["/confirmed"];
+
+    function isLocalHost() {
+      const h = window.location.hostname;
+      return h === "localhost" || h === "127.0.0.1" || h === "[::1]";
+    }
+
+    function subscribeEndpoint() {
+      if (isLocalHost()) return localOsSubscribeUrl + "/api/forms/subscribe";
+      return osSubscribeUrl;
+    }
+
+    function isCaptureFrequencyEnabled() {
+      return !isLocalHost();
+    }
+
+    function pathDenied(pathname) {
+      if (isLocalHost()) return false;
+      const p = pathname || "/";
+      return PATH_DENY.some(
+        (d) => p === d || p.startsWith(d + "/") || p.startsWith(d + "?")
+      );
+    }
+
+    function readLocal(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    }
+
+    function writeLocal(key, value) {
+      if (!isCaptureFrequencyEnabled()) return;
+      try {
+        localStorage.setItem(key, value);
+      } catch {
+        /* private mode */
+      }
+    }
+
+    function readSession(key) {
+      try {
+        return sessionStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    }
+
+    function writeSession(key, value) {
+      try {
+        sessionStorage.setItem(key, value);
+      } catch {
+        /* private mode */
+      }
+    }
+
+    function writeSessionShown() {
+      if (!isCaptureFrequencyEnabled()) return;
+      writeSession(STORAGE.shown, "1");
+    }
+
+    function isDismissCoolingDown() {
+      if (!isCaptureFrequencyEnabled()) return false;
+      const raw = readLocal(STORAGE.dismiss);
+      if (!raw) return false;
+      const t = parseInt(raw, 10);
+      if (!Number.isFinite(t)) return false;
+      return Date.now() - t < CAPTURE.dismissMs;
+    }
+
+    function frequencyBlocks() {
+      if (!isCaptureFrequencyEnabled()) return false;
+      if (readLocal(STORAGE.subscribed) === "1") return true;
+      if (isDismissCoolingDown()) return true;
+      if (readSession(STORAGE.shown) === "1") return true;
+      return false;
+    }
+
+    function ensureSessionStart() {
+      const existing = readSession(STORAGE.sessionStart);
+      if (existing) {
+        const t = parseInt(existing, 10);
+        if (Number.isFinite(t) && t > 0) return t;
+      }
+      const now = Date.now();
+      writeSession(STORAGE.sessionStart, String(now));
+      return now;
+    }
+
+    function trackRoute(pathname) {
+      let routes = [];
+      try {
+        const raw = sessionStorage.getItem(STORAGE.routes);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            routes = parsed.filter((x) => typeof x === "string");
+          }
+        }
+      } catch {
+        routes = [];
+      }
+      const p = pathname || "/";
+      if (!routes.includes(p)) {
+        routes.push(p);
+        writeSession(STORAGE.routes, JSON.stringify(routes));
+      }
+      return routes.length;
+    }
+
+    function measureScrollDepth() {
+      const el = document.documentElement;
+      const scrollable = el.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return 0;
+      return Math.min(1, Math.max(0, window.scrollY / scrollable));
+    }
+
+    function isDesktopViewport() {
+      const fine =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(pointer: fine)").matches;
+      return fine && window.innerWidth >= 768;
+    }
+
+    function isComposeFocused() {
+      const el = document.activeElement;
+      if (!el || !(el instanceof HTMLElement)) return false;
+      if (el.classList.contains("coriolis-capture__input")) return false;
+      const tag = el.tagName;
+      if (tag === "TEXTAREA") return true;
+      if (tag === "INPUT") {
+        const type = el.type || "text";
+        return !["button", "submit", "checkbox", "radio", "file", "hidden"].includes(
+          type
+        );
+      }
+      if (el.isContentEditable) return true;
+      return false;
+    }
+
+    function evaluateCapture(signals) {
+      if (signals.inputFocused) return { show: false, reason: null };
+      if (signals.dwellMs < CAPTURE.minDwellMs) return { show: false, reason: null };
+      if (signals.scrollDepth >= CAPTURE.scrollDepth)
+        return { show: true, reason: "scroll" };
+      if (signals.routesInSession >= CAPTURE.minRoutes)
+        return { show: true, reason: "routes" };
+      if (signals.dwellMs >= CAPTURE.longDwellMs)
+        return { show: true, reason: "dwell" };
+      if (signals.isDesktop && signals.exitIntent)
+        return { show: true, reason: "exit" };
+      return { show: false, reason: null };
+    }
+
+    const pathname =
+      (window.location.pathname || "/").replace(/\/$/, "") || "/";
+    const forceCapture =
+      new URLSearchParams(window.location.search).get("capture") === "1";
+
+    let opened = false;
+    let maxScroll = 0;
+    let exitIntent = false;
+    let sessionStart = ensureSessionStart();
+    let routesCount = trackRoute(pathname);
+    let openEl = null;
+    let prevOverflow = "";
+    let prevPad = "";
+
+    function showPreviewChip() {
+      if (!isLocalHost()) return;
+      if (document.getElementById("coriolis-capture-chip")) return;
+      const chip = document.createElement("button");
+      chip.id = "coriolis-capture-chip";
+      chip.type = "button";
+      chip.className = "coriolis-capture-chip";
+      chip.textContent = "Show popup";
+      chip.addEventListener("click", function () {
+        opened = false;
+        tryOpen("localhost");
+      });
+      document.body.appendChild(chip);
+    }
+
+    function dismiss() {
+      writeLocal(STORAGE.dismiss, String(Date.now()));
+      if (openEl) {
+        openEl.remove();
+        openEl = null;
+      }
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPad;
+      window.removeEventListener("keydown", onKey);
+      showPreviewChip();
+    }
+
+    function onKey(e) {
+      if (e.key === "Escape") dismiss();
+    }
+
+    function showDone(mode) {
+      if (!openEl) return;
+      const copy = openEl.querySelector(".coriolis-capture__copy");
+      if (!copy) return;
+      const headline =
+        mode === "activation" ? "Check your inbox" : "You’re on the list";
+      const lede =
+        mode === "activation"
+          ? "Confirmation link is on the way. After you click it, product notes can land in your inbox."
+          : "FFL ecommerce notes from Coriolis. Unsubscribe anytime.";
+      copy.innerHTML =
+        '<p class="coriolis-capture__eyebrow">FFL Accelerator · Coriolis, LLC</p>' +
+        '<h2 id="coriolis-capture-title" class="coriolis-capture__headline">' +
+        headline +
+        "</h2>" +
+        '<p class="coriolis-capture__lede">' +
+        lede +
+        "</p>" +
+        '<button type="button" class="coriolis-capture__cta coriolis-capture__cta--done" data-capture-done>Done</button>';
+      copy.querySelector("[data-capture-done]")?.addEventListener("click", dismiss);
+    }
+
+    function tryOpen(reason) {
+      if (opened) return;
+      if (pathDenied(pathname) && reason !== "force") return;
+      if (frequencyBlocks() && reason !== "force") return;
+      opened = true;
+      writeSessionShown();
+
+      prevOverflow = document.body.style.overflow;
+      prevPad = document.body.style.paddingRight;
+
+      const root = document.createElement("div");
+      root.className = "coriolis-capture";
+      root.setAttribute("role", "dialog");
+      root.setAttribute("aria-modal", "true");
+      root.setAttribute("aria-labelledby", "coriolis-capture-title");
+      root.innerHTML =
+        '<button type="button" class="coriolis-capture__scrim" aria-label="Dismiss" data-capture-dismiss></button>' +
+        '<div class="coriolis-capture__stage">' +
+        '<article class="coriolis-capture__card">' +
+        '<div class="coriolis-capture__rule" aria-hidden="true"></div>' +
+        '<button type="button" class="coriolis-capture__x" aria-label="Close" data-capture-dismiss><span aria-hidden="true">×</span></button>' +
+        '<div class="coriolis-capture__copy">' +
+        '<img src="' +
+        wordmarkSrc +
+        '" alt="FFL Accelerator" width="220" height="66" class="coriolis-capture__mark" decoding="async" />' +
+        '<p class="coriolis-capture__eyebrow">Coriolis, LLC · Greenville</p>' +
+        '<h2 id="coriolis-capture-title" class="coriolis-capture__headline">Get FFL ecommerce notes</h2>' +
+        '<p class="coriolis-capture__lede">Managed WooCommerce, Betsy on the dealer site, product notes — not a pitch. Unsubscribe anytime.</p>' +
+        '<form class="coriolis-capture__form" data-capture-form>' +
+        '<label class="sr-only" for="coriolis-capture-email">Email address</label>' +
+        '<div class="coriolis-capture__field">' +
+        '<input id="coriolis-capture-email" type="email" name="email" autocomplete="email" required placeholder="you@company.com" class="coriolis-capture__input" />' +
+        '<button type="submit" class="coriolis-capture__cta coriolis-capture__cta--inline" data-capture-submit>Put me on the list</button>' +
+        "</div>" +
+        '<p class="coriolis-capture__error" role="alert" data-capture-error hidden></p>' +
+        "</form>" +
+        '<p class="coriolis-capture__fine">Confirm the address first. Unsubscribe anytime. ' +
+        '<button type="button" class="coriolis-capture__skip" data-capture-dismiss>Not now</button></p>' +
+        "</div></article></div>";
+
+      document.body.appendChild(root);
+      openEl = root;
+      const sb = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      if (sb > 0) document.body.style.paddingRight = sb + "px";
+      requestAnimationFrame(function () {
+        root.classList.add("coriolis-capture--in");
+      });
+      root.querySelectorAll("[data-capture-dismiss]").forEach(function (btn) {
+        btn.addEventListener("click", dismiss);
+      });
+      window.addEventListener("keydown", onKey);
+
+      const form = root.querySelector("[data-capture-form]");
+      const input = root.querySelector("#coriolis-capture-email");
+      const submitBtn = root.querySelector("[data-capture-submit]");
+      const errEl = root.querySelector("[data-capture-error]");
+      if (input instanceof HTMLInputElement) {
+        setTimeout(function () {
+          input.focus();
+        }, 50);
+      }
+
+      form?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!(input instanceof HTMLInputElement)) return;
+        const email = input.value.trim();
+        if (errEl) {
+          errEl.hidden = true;
+          errEl.textContent = "";
+        }
+        if (submitBtn instanceof HTMLButtonElement) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "…";
+        }
+        try {
+          const res = await fetch(subscribeEndpoint(), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email, source: marketingSource }),
+          });
+          const data = await res.json().catch(function () {
+            return {};
+          });
+          if (!res.ok) {
+            const msg =
+              data.error ||
+              (res.status === 429
+                ? "Too many attempts. Try again later."
+                : "Could not subscribe. Try again.");
+            if (errEl) {
+              errEl.hidden = false;
+              errEl.textContent = msg;
+            }
+            if (submitBtn instanceof HTMLButtonElement) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Put me on the list";
+            }
+            return;
+          }
+          writeLocal(STORAGE.subscribed, "1");
+          showDone(data.needs_activation ? "activation" : "ok");
+        } catch {
+          if (errEl) {
+            errEl.hidden = false;
+            errEl.textContent = "Network error. Try again.";
+          }
+          if (submitBtn instanceof HTMLButtonElement) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Put me on the list";
+          }
+        }
+      });
+    }
+
+    function evaluate() {
+      if (opened) return;
+      if (pathDenied(pathname)) return;
+      if (frequencyBlocks()) return;
+      const dwellMs = Date.now() - sessionStart;
+      const result = evaluateCapture({
+        dwellMs: dwellMs,
+        scrollDepth: maxScroll,
+        routesInSession: routesCount,
+        exitIntent: exitIntent,
+        inputFocused: isComposeFocused(),
+        isDesktop: isDesktopViewport(),
+      });
+      if (result.show && result.reason) tryOpen(result.reason);
+    }
+
+    if (forceCapture || isLocalHost()) {
+      tryOpen(forceCapture ? "force" : "localhost");
+      return;
+    }
+
+    maxScroll = Math.max(maxScroll, measureScrollDepth());
+    window.addEventListener(
+      "scroll",
+      function () {
+        const d = measureScrollDepth();
+        if (d > maxScroll) maxScroll = d;
+        evaluate();
+      },
+      { passive: true }
+    );
+    document.addEventListener("mouseout", function (e) {
+      if (!isDesktopViewport()) return;
+      if (e.clientY > 0) return;
+      exitIntent = true;
+      evaluate();
+    });
+    setInterval(evaluate, 500);
+    evaluate();
+  })();
+</script>
