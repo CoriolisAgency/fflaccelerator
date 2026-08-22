@@ -13,7 +13,7 @@ const path =
 
 const nav = [
   { href: "plan", label: "Plan" },
-  { href: "gunsearchagent-included", label: "Betsy AI included" },
+  { href: "gunsearchagent-included", label: "Betsy on the shop" },
   { href: "about", label: "About" },
 ] as const;
 
@@ -22,17 +22,19 @@ function active(slug: string) {
   return path === p || path.startsWith(p + "/");
 }
 
-const family = [
-  { href: LINKS.plans, label: "Coriolis plans" },
-  { href: LINKS.gsa, label: "GunSearchAgent" },
-  { href: LINKS.gsaGa, label: "GA for FFLs" },
-  { href: LINKS.gsaRetailBi, label: "RetailBI and your store" },
-  { href: LINKS.betsyVsRetailBi, label: "What is RetailBI" },
-  { href: LINKS.retailBiIndex, label: "Firearm Sales Index" },
-  { href: LINKS.nicsVsSales, label: "NICS vs sales" },
-  { href: LINKS.demandIntel, label: "Demand Intelligence" },
-  { href: LINKS.fflintel, label: "FFLIntel" },
-  { href: LINKS.betsy, label: "2aBetsy" },
+const siteNav = [
+  { href: withBase("plan"), label: "Plan", external: false },
+  { href: withBase("about"), label: "About", external: false },
+  {
+    href: withBase("gunsearchagent-included"),
+    label: "Betsy on the shop",
+    external: false,
+  },
+  {
+    href: withBase("guides/gun-store-software"),
+    label: "Gun store software",
+    external: false,
+  },
 ] as const;
 ---
 
@@ -76,7 +78,7 @@ const family = [
         rel="noopener noreferrer"
         class="rounded-sm border border-gold/70 bg-gold px-2.5 py-1.5 text-xs font-semibold text-ink hover:bg-amber-300 sm:text-sm"
       >
-        $569/mo
+        Start FFL Accelerator
       </a>
     </nav>
   </div>
@@ -98,24 +100,23 @@ const family = [
         height="200"
         class="h-9 w-auto"
       />
-      <p class="text-sm text-zinc-400">Your site. Betsy AI included.</p>
+      <p class="text-sm text-zinc-400">A gun store website you own</p>
       <p class="text-xs leading-relaxed text-zinc-500">
-        A Coriolis, LLC program — not a separate company. Greenville, SC.
-        Checkout is on Coriolis. GunSearchAgent is free if you already have a
-        site.
+        Coriolis, LLC. Greenville, SC. This is a Coriolis program, not a second
+        company.
       </p>
     </div>
     <nav
       class="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-400"
-      aria-label="Family"
+      aria-label="Site"
     >
       {
-        family.map((item) => (
+        siteNav.map((item) => (
           <a
             href={item.href}
-            class="hover:text-sky-300"
-            target="_blank"
-            rel="noopener noreferrer"
+            class="hover:text-gold"
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
           >
             {item.label}
           </a>
@@ -124,7 +125,7 @@ const family = [
     </nav>
   </div>
   <p class="px-4 pb-6 text-center text-[11px] text-zinc-600">
-    Not affiliated with Gearfire or RetailBI. Not 4473/ATF software. Not a POS.
-    Marks belong to their owners.
+    Not affiliated with Gearfire or RetailBI. We are not 4473 software and not a
+    register.
   </p>
 </footer>

@@ -1,115 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import CommercialLine from "../components/CommercialLine.astro";
-import { FROZEN } from "../lib/frozen";
-import { LINKS, linkClass } from "../lib/links";
 import { CANON_PATHS } from "../lib/site";
 import { withBase } from "../lib/base";
 ---
 
 <BaseLayout
-  title="About FFL Accelerator — A Coriolis Program, Not a Separate Company"
-  description="FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It is not a separate company. Greenville, SC. Betsy AI on the dealer site is included."
+  title="About FFL Accelerator"
+  description="FFL Accelerator is Coriolis’s plan for gun store websites. $569 a month. Built in Greenville, SC."
   path="/about/"
 >
   <section class="border-b border-zinc-800/80 py-12 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="grid gap-10 lg:grid-cols-[1.2fr_0.6fr] lg:items-center">
         <div>
-          <p
-            class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400"
-          >
-            About
-          </p>
-          <h1 class="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            A Coriolis program, not a separate company
+          <h1 class="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            We build gun store websites. This is the plan.
           </h1>
-          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
-            {FROZEN.fflAccelerator} This domain is the retailer door for that
-            plan. Contracts, checkout, and support live at{" "}
-            <a
-              href={LINKS.coriolis}
-              class={linkClass}
-              target="_blank"
-              rel="noopener noreferrer">coriolisagency.com</a
-            >. Publisher: Coriolis, LLC, Greenville, SC.
-          </p>
+          <div class="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-300">
+            <p>
+              FFL Accelerator is a Coriolis program. It is not a second
+              company. Coriolis, LLC is in Greenville, South Carolina. We have
+              been putting firearms dealers on websites they own for years. The
+              founder ran AmmoReady for nine years. This site is for shop
+              owners who want that work.
+            </p>
+            <p>
+              The plan is $569 a month. We build WooCommerce on your domain
+              and run it with you. Betsy is on the shop. You leave with the
+              site.
+            </p>
+            <p>
+              We do not replace your 4473, your NICS, or your bound book. We
+              are not a register. We are not affiliated with Gearfire or
+              RetailBI.
+            </p>
+          </div>
+          <div class="mt-8">
+            <CtaRow />
+          </div>
         </div>
-        <a
-          href={LINKS.betsy}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mx-auto block max-w-[200px]"
-        >
-          <img
-            src={withBase(CANON_PATHS.headshot)}
-            alt="Betsy AI"
-            width="400"
-            height="500"
-            class="w-full rounded-2xl object-cover ring-1 ring-sky-500/40 shadow-xl"
-          />
-        </a>
+        <img
+          src={withBase(CANON_PATHS.headshot)}
+          alt="Betsy is on the shop"
+          width="400"
+          height="500"
+          class="mx-auto w-full max-w-[200px] rounded-2xl object-cover ring-1 ring-sky-500/40 shadow-xl"
+        />
       </div>
-    </div>
-  </section>
-
-  <section class="border-b border-zinc-800/80 py-12">
-    <div class="mx-auto max-w-7xl px-4">
-      <div class="grid gap-6 lg:grid-cols-3">
-        <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
-          <h2 class="text-sm font-semibold text-sky-300">What this site is</h2>
-          <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-            Retailer content for FFL Accelerator: ecommerce, dropshipping,
-            switching off a rented website, and why GSA Pro is in the plan.
-            Conversion is the Coriolis plans page.
-          </p>
-        </article>
-        <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
-          <h2 class="text-sm font-semibold text-sky-300">What this site is not</h2>
-          <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-            Not a second agency. Not 4473 or ATF software. Not a POS. Not a
-            NICS system. Not affiliated with Gearfire or RetailBI.
-          </p>
-        </article>
-        <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
-          <h2 class="text-sm font-semibold text-sky-300">The rest of the graph</h2>
-          <ul class="mt-3 space-y-1.5 text-sm text-zinc-400">
-            <li>
-              <a href={LINKS.coriolis} class={linkClass} target="_blank" rel="noopener noreferrer"
-                >Coriolis Agency</a
-              > — HQ and checkout
-            </li>
-            <li>
-              <a href={LINKS.gsa} class={linkClass} target="_blank" rel="noopener noreferrer"
-                >GunSearchAgent</a
-              > — dealer sensor
-            </li>
-            <li>
-              <a href={LINKS.gse} class={linkClass} target="_blank" rel="noopener noreferrer"
-                >GunSearchEngine</a
-              > — shoppers + Demand Intelligence
-            </li>
-            <li>
-              <a href={LINKS.betsy} class={linkClass} target="_blank" rel="noopener noreferrer"
-                >2aBetsy</a
-              > — Betsy AI
-            </li>
-            <li>
-              <a href={LINKS.fflintel} class={linkClass} target="_blank" rel="noopener noreferrer"
-                >FFLIntel</a
-              > — three numbers
-            </li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12">
-    <div class="mx-auto max-w-7xl px-4 space-y-4">
-      <CommercialLine />
-      <CtaRow />
     </div>
   </section>
 </BaseLayout>

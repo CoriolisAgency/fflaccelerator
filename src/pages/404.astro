@@ -1,36 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { withBase } from "../lib/base";
-import { linkClass } from "../lib/links";
+import CtaRow from "../components/CtaRow.astro";
 ---
 
 <BaseLayout
-  title="Not found — FFL Accelerator"
-  description="That URL is not on the rebuilt FFL Accelerator site."
+  title="Page not found — FFL Accelerator"
+  description="The link may be old. The plan is still FFL Accelerator: a gun store website you own, $569 a month."
   path="/404"
 >
   <section class="mx-auto max-w-5xl px-4 py-16">
-    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400">
-      404
-    </p>
-    <h1 class="mt-3 text-3xl font-semibold text-white">Page not on this host</h1>
+    <h1 class="text-3xl font-semibold text-white">That page is not here</h1>
     <p class="mt-4 max-w-xl text-sm text-zinc-400">
-      The WordPress archive moved. Try the operator map, or the redirect list
-      if you followed an old permalink.
+      The link may be old. The plan is still FFL Accelerator: a gun store
+      website you own, $569 a month.
     </p>
-    <ul class="mt-6 space-y-2 text-sm">
-      <li><a href={withBase("/")} class={linkClass}>Home</a></li>
-      <li><a href={withBase("plan")} class={linkClass}>Plan ($569/mo)</a></li>
-      <li>
-        <a href={withBase("gunsearchagent-included")} class={linkClass}
-          >Betsy AI included</a
-        >
-      </li>
-      <li>
-        <a href={withBase("guides/gun-store-software")} class={linkClass}
-          >Gun store software</a
-        >
-      </li>
-    </ul>
+    <div class="mt-8">
+      <CtaRow />
+    </div>
   </section>
 </BaseLayout>

@@ -1,44 +1,23 @@
 # FFL Accelerator
 
-> FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.
+FFL Accelerator is Coriolis’s plan for a gun store website. $569 a month. We build WooCommerce on your domain and run it with you. Betsy is on the shop. If you leave, the website goes with you.
 
-This domain is a retailer content funnel to the Coriolis FFL Accelerator plan. It is not a separate company. Checkout: https://coriolisagency.com/plans
+Setup is $500 for a clean branded shop, or $2,500 for the full custom site and email. No year-long lock.
 
-Publisher: Coriolis, LLC (Coriolis Agency), Greenville, SC.
+Publisher: Coriolis, LLC. Greenville, SC. This is a Coriolis program, not a second company.
 
-## Frozen definitions
-
-- FFL Accelerator: FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.
-- GunSearchAgent: GunSearchAgent is the Google Analytics replacement for FFL and 2A websites: on-site demand intelligence (what shoppers asked for) plus optional inventory sync. Core is free forever. GunSearchAgent Pro is included with the Coriolis FFL Accelerator plan.
-- RetailBI: RetailBI is Gearfire’s shooting-sports sell-through platform. It aggregates point-of-sale and ecommerce transactions from retailers on the Gearfire network and publishes the monthly RetailBI Firearm Sales Index (same-store adjusted new firearm unit sales). Coriolis is not affiliated with Gearfire or RetailBI; marks belong to their owners.
-- Doctrine: RetailBI’s intelligence is a byproduct of retail operations software. Betsy’s intelligence is a byproduct of product discovery.
-
-## Pricing (honest)
-
-- FFL Accelerator: **$569/mo**
-- Setup: $500 Basic / $2,500 Retail (Coriolis)
-- Lower Coriolis tiers: Minute Man $169, Militia $269, Gun Runner $369, Warlord $469
-- Do not use old WordPress $269 as Accelerator pricing (that was Militia)
+## What the site is for
+A gun store owner who wants a website they own. Sell what is on the shelf, dropship from distributor catalogs, or both.
 
 ## Pages
-
-- [/](/): Campaign door. Conversion → Coriolis /ecommerce.
-- [/plan/](/plan/): Accelerator vs the Coriolis ladder. No second checkout. Do not 301.
-- [/gunsearchagent-included/](/gunsearchagent-included/): Why GSA Pro is in the plan; flywheel to Demand Intelligence.
-- [/about/](/about/): Coriolis program, not a separate company.
-- [/guides/gun-store-software/](/guides/gun-store-software/): Stack literacy. Not 4473/ATF software.
-- [/trends/2025-q1/](/trends/2025-q1/) and [/trends/2025-q2/](/trends/2025-q2/): Qualitative rewrites. Keep NICS, RetailBI same-store, and search intent apart.
-
-Moved (permanent 301 to www Coriolis): `/switch` → `/ammoready-alternative`, `/ffl-ecommerce` and `/pricing` → `/ecommerce`, `/ffl-dropshipping` → `/firearms-dropshipping`, `/retailbi-and-axis` → `/demand-intelligence`, `/contact` → `/contact`.
-
-## Same-as mesh
-
-https://coriolisagency.com · https://www.gunsearchengine.com · https://gunsearchagent.com · https://2abetsy.com · https://fflintel.com · https://fflaccelerator.com · https://x.com/2ABetsy · https://www.youtube.com/@BetsyAI
+- / — the plan
+- /plan/ — what is in the $569
+- /about/ — who we are
+- /gunsearchagent-included/ — Betsy on the shop
+- /guides/gun-store-software/ — the website is not the bound book
+- /trends/2025-q1/ and /trends/2025-q2/ — merchandising notes, not a NICS print
 
 ## Do not
-
-- H1 “RetailBI alternative”
-- 4473 / ATF automation claims
-- “Switch off RetailBI”
-- Invent RetailBI Index numbers
-- Treat this site as a second Stripe cart
+- Claim 4473 or bound-book software
+- Tell a dealer to dump the register they already run
+- Pitch manufacturers or Demand Intelligence on this domain

@@ -6,60 +6,52 @@ export interface FaqItem {
 export const FAQ_HOME: FaqItem[] = [
   {
     q: "What is FFL Accelerator?",
-    a: "FFL Accelerator is Coriolis’s managed WooCommerce program for FFLs ($569/mo). It includes GunSearchAgent Pro (Betsy on the dealer site). The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.",
+    a: "The Coriolis plan for a gun store that wants a real website. $569 a month. We build WooCommerce on your domain and put Betsy on the shop. The site is yours.",
   },
   {
-    q: "How much does FFL Accelerator cost?",
-    a: "FFL Accelerator is $569/mo. Setup is $500 Basic or $2,500 Retail from Coriolis. Older $269 pricing on this domain was a lower Coriolis tier (Militia), not Accelerator.",
-  },
-  {
-    q: "What does GunSearchAgent Pro add?",
-    a: "GunSearchAgent is the Google Analytics replacement for FFL and 2A websites: on-site demand intelligence (what shoppers asked for) plus optional inventory sync. Core is free forever. GunSearchAgent Pro is included with the Coriolis FFL Accelerator plan.",
+    q: "What do I pay to start?",
+    a: "Setup is $500 or $2,500. Then $569 a month. No annual contract.",
   },
   {
     q: "Do I own the website?",
-    a: "Yes. The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence. Cancel anytime; Coriolis will help you migrate or send a backup.",
+    a: "Yes. It is WordPress. Cancel and it goes with you.",
   },
   {
-    q: "Is FFL Accelerator a separate company?",
-    a: "No. FFL Accelerator is a Coriolis, LLC program — the top managed WooCommerce plan — not a separate vendor. Checkout and contracts live on coriolisagency.com.",
+    q: "Is this 4473 or bound-book software?",
+    a: "No. We are not your 4473, your NICS, or your bound book. This is not legal advice.",
   },
 ];
 
 export const FAQ_PLAN: FaqItem[] = [
   {
-    q: "How is FFL Accelerator different from Militia or Warlord?",
-    a: "Minute Man ($169) is hosting to sell your inventory. Militia ($269) adds dropshipping. Gun Runner ($369) adds VIP support. Warlord ($469) adds POS integration. FFL Accelerator ($569) includes everything in Warlord plus GunSearchAgent Pro, speed and cart work, Cloudflare, on-site SEO, and email programs.",
+    q: "What do I get that a rented catalog does not?",
+    a: "The website. Your domain, your pages, your checkout. If you leave, you take it.",
   },
   {
-    q: "Where do I buy?",
-    a: "Checkout is on Coriolis, not this site: coriolisagency.com/plans. This page explains the ladder; it is not a second cart.",
+    q: "Can I sell guns I do not stock?",
+    a: "Yes. Catalogs stream from the distributors. A serialized firearm ships to a receiving FFL. You can still sell what is in the safe.",
   },
   {
-    q: "What are the setup fees?",
-    a: "One-time setup is $500 Basic or $2,500 Retail from Coriolis. Monthly FFL Accelerator is $569.",
+    q: "I already have a cheaper hosting plan.",
+    a: "Fine. Minute Man, Militia, Gun Runner, and Warlord still exist if that is the shop you have. This page is FFL Accelerator.",
   },
   {
-    q: "Can I start on a lower plan and upgrade?",
-    a: "Yes. The Coriolis ladder is designed so you can add dropshipping, VIP support, POS, then Accelerator. Talk to Coriolis about the path that matches your inventory model.",
+    q: "How do I start?",
+    a: "Talk to us. We look at the store you have, pick the $500 or $2,500 setup, and build on your domain before you give anyone notice.",
   },
 ];
 
 export const FAQ_GSA: FaqItem[] = [
   {
-    q: "Why is GunSearchAgent in the FFL Accelerator plan?",
-    a: "A dark website does not tell you what shoppers asked for. GunSearchAgent is the Google Analytics replacement for FFL and 2A websites. Pro is included so every Accelerator store is a live demand sensor.",
+    q: "Why is Betsy in the plan?",
+    a: "Because a dark website does not tell you what they asked for. Accelerator includes her so the store you pay us to run can see its own search.",
   },
   {
-    q: "Is GunSearchAgent still free if I am not on Accelerator?",
-    a: "Yes. Core is free forever on gunsearchagent.com. Pro is included with the Coriolis FFL Accelerator plan. Self-serve Pro is also available from GSA if you already have a site.",
+    q: "Is she a chatbot?",
+    a: "She answers people on the site. The reason she is in the plan is the list of what they typed.",
   },
   {
-    q: "What is Demand Intelligence?",
-    a: "Betsy Demand Intelligence measures anonymized shopper search intent across GunSearchEngine, GunSearchAgent embeds, and floor sensors — including unmet (zero-hit) demand. The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.",
-  },
-  {
-    q: "Is this a POS or a sales index?",
-    a: "No. It is not a POS and not a same-store unit-sales index. RetailBI’s intelligence is a byproduct of retail operations software. Betsy’s intelligence is a byproduct of product discovery.",
+    q: "Do I have to buy a second product?",
+    a: "No. On FFL Accelerator she is in the $569.",
   },
 ];
