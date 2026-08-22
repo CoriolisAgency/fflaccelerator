@@ -31,7 +31,7 @@ const {
 } = Astro.props;
 
 const siteOrigin = Astro.site ?? new URL("https://fflaccelerator.com");
-const pagePath = path === "/" ? withBase("/") : withBase(path);
+const pagePath = path === "/" ? "/" : withBase(path);
 const canonical = canonicalUrl ?? new URL(pagePath, siteOrigin).href;
 const ogAbs = new URL(withBase(ogImagePath), siteOrigin).href;
 

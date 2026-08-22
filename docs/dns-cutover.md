@@ -13,8 +13,8 @@ GitHub Pages is live. Public DNS still points at WordPress (`141.193.213.10`). T
 
 **`www` CNAME** → `CoriolisAgency.github.io`
 
-## WP 301s
+## Redirects
 
-GitHub Pages cannot express the old WP map. After the apex is on Pages, put Cloudflare in front (orange-cloud) and load `docs/redirect-map.md` as Cloudflare Redirect Rules.
+The origin map lives in `src/lib/redirects.ts` (Astro `redirects` + `dist/_redirects`). Import [cloudflare-bulk-redirects.csv](cloudflare-bulk-redirects.csv) for true 301s at the Cloudflare edge (query string preserved). 410s for leftover WP junk need `_redirects` or a Cloudflare custom rule — Bulk Redirects cannot express 410.
 
-Keep the WP host on a holding hostname for 30 days, then kill.
+Do not 301 `/` or `/plan/`.

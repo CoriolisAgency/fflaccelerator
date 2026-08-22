@@ -54,10 +54,16 @@ GitHub Pages A records (confirm current list at GitHub docs):
 
 AAAA (IPv6) also published by GitHub if you use them.
 
+## Redirects
+
+Astro `redirects` in `src/lib/redirects.ts` (slash and slashless). Build also emits `dist/_redirects` (301 + 410). Cloudflare Bulk Redirects CSV: [docs/cloudflare-bulk-redirects.csv](docs/cloudflare-bulk-redirects.csv).
+
+Do not 301 `/` or `/plan/`. Coriolis is the ranking host for the moved pillars.
+
 ## Docs
 
 - [SEO lattice](docs/seo-lattice.md)
-- [WP → Astro redirect map](docs/redirect-map.md)
+- [Redirect map](docs/redirect-map.md)
 - Frozen strings: `src/lib/frozen.ts` (from GSE entity-kit)
 
 ## Rules

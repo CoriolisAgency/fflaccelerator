@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://fflaccelerator.com/sitemap.xml
 Sitemap: https://fflaccelerator.com/sitemap-index.xml

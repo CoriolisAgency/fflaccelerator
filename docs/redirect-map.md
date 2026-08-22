@@ -1,41 +1,63 @@
-# Redirect map (Cloudflare)
+# Redirect map
 
-WordPress → this Astro site. Implement as **301** at Cloudflare (or origin) before DNS cutover. Trailing-slash variants should also 301 to the no-slash URL (`trailingSlash: never`).
+Coriolis is the ranking host for the moved commercial pillars.  
+The campaign door stays on this host: **`/` and `/plan/`** — do not 301 those.
+
+Source of truth: `src/lib/redirects.ts` (wired into Astro `redirects` and emitted as `dist/_redirects`).
+
+Query strings follow when the host honors `_redirects` (Cloudflare Pages) or when the Bulk Redirects CSV is imported with `preserve_query_string=TRUE`.
+
+## Keep (do not 301)
+
+| Path |
+|------|
+| `/` |
+| `/plan/` |
+| `/about/` |
+| `/gunsearchagent-included/` |
+| `/guides/gun-store-software/` |
+| `/trends/*` |
+
+## Permanent 301 to www Coriolis (slash and slashless)
+
+| From | To |
+|------|----|
+| `/ffl-ecommerce` `/ffl-ecommerce/` | `https://www.coriolisagency.com/ecommerce` |
+| `/ffl-dropshipping` `/ffl-dropshipping/` | `https://www.coriolisagency.com/firearms-dropshipping` |
+| `/switch` `/switch/` | `https://www.coriolisagency.com/ammoready-alternative` |
+| `/retailbi-and-axis` `/retailbi-and-axis/` | `https://www.coriolisagency.com/demand-intelligence` |
+| `/pricing` `/pricing/` | `https://www.coriolisagency.com/ecommerce` |
+| `/contact` `/contact/` | `https://www.coriolisagency.com/contact` |
+
+## Leftover WordPress → real URL (301)
 
 | Old WordPress | New |
 |---------------|-----|
-| `/switch-n-save/` | `/switch` |
-| `/firearm-and-accessory-sales-trends-in-q1-2025/` | `/trends/2025-q1` |
-| `/firearm-and-accessory-sales-trends-in-q2-2025/` | `/trends/2025-q2` |
-| `/best-software-for-managing-your-gun-store-and-ffl-records/` | `/guides/gun-store-software` |
-| `/category/4473/` | `/guides/gun-store-software` |
+| `/switch-n-save/` | `https://www.coriolisagency.com/ammoready-alternative` |
+| `/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/` | `https://www.coriolisagency.com/ecommerce` |
+| `/firearm-and-accessory-sales-trends-in-q1-2025/` | `/trends/2025-q1/` |
+| `/firearm-and-accessory-sales-trends-in-q2-2025/` | `/trends/2025-q2/` |
+| `/best-software-for-managing-your-gun-store-and-ffl-records/` | `/guides/gun-store-software/` |
+| `/category/4473/` | `/guides/gun-store-software/` |
+| `/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/` | `/guides/gun-store-software/` |
 | `/get-your-ffl-sot-with-orchids-ffl-university/` | `/` |
-| `/author/devopscoriolisagency-com/` | `/about` |
+| `/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/` | `/` |
+| `/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/` | `/` |
+| `/understanding-the-different-types-of-ffls/` | `/` |
+| `/author/devopscoriolisagency-com/` | `/about/` |
 
-## Suggested extra 301s (same intent, not in the required set)
+## 410 Gone (no invented page)
 
-| Old | New | Why |
-|-----|-----|-----|
-| `/` (WP home) | `/` | Same path; no rule needed |
-| `/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/` | `/guides/gun-store-software` | We do not rank 4473 automation |
-| `/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/` | `/` | Out of scope |
-| `/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/` | `/` | Out of scope |
-| `/understanding-the-different-types-of-ffls/` | `/` | Out of scope |
-| `/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/` | `/ffl-ecommerce` | Adjacent |
-| `/category/*` leftover WP taxonomies | `/` or nearest pillar | After GSC export |
+WordPress / Woo platform leftovers with no real Coriolis or FFL destination:
 
-## Cloudflare Bulk Redirects (sketch)
+`/wp-admin`, `/wp-login.php`, `/wp-content/*`, `/wp-includes/*`, `/wp-json/*`, `/xmlrpc.php`, `/feed`, `/comments/feed`, `/blog`, `/category` (except `/category/4473`), `/tag/*`, `/sample-page`, `/cart`, `/shop`, `/my-account`, `/checkout`.
 
-```
-fflaccelerator.com/switch-n-save/                          → https://fflaccelerator.com/switch
-fflaccelerator.com/firearm-and-accessory-sales-trends-in-q1-2025/ → https://fflaccelerator.com/trends/2025-q1
-fflaccelerator.com/firearm-and-accessory-sales-trends-in-q2-2025/ → https://fflaccelerator.com/trends/2025-q2
-fflaccelerator.com/best-software-for-managing-your-gun-store-and-ffl-records/ → https://fflaccelerator.com/guides/gun-store-software
-fflaccelerator.com/category/4473/                          → https://fflaccelerator.com/guides/gun-store-software
-fflaccelerator.com/get-your-ffl-sot-with-orchids-ffl-university/ → https://fflaccelerator.com/
-fflaccelerator.com/author/devopscoriolisagency-com/        → https://fflaccelerator.com/about
-```
+GitHub Pages cannot emit HTTP 410. Those rules live in `dist/_redirects` (Cloudflare Pages) and in `src/lib/redirects.ts`. On the current GitHub Pages origin they 404 until a Cloudflare rule or Pages `_redirects` applies the 410.
 
-Also 301 `www.fflaccelerator.com/*` → apex `https://fflaccelerator.com/$1` (or the reverse — pick one canonical host). This repo’s `public/CNAME` is **fflaccelerator.com** (apex).
+## Cloudflare Bulk Redirects
 
-Expand from Search Console after cutover.
+Import [cloudflare-bulk-redirects.csv](cloudflare-bulk-redirects.csv) (301s only; query string preserved). 410s are not expressible as Bulk Redirects — use `_redirects` or a Cloudflare custom rule.
+
+Do not 301 `/` or `/plan/`. Do not unblock GPTBot or Google-Extended (Cloudflare managed robots already disallow them).
+
+`www.fflaccelerator.com/*` already 301s to apex `https://fflaccelerator.com/`.

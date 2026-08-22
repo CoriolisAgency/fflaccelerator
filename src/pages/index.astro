@@ -118,27 +118,33 @@ import { withBase } from "../lib/base";
             {
               t: "A storefront you own",
               d: "Managed WooCommerce with FFL checkout. Cancel and take the site.",
-              href: withBase("ffl-ecommerce"),
+              href: LINKS.plans,
+              external: true,
             },
             {
               t: "Betsy on the domain",
               d: "What shoppers asked for — including empty searches. That feed is Demand Intelligence.",
               href: withBase("gunsearchagent-included"),
+              external: false,
             },
             {
               t: "Leave a rented website",
               d: "Gearfire or AmmoReady storefront. Keep RetailBI if you still report to it.",
-              href: withBase("switch"),
+              href: LINKS.coriolisSwitch,
+              external: true,
             },
             {
               t: "AXIS / RetailBI shops",
               d: "The register series is lit. The website is still dark. We do not say dump RetailBI.",
-              href: withBase("retailbi-and-axis"),
+              href: LINKS.coriolisDemand,
+              external: true,
             },
           ].map((card) => (
             <a
               href={card.href}
               class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5 hover:border-gold/40"
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noopener noreferrer" : undefined}
             >
               <h2 class="text-base font-semibold text-white">{card.t}</h2>
               <p class="mt-2 text-sm leading-relaxed text-zinc-400">{card.d}</p>
@@ -161,7 +167,11 @@ import { withBase } from "../lib/base";
           you own.
         </p>
         <p class="mt-4 text-sm">
-          <a href={withBase("retailbi-and-axis")} class={linkClass}
+          <a
+            href={LINKS.coriolisDemand}
+            class={linkClass}
+            target="_blank"
+            rel="noopener noreferrer"
             >RetailBI, AXIS, and a website that can see →</a
           >
         </p>

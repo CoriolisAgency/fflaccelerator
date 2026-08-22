@@ -1,0 +1,74 @@
+# FFL Accelerator redirects. Generated from src/lib/redirects.ts
+# Do not 301 / or /plan/ — campaign door stays on this host.
+
+/ffl-ecommerce https://www.coriolisagency.com/ecommerce 301
+/ffl-ecommerce/ https://www.coriolisagency.com/ecommerce 301
+/ffl-dropshipping https://www.coriolisagency.com/firearms-dropshipping 301
+/ffl-dropshipping/ https://www.coriolisagency.com/firearms-dropshipping 301
+/switch https://www.coriolisagency.com/ammoready-alternative 301
+/switch/ https://www.coriolisagency.com/ammoready-alternative 301
+/retailbi-and-axis https://www.coriolisagency.com/demand-intelligence 301
+/retailbi-and-axis/ https://www.coriolisagency.com/demand-intelligence 301
+/pricing https://www.coriolisagency.com/ecommerce 301
+/pricing/ https://www.coriolisagency.com/ecommerce 301
+/contact https://www.coriolisagency.com/contact 301
+/contact/ https://www.coriolisagency.com/contact 301
+/switch-n-save https://www.coriolisagency.com/ammoready-alternative 301
+/switch-n-save/ https://www.coriolisagency.com/ammoready-alternative 301
+/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers https://www.coriolisagency.com/ecommerce 301
+/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/ https://www.coriolisagency.com/ecommerce 301
+/firearm-and-accessory-sales-trends-in-q1-2025 /trends/2025-q1/ 301
+/firearm-and-accessory-sales-trends-in-q1-2025/ /trends/2025-q1/ 301
+/firearm-and-accessory-sales-trends-in-q2-2025 /trends/2025-q2/ 301
+/firearm-and-accessory-sales-trends-in-q2-2025/ /trends/2025-q2/ 301
+/best-software-for-managing-your-gun-store-and-ffl-records /guides/gun-store-software/ 301
+/best-software-for-managing-your-gun-store-and-ffl-records/ /guides/gun-store-software/ 301
+/category/4473 /guides/gun-store-software/ 301
+/category/4473/ /guides/gun-store-software/ 301
+/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage /guides/gun-store-software/ 301
+/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/ /guides/gun-store-software/ 301
+/get-your-ffl-sot-with-orchids-ffl-university / 301
+/get-your-ffl-sot-with-orchids-ffl-university/ / 301
+/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl / 301
+/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/ / 301
+/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl / 301
+/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/ / 301
+/understanding-the-different-types-of-ffls / 301
+/understanding-the-different-types-of-ffls/ / 301
+/author/devopscoriolisagency-com /about/ 301
+/author/devopscoriolisagency-com/ /about/ 301
+
+# Leftover WordPress / Woo junk with no real destination — 410 Gone
+/wp-login.php 410
+/xmlrpc.php 410
+/wp-admin 410
+/wp-admin/ 410
+/wp-json 410
+/wp-json/ 410
+/feed 410
+/feed/ 410
+/comments/feed 410
+/comments/feed/ 410
+/blog 410
+/blog/ 410
+/category 410
+/category/ 410
+/tag 410
+/tag/ 410
+/sample-page 410
+/sample-page/ 410
+/cart 410
+/cart/ 410
+/shop 410
+/shop/ 410
+/my-account 410
+/my-account/ 410
+/checkout 410
+/checkout/ 410
+/wp-admin/* 410
+/wp-content/* 410
+/wp-includes/* 410
+/wp-json/* 410
+/tag/* 410
+/category/* 410
+
