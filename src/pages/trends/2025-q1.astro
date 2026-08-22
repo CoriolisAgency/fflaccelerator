@@ -8,7 +8,7 @@ import { withBase } from "../../lib/base";
 <BaseLayout
   title="Firearm and Accessory Sales Trends in Q1 2025 | FFL Accelerator"
   description="Q1 2025 firearms conversation: cooler unit demand after the 2020–23 surge, concealed-carry and training SKUs still working, AR and bulk ammo softer. Keep NICS, RetailBI, and search intent apart."
-  path="/trends/2025-q1"
+  path="/trends/2025-q1/"
 >
   <article class="mx-auto max-w-5xl px-4 py-12 sm:py-14">
     <p
@@ -137,8 +137,11 @@ import { withBase } from "../../lib/base";
       Next:{" "}
       <a href={withBase("trends/2025-q2")} class={linkClass}>Q2 2025 →</a>
       {" · "}
-      <a href={withBase("retailbi-and-axis")} class={linkClass}
-        >AXIS / website sensor →</a
+      <a
+        href={LINKS.coriolisDemand}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">AXIS / website sensor →</a
       >
     </p>
   </article>

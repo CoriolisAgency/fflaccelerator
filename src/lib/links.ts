@@ -24,7 +24,8 @@ export const LINKS = {
   artOfDemand: "https://2abetsy.com/art-of-demand-retailbi",
   fflintel: "https://fflintel.com",
   fflintelMethodology: "https://fflintel.com/methodology",
-  acceleratorAxis: "https://fflaccelerator.com/retailbi-and-axis",
+  /** Ranking host for the old /retailbi-and-axis pillar. */
+  coriolisDemand: "https://www.coriolisagency.com/demand-intelligence",
   x: "https://x.com/2ABetsy",
   youtube: "https://www.youtube.com/@BetsyAI",
   fflCockpit: "https://fflcockpit.com",

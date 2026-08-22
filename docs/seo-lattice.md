@@ -2,18 +2,21 @@
 
 ## Role
 
-**FFLAccelerator.com** is the retailer firebase → Coriolis FFL Accelerator plan ($569/mo, GunSearchAgent Pro included).
+**FFLAccelerator.com** is the retailer campaign door → Coriolis FFL Accelerator plan ($569/mo, GunSearchAgent Pro included).
+
+Coriolis is the ranking host for the moved commercial pillars. The $569 door stays here.
 
 | Intent | Ranking owner |
 |--------|----------------|
-| FFL Accelerator / managed Woo for FFLs / $569 plan | **This site** `/` and `/plan` |
-| Gearfire **website** alternative (retailer) | **This site** `/switch` |
-| FFL ecommerce as a service | **This site** `/ffl-ecommerce` |
-| FFL dropshipping (retailer funnel) | **This site** `/ffl-dropshipping` |
-| Why GSA Pro is in the plan | **This site** `/gunsearchagent-included` |
-| AXIS already feeds RetailBI; website still dark | **This site** `/retailbi-and-axis` |
-| Gun store software / 4473 literacy (we are not that) | **This site** `/guides/gun-store-software` |
-| Agency HQ / checkout / MSA | **Coriolis** `/ecommerce` + `/msa` |
+| FFL Accelerator / managed Woo for FFLs / $569 plan | **This site** `/` and `/plan/` |
+| Why GSA Pro is in the plan | **This site** `/gunsearchagent-included/` |
+| Gun store software / 4473 literacy (we are not that) | **This site** `/guides/gun-store-software/` |
+| Trend notes | **This site** `/trends/*` |
+| Gearfire **website** alternative (retailer) | **Coriolis** `/ammoready-alternative` (301 from `/switch`) |
+| FFL ecommerce as a service | **Coriolis** `/ecommerce` (301 from `/ffl-ecommerce`, `/pricing`) |
+| FFL dropshipping (retailer funnel) | **Coriolis** `/firearms-dropshipping` (301 from `/ffl-dropshipping`) |
+| AXIS already feeds RetailBI; website still dark | **Coriolis** `/demand-intelligence` (301 from `/retailbi-and-axis`) |
+| Agency HQ / checkout / MSA / contact | **Coriolis** `/ecommerce` + `/msa` + `/contact` |
 | GA for FFLs / free agent install | **GunSearchAgent** |
 | GSA dealer + RetailBI self-serve | **GSA** `/retailbi-and-your-gun-store` |
 | What is RetailBI / Index / NICS vs sales | **GunSearchEngine** `/betsy-vs-retailbi` etc. |
@@ -22,19 +25,19 @@
 
 ## Rules
 
-1. Conversion is always `https://coriolisagency.com/plans`. Do not clone checkout.
+1. Conversion is always Coriolis `/ecommerce`. Do not clone checkout. Do not 301 `/` or `/plan/`.
 2. First ~80 words of each commercial page answer the query.
-3. FAQ JSON-LD on commercial pillars (`/`, `/plan`, `/switch`, `/ffl-ecommerce`, `/ffl-dropshipping`, `/gunsearchagent-included`, `/retailbi-and-axis`).
+3. FAQ JSON-LD on the remaining commercial pillars (`/`, `/plan/`, `/gunsearchagent-included/`).
 4. Organization `sameAs`: coriolisagency.com, gunsearchengine.com, gunsearchagent.com, 2abetsy.com, fflintel.com, fflaccelerator.com, x.com/2ABetsy, youtube.com/@BetsyAI.
 5. Never H1 “RetailBI alternative.” Never “switch off RetailBI.” Never 4473 automation claims.
 6. Frozen strings from `src/lib/frozen.ts` (entity-kit). Commercial pages include: *The site is yours. Betsy on it is included. That feed is what OEMs buy as Demand Intelligence.*
 7. Pricing honesty: Accelerator **$569/mo**. Setup $500 / $2,500. Old WP $269 was Militia — do not reuse as Accelerator.
 8. Do not invent RetailBI Index numbers. Trend closes separate NICS, RetailBI same-store, and search intent.
+9. Canonicals use trailing slashes to match live pretty URLs.
 
 ## Internal links
 
-- Home → plan, switch, GSA-included, retailbi-and-axis
-- Switch → retailbi-and-axis (keep RetailBI)
-- Ecommerce ↔ dropshipping ↔ plan
+- Home → plan, GSA-included; commercial pillars 301 to Coriolis
 - Trends → fflintel methodology + GSE betsy-vs-retailbi
-- Guide → ecommerce + retailbi-and-axis (soft CTA only)
+- Guide → Coriolis ecommerce (soft CTA only)
+- Do not add a magazine nav

@@ -7,7 +7,7 @@ import { withBase } from "../../lib/base";
 <BaseLayout
   title="Gun Store Software — Stack Literacy for FFLs | FFL Accelerator"
   description="Gun store software is several jobs: 4473/bound book, POS, ecommerce, and demand. FFL Accelerator is managed WooCommerce — not 4473 or ATF software. Point compliance tools elsewhere."
-  path="/guides/gun-store-software"
+  path="/guides/gun-store-software/"
 >
   <article class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
     <p
@@ -112,10 +112,18 @@ import { withBase } from "../../lib/base";
       </a>
     </div>
     <p class="mt-6 text-sm text-zinc-500">
-      <a href={withBase("ffl-ecommerce")} class={linkClass}>FFL ecommerce →</a>
+      <a
+        href={LINKS.plans}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">FFL ecommerce →</a
+      >
       {" · "}
-      <a href={withBase("retailbi-and-axis")} class={linkClass}
-        >AXIS / RetailBI →</a
+      <a
+        href={LINKS.coriolisDemand}
+        class={linkClass}
+        target="_blank"
+        rel="noopener noreferrer">AXIS / RetailBI →</a
       >
     </p>
   </article>

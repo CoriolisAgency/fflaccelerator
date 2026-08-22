@@ -45,63 +45,6 @@ export const FAQ_PLAN: FaqItem[] = [
   },
 ];
 
-export const FAQ_SWITCH: FaqItem[] = [
-  {
-    q: "Is this a Gearfire website alternative?",
-    a: "Yes — for the retailer website. Leave a proprietary storefront (Gearfire, AmmoReady, and similar) for WooCommerce you own, with Betsy included on FFL Accelerator. This is not a request to leave RetailBI or AXIS.",
-  },
-  {
-    q: "What happens to RetailBI if I leave a Gearfire website?",
-    a: "RetailBI is Gearfire’s sell-through platform fed by register and ecommerce transactions on the Gearfire network. Leaving a rented website is not the same as leaving RetailBI. If you still report units through AXIS or another Gearfire-network path, that register series can continue. We do not ask anyone to switch off RetailBI.",
-  },
-  {
-    q: "Do I keep my domain and data?",
-    a: "Yes. The site is yours. Coriolis migrates the domain, catalog shape, and customer relationship onto open WooCommerce. Betsy on it is included on Accelerator. That feed is what OEMs buy as Demand Intelligence.",
-  },
-  {
-    q: "How much does the switch cost?",
-    a: "FFL Accelerator is $569/mo. Setup is $500 Basic or $2,500 Retail. Ask Coriolis about migration credits when you leave another platform.",
-  },
-];
-
-export const FAQ_ECOMMERCE: FaqItem[] = [
-  {
-    q: "What is FFL ecommerce as a service?",
-    a: "Coriolis builds, hosts, and supports a WooCommerce storefront designed for FFL transfers, serialized catalogs, and distributor feeds. FFL Accelerator ($569/mo) is the top plan and includes GunSearchAgent Pro.",
-  },
-  {
-    q: "Why WooCommerce instead of a closed FFL platform?",
-    a: "You own the site and the data. No vendor lock-in on cancel. The stack can take POS APIs, FFL Cockpit catalogs, FastBound coexistence, and Betsy — without renting a black box.",
-  },
-  {
-    q: "Do you automate 4473s or ATF bound books?",
-    a: "No. FFL Accelerator is not 4473 or ATF software. Transfers and bound books stay with licensed FFLs and dedicated compliance tools such as FastBound. We provide compliance-aware ecommerce, not legal advice.",
-  },
-  {
-    q: "How much does it cost?",
-    a: "FFL Accelerator is $569/mo. Setup is $500 Basic or $2,500 Retail from Coriolis. Lower Coriolis tiers start at $169/mo if you do not need the full Accelerator stack.",
-  },
-];
-
-export const FAQ_DROPSHIP: FaqItem[] = [
-  {
-    q: "How does FFL dropshipping work on Accelerator?",
-    a: "Militia and above connect 21 distributor catalogs through FFL Cockpit. Orders route to the lowest-cost distributor and ship to the customer’s chosen local FFL. Accelerator sits on top of that stack and adds Betsy.",
-  },
-  {
-    q: "Which plan do I need to dropship?",
-    a: "Dropshipping starts at Militia ($269/mo). FFL Accelerator ($569/mo) includes Militia’s catalogs plus Warlord POS options and GunSearchAgent Pro.",
-  },
-  {
-    q: "Do I have to hold inventory?",
-    a: "No. Endless-aisle catalogs let licensed dealers sell firearms and accessories without stocking every SKU. You can also sell owned inventory on the same storefront.",
-  },
-  {
-    q: "Is this 4473 software?",
-    a: "No. Bound-book and 4473 workflows stay with dedicated compliance systems. Coriolis is ecommerce infrastructure.",
-  },
-];
-
 export const FAQ_GSA: FaqItem[] = [
   {
     q: "Why is GunSearchAgent in the FFL Accelerator plan?",
@@ -118,24 +61,5 @@ export const FAQ_GSA: FaqItem[] = [
   {
     q: "Is this a POS or a sales index?",
     a: "No. It is not a POS and not a same-store unit-sales index. RetailBI’s intelligence is a byproduct of retail operations software. Betsy’s intelligence is a byproduct of product discovery.",
-  },
-];
-
-export const FAQ_RETAILBI: FaqItem[] = [
-  {
-    q: "I already feed RetailBI through AXIS. Why does my website matter?",
-    a: "AXIS and RetailBI see what rang the register. They do not see what people typed on your site and could not find. Your website is still dark unless a demand sensor is on it.",
-  },
-  {
-    q: "Are you asking me to switch off RetailBI?",
-    a: "No. Never. RetailBI is Gearfire’s sell-through platform. Keep feeding the register series if it serves the store. Add search intent on the site you own. The two numbers are not substitutes.",
-  },
-  {
-    q: "What is the difference between Accelerator and free GunSearchAgent?",
-    a: "Free GunSearchAgent puts the sensor on a site you already run. FFL Accelerator ($569/mo) is the managed WooCommerce path: Coriolis runs the storefront and includes GunSearchAgent Pro. Self-serve literacy lives at gunsearchagent.com/retailbi-and-your-gun-store.",
-  },
-  {
-    q: "What is RetailBI?",
-    a: "RetailBI is Gearfire’s shooting-sports sell-through platform. It aggregates point-of-sale and ecommerce transactions from retailers on the Gearfire network and publishes the monthly RetailBI Firearm Sales Index (same-store adjusted new firearm unit sales). Coriolis is not affiliated with Gearfire or RetailBI; marks belong to their owners.",
   },
 ];

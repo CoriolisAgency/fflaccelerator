@@ -22,16 +22,14 @@ Publisher: Coriolis, LLC (Coriolis Agency), Greenville, SC.
 
 ## Pages
 
-- [/](/): FFL ecommerce as a service. Conversion → Coriolis plans.
-- [/plan](/plan): Accelerator vs the Coriolis ladder. No second checkout.
-- [/switch](/switch): Leave Gearfire / AmmoReady website. Own Woo + Betsy. Ranking URL for Gearfire-website-alternative (retailer). Not “switch off RetailBI.”
-- [/ffl-ecommerce](/ffl-ecommerce): Ecommerce pillar.
-- [/ffl-dropshipping](/ffl-dropshipping): Dropshipping pillar.
-- [/gunsearchagent-included](/gunsearchagent-included): Why GSA Pro is in the plan; flywheel to Demand Intelligence.
-- [/retailbi-and-axis](/retailbi-and-axis): AXIS already feeds RetailBI; the website is still dark. Managed path vs GSA self-serve.
-- [/about](/about): Coriolis program, not a separate company.
-- [/guides/gun-store-software](/guides/gun-store-software): Stack literacy. Not 4473/ATF software.
-- [/trends/2025-q1](/trends/2025-q1) and [/trends/2025-q2](/trends/2025-q2): Qualitative rewrites. Keep NICS, RetailBI same-store, and search intent apart.
+- [/](/): Campaign door. Conversion → Coriolis /ecommerce.
+- [/plan/](/plan/): Accelerator vs the Coriolis ladder. No second checkout. Do not 301.
+- [/gunsearchagent-included/](/gunsearchagent-included/): Why GSA Pro is in the plan; flywheel to Demand Intelligence.
+- [/about/](/about/): Coriolis program, not a separate company.
+- [/guides/gun-store-software/](/guides/gun-store-software/): Stack literacy. Not 4473/ATF software.
+- [/trends/2025-q1/](/trends/2025-q1/) and [/trends/2025-q2/](/trends/2025-q2/): Qualitative rewrites. Keep NICS, RetailBI same-store, and search intent apart.
+
+Moved (permanent 301 to www Coriolis): `/switch` → `/ammoready-alternative`, `/ffl-ecommerce` and `/pricing` → `/ecommerce`, `/ffl-dropshipping` → `/firearms-dropshipping`, `/retailbi-and-axis` → `/demand-intelligence`, `/contact` → `/contact`.
 
 ## Same-as mesh
 
