@@ -3,9 +3,9 @@
 Retailer firebase for **Coriolis’s FFL Accelerator** plan ($569/mo, GunSearchAgent Pro included).  
 Conversion: [coriolisagency.com/plans](https://coriolisagency.com/plans).
 
-This domain replaces the WordPress site. It is a Coriolis, LLC program — not a separate company.
+This domain replaces the WordPress site.
 
-Email popup posts CORS to Coriolis OS `POST /api/forms/subscribe` (source `popup_fflaccelerator`). Lead mints only after the confirm link. Localhost posts to `http://localhost:3000` (override with `PUBLIC_CORIOLIS_OS_URL`).
+Email popup posts CORS to public marketing subscribe `POST https://www.coriolisagency.com/api/forms/subscribe` (source `popup_fflaccelerator`). Lead mints only after the confirm link.
 
 ## Stack
 

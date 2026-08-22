@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
+import { CANON_PATHS } from "../lib/site";
+import { withBase } from "../lib/base";
 ---
 
 <BaseLayout
@@ -9,6 +11,13 @@ import CtaRow from "../components/CtaRow.astro";
   path="/404"
 >
   <section class="mx-auto max-w-5xl px-4 py-16">
+    <img
+      src={withBase(CANON_PATHS.logo)}
+      alt="FFL Accelerator"
+      width="500"
+      height="200"
+      class="mb-8 h-10 w-auto"
+    />
     <h1 class="text-3xl font-semibold text-white">That page is not here</h1>
     <p class="mt-4 max-w-xl text-sm text-zinc-400">
       The link may be old. The plan is still FFL Accelerator: a gun store
