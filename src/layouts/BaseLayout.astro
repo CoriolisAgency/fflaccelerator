@@ -24,7 +24,7 @@ const {
   title = SITE.titleDefault,
   description = SITE.description,
   path = "/",
-  ogImagePath = CANON_PATHS.headshot,
+  ogImagePath = CANON_PATHS.logo,
   canonicalUrl,
   faq,
   emailCapture = true,
@@ -42,7 +42,7 @@ const graph: Record<string, unknown>[] = [
     name: "Coriolis, LLC",
     legalName: SITE.legalName,
     alternateName: ["Coriolis Agency", "FFL Accelerator"],
-    url: LINKS.coriolis,
+    url: LINKS.home,
     description: SITE.description,
     sameAs: [...SAME_AS],
     address: {
@@ -121,7 +121,6 @@ const jsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogAbs} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@2ABetsy" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogAbs} />

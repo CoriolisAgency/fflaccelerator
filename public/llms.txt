@@ -4,10 +4,10 @@ FFL Accelerator is Coriolis’s plan for a gun store website. $569 a month. We b
 
 Setup is $500 for a clean branded shop, or $2,500 for the full custom site and email. No year-long lock.
 
-Publisher: Coriolis, LLC. Greenville, SC. This is a Coriolis program, not a second company.
+Publisher: Coriolis, LLC. Greenville, SC.
 
-## What the site is for
-A gun store owner who wants a website they own. Sell what is on the shelf, dropship from distributor catalogs, or both.
+## What you get
+A store on your name. FFL checkout. Distributor catalogs when you want them. The register you already run, connected if you want. Betsy on the shop so you see what they typed. Unlimited WP Engine hosting. 99.95% uptime commitment. Support Monday through Friday. Managed email: welcome, back in stock, abandoned cart, thank you.
 
 ## Pages
 - / — the plan
@@ -15,9 +15,9 @@ A gun store owner who wants a website they own. Sell what is on the shelf, drops
 - /about/ — who we are
 - /gunsearchagent-included/ — Betsy on the shop
 - /guides/gun-store-software/ — the website is not the bound book
-- /trends/2025-q1/ and /trends/2025-q2/ — merchandising notes, not a NICS print
+- /trends/2025-q1/ and /trends/2025-q2/ — merchandising notes
+- /confirmed/ — list confirm
+- /404 — this URL stays; old links land here
 
-## Do not
-- Claim 4473 or bound-book software
-- Tell a dealer to dump the register they already run
-- Pitch manufacturers or Demand Intelligence on this domain
+Start: https://www.coriolisagency.com/ecommerce
+Talk: https://www.coriolisagency.com/contact

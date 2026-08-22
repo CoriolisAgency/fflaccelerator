@@ -263,16 +263,3 @@ a {
   text-underline-offset: 2px;
   cursor: pointer;
 }
-.coriolis-capture-chip {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 230;
-  border-radius: 0.125rem;
-  border: 1px solid rgba(212, 160, 23, 0.7);
-  background: #d4a017;
-  color: #0a1220;
-  font: 600 0.75rem/1 var(--font-sans);
-  padding: 0.55rem 0.8rem;
-  cursor: pointer;
-}

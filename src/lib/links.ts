@@ -20,28 +20,16 @@ export const LINKS = {
   oemDemand: "https://www.gunsearchengine.com/oem-firearms-demand-analytics",
   copilot: "https://www.gunsearchengine.com/betsy/enterprise-copilot",
   betsyLive: "https://www.gunsearchengine.com/betsy-live",
-  betsy: "https://2abetsy.com",
-  artOfDemand: "https://2abetsy.com/art-of-demand-retailbi",
   fflintel: "https://fflintel.com",
   fflintelMethodology: "https://fflintel.com/methodology",
   /** Ranking host for the old /retailbi-and-axis pillar. */
   coriolisDemand: "https://www.coriolisagency.com/demand-intelligence",
-  x: "https://x.com/2ABetsy",
   youtube: "https://www.youtube.com/@BetsyAI",
   fflCockpit: "https://fflcockpit.com",
   fastBound: "https://fastbound.com",
 } as const;
 
-export const SAME_AS = [
-  "https://coriolisagency.com",
-  "https://www.gunsearchengine.com",
-  "https://gunsearchagent.com",
-  "https://2abetsy.com",
-  "https://fflintel.com",
-  "https://fflaccelerator.com",
-  "https://x.com/2ABetsy",
-  "https://www.youtube.com/@BetsyAI",
-] as const;
+export const SAME_AS = ["https://www.coriolisagency.com"] as const;
 
 export const linkClass =
   "font-medium text-sky-400 hover:underline underline-offset-2";

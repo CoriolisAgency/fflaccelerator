@@ -12,10 +12,5 @@ export const SITE = {
 export const CANON_PATHS = {
   logo: "brand/ffl-accelerator-logo.png",
   icon: "brand/ffl-accelerator-icon.png",
-  headshot: "betsy/images/betsy-headshot-work.png",
-  gaHero: "betsy/images/betsy-ga-alternative-hero.jpg",
-  copilot: "betsy/images/betsy-ai-brand-intelligence-enterprise-co-pilot.jpg",
-  storefront: "brand/storefront.jpg",
   sales: "brand/sales-accelerator.jpg",
-  aiSeo: "brand/ai-seo.jpg",
 } as const;

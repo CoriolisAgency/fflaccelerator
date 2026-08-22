@@ -16,10 +16,6 @@ export const FAQ_HOME: FaqItem[] = [
     q: "Do I own the website?",
     a: "Yes. It is WordPress. Cancel and it goes with you.",
   },
-  {
-    q: "Is this 4473 or bound-book software?",
-    a: "No. We are not your 4473, your NICS, or your bound book. This is not legal advice.",
-  },
 ];
 
 export const FAQ_PLAN: FaqItem[] = [
@@ -33,7 +29,7 @@ export const FAQ_PLAN: FaqItem[] = [
   },
   {
     q: "I already have a cheaper hosting plan.",
-    a: "Fine. Minute Man, Militia, Gun Runner, and Warlord still exist if that is the shop you have. This page is FFL Accelerator.",
+    a: "Cheaper hosting still exists if that is the shop you have. Ask us. This page is FFL Accelerator.",
   },
   {
     q: "How do I start?",

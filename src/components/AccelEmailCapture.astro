@@ -1,24 +1,21 @@
 ---
 /**
  * FFL Accelerator email capture. Preview: ?capture=1
- * GitHub Pages — posts CORS to Coriolis OS. Confirm-then-mint.
+ * Posts CORS to public Coriolis marketing subscribe. Confirm-then-mint.
  */
 import { CANON_PATHS } from "../lib/site";
 import { withBase } from "../lib/base";
 
 const wordmarkSrc = withBase(CANON_PATHS.logo);
-const osSubscribeUrl = "https://ops.coriolisagency.com/api/forms/subscribe";
-const localOsSubscribeUrl =
-  import.meta.env.PUBLIC_CORIOLIS_OS_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+const marketingSubscribeUrl =
+  "https://www.coriolisagency.com/api/forms/subscribe";
 const marketingSource = "popup_fflaccelerator";
 ---
 
 <script
   define:vars={{
     wordmarkSrc,
-    osSubscribeUrl,
-    localOsSubscribeUrl,
+    marketingSubscribeUrl,
     marketingSource,
   }}
 >
@@ -39,22 +36,11 @@ const marketingSource = "popup_fflaccelerator";
     };
     const PATH_DENY = ["/confirmed"];
 
-    function isLocalHost() {
-      const h = window.location.hostname;
-      return h === "localhost" || h === "127.0.0.1" || h === "[::1]";
-    }
-
     function subscribeEndpoint() {
-      if (isLocalHost()) return localOsSubscribeUrl + "/api/forms/subscribe";
-      return osSubscribeUrl;
-    }
-
-    function isCaptureFrequencyEnabled() {
-      return !isLocalHost();
+      return marketingSubscribeUrl;
     }
 
     function pathDenied(pathname) {
-      if (isLocalHost()) return false;
       const p = pathname || "/";
       return PATH_DENY.some(
         (d) => p === d || p.startsWith(d + "/") || p.startsWith(d + "?")
@@ -70,7 +56,6 @@ const marketingSource = "popup_fflaccelerator";
     }
 
     function writeLocal(key, value) {
-      if (!isCaptureFrequencyEnabled()) return;
       try {
         localStorage.setItem(key, value);
       } catch {
@@ -95,12 +80,10 @@ const marketingSource = "popup_fflaccelerator";
     }
 
     function writeSessionShown() {
-      if (!isCaptureFrequencyEnabled()) return;
       writeSession(STORAGE.shown, "1");
     }
 
     function isDismissCoolingDown() {
-      if (!isCaptureFrequencyEnabled()) return false;
       const raw = readLocal(STORAGE.dismiss);
       if (!raw) return false;
       const t = parseInt(raw, 10);
@@ -109,7 +92,6 @@ const marketingSource = "popup_fflaccelerator";
     }
 
     function frequencyBlocks() {
-      if (!isCaptureFrequencyEnabled()) return false;
       if (readLocal(STORAGE.subscribed) === "1") return true;
       if (isDismissCoolingDown()) return true;
       if (readSession(STORAGE.shown) === "1") return true;
@@ -206,21 +188,6 @@ const marketingSource = "popup_fflaccelerator";
     let prevOverflow = "";
     let prevPad = "";
 
-    function showPreviewChip() {
-      if (!isLocalHost()) return;
-      if (document.getElementById("coriolis-capture-chip")) return;
-      const chip = document.createElement("button");
-      chip.id = "coriolis-capture-chip";
-      chip.type = "button";
-      chip.className = "coriolis-capture-chip";
-      chip.textContent = "Show popup";
-      chip.addEventListener("click", function () {
-        opened = false;
-        tryOpen("localhost");
-      });
-      document.body.appendChild(chip);
-    }
-
     function dismiss() {
       writeLocal(STORAGE.dismiss, String(Date.now()));
       if (openEl) {
@@ -230,7 +197,6 @@ const marketingSource = "popup_fflaccelerator";
       document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPad;
       window.removeEventListener("keydown", onKey);
-      showPreviewChip();
     }
 
     function onKey(e) {
@@ -245,8 +211,8 @@ const marketingSource = "popup_fflaccelerator";
         mode === "activation" ? "Check your inbox" : "You’re on the list";
       const lede =
         mode === "activation"
-          ? "Confirmation link is on the way. After you click it, product notes can land in your inbox."
-          : "FFL ecommerce notes from Coriolis. Unsubscribe anytime.";
+          ? "Confirmation link is on the way. After you click it, notes can land in your inbox."
+          : "Notes on gun store websites. Unsubscribe any time.";
       copy.innerHTML =
         '<p class="coriolis-capture__eyebrow">FFL Accelerator · Coriolis, LLC</p>' +
         '<h2 id="coriolis-capture-title" class="coriolis-capture__headline">' +
@@ -286,7 +252,7 @@ const marketingSource = "popup_fflaccelerator";
         '" alt="FFL Accelerator" width="220" height="66" class="coriolis-capture__mark" decoding="async" />' +
         '<p class="coriolis-capture__eyebrow">Coriolis, LLC · Greenville</p>' +
         '<h2 id="coriolis-capture-title" class="coriolis-capture__headline">Get FFL ecommerce notes</h2>' +
-        '<p class="coriolis-capture__lede">Managed WooCommerce, Betsy on the dealer site, product notes — not a pitch. Unsubscribe anytime.</p>' +
+        '<p class="coriolis-capture__lede">Notes on gun store websites. Unsubscribe any time.</p>' +
         '<form class="coriolis-capture__form" data-capture-form>' +
         '<label class="sr-only" for="coriolis-capture-email">Email address</label>' +
         '<div class="coriolis-capture__field">' +
@@ -295,7 +261,7 @@ const marketingSource = "popup_fflaccelerator";
         "</div>" +
         '<p class="coriolis-capture__error" role="alert" data-capture-error hidden></p>' +
         "</form>" +
-        '<p class="coriolis-capture__fine">Confirm the address first. Unsubscribe anytime. ' +
+        '<p class="coriolis-capture__fine">Confirm the address first. Unsubscribe any time. ' +
         '<button type="button" class="coriolis-capture__skip" data-capture-dismiss>Not now</button></p>' +
         "</div></article></div>";
 
@@ -390,8 +356,8 @@ const marketingSource = "popup_fflaccelerator";
       if (result.show && result.reason) tryOpen(result.reason);
     }
 
-    if (forceCapture || isLocalHost()) {
-      tryOpen(forceCapture ? "force" : "localhost");
+    if (forceCapture) {
+      tryOpen("force");
       return;
     }
 
