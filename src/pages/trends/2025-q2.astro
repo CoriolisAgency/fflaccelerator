@@ -1,34 +1,30 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { LINKS, linkClass } from "../../lib/links";
-import { FROZEN } from "../../lib/frozen";
+import CtaRow from "../../components/CtaRow.astro";
+import { linkClass } from "../../lib/links";
 import { withBase } from "../../lib/base";
 ---
 
 <BaseLayout
   title="Firearm and Accessory Sales Trends in Q2 2025 | FFL Accelerator"
-  description="Q2 2025 firearms conversation: less panic, more purpose — carry guns, suppressor talk, and accessories. AR and pumps still slower. Keep NICS, RetailBI same-store, and search intent apart."
+  description="Q2 2025 firearms conversation: less panic, more purpose — carry guns, suppressor talk, and accessories. AR and pumps still slower."
   path="/trends/2025-q2/"
 >
   <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-14">
     <p
-      class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-400"
+      class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold"
     >
       Trends · Q2 2025
     </p>
     <h1 class="mb-4 text-3xl font-semibold tracking-tight text-white">
       Firearm and accessory sales trends in Q2 2025
     </h1>
-    <p class="mb-6 text-sm leading-relaxed text-zinc-300">
+    <p class="mb-8 text-sm leading-relaxed text-zinc-300">
       The second quarter of 2025 felt less like a crash and more like a
       market that had stopped pretending every week was 2020. Carry pistols
       and the kit around them still moved. Long guns and bulk ammo did not
       suddenly get interesting again. Treat that as a floor read. It is not a
       NICS count and it is not a RetailBI Index print.
-    </p>
-    <p class="mb-8 text-xs text-zinc-500">
-      Rewrite of the old WordPress post at this URL. Unsourced “4.2 million
-      units / +3%” copy from that draft is retired.
     </p>
 
     <h2 class="text-lg font-semibold text-white">Stabilization is not a rebound</h2>
@@ -88,51 +84,15 @@ import { withBase } from "../../lib/base";
         >−13% vs 2024</strong
       >. That is a full-year register / same-store figure — useful context, not
       a Q2 NICS total. We do not invent monthly Index prints on this page.
-      {FROZEN.retailBiIndex}
     </p>
 
-    <h2 class="mt-10 text-lg font-semibold text-white">Three numbers, not one</h2>
-    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-      {FROZEN.doctrine} NICS is background checks, not sales. RetailBI
-      same-store is units at the register, not search. Betsy asks are product
-      discovery — including the zeros your AXIS feed will never see.
+    <p class="mt-10 text-sm leading-relaxed text-zinc-300">
+      If the floor is moving and the website is not, that is the FFL
+      Accelerator job. $569 a month. You own the site.
     </p>
-    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-      <a
-        href={LINKS.fflintelMethodology}
-        class={linkClass}
-        target="_blank"
-        rel="noopener noreferrer">FFLIntel methodology</a
-      >
-      {" · "}
-      <a
-        href={LINKS.betsyVsRetailBi}
-        class={linkClass}
-        target="_blank"
-        rel="noopener noreferrer">Betsy vs RetailBI</a
-      >
-      {" · "}
-      <a
-        href={LINKS.retailBiIndex}
-        class={linkClass}
-        target="_blank"
-        rel="noopener noreferrer">Firearm Sales Index</a
-      >
-      {" · "}
-      <a
-        href={LINKS.nicsVsSales}
-        class={linkClass}
-        target="_blank"
-        rel="noopener noreferrer">NICS vs sales</a
-      >
-      {" · "}
-      <a
-        href={LINKS.coriolisDemand}
-        class={linkClass}
-        target="_blank"
-        rel="noopener noreferrer">AXIS and a dark website</a
-      >.
-    </p>
+    <div class="mt-6">
+      <CtaRow />
+    </div>
 
     <p class="mt-10 text-sm text-zinc-500">
       Previous:{" "}

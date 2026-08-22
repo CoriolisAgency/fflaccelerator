@@ -3,11 +3,11 @@
  */
 export const LINKS = {
   home: "https://fflaccelerator.com",
-  plans: "https://coriolisagency.com/ecommerce",
-  coriolis: "https://coriolisagency.com",
+  plans: "https://www.coriolisagency.com/ecommerce",
+  coriolis: "https://www.coriolisagency.com",
   coriolisSwitch: "https://coriolisagency.com/ammoready-alternative",
-  contact: "https://coriolisagency.com/contact",
-  coriolisContact: "https://coriolisagency.com/contact",
+  contact: "https://www.coriolisagency.com/contact",
+  coriolisContact: "https://www.coriolisagency.com/contact",
   msa: "https://coriolisagency.com/msa",
   gsa: "https://gunsearchagent.com",
   gsaGa: "https://gunsearchagent.com/google-analytics-alternative-for-ffls",

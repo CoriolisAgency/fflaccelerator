@@ -1,31 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import CommercialLine from "../components/CommercialLine.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import { FAQ_PLAN } from "../lib/faq";
-import { FROZEN } from "../lib/frozen";
-import { SETUP } from "../lib/plans";
-import { LINKS, linkClass } from "../lib/links";
 ---
 
 <BaseLayout
-  title="FFL Accelerator Plan — $569/mo, Betsy AI included"
-  description="FFL Accelerator is Coriolis’s $569/mo managed WooCommerce plan. GunSearchAgent Pro is included. Setup $500 or $2,500. Buy on Coriolis."
+  title="FFL Accelerator plan — $569 a month"
+  description="What is in FFL Accelerator: a WooCommerce store you own, FFL checkout, twenty-one catalogs, Betsy on the site. Setup $500 or $2,500."
   path="/plan/"
   faq={FAQ_PLAN}
 >
   <section class="border-b border-zinc-800/80 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-        The product
-      </p>
-      <h1 class="mt-3 max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-        $569 a month. The site is yours. Betsy AI is on it.
+      <h1 class="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+        $569 a month. The site is yours.
       </h1>
       <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-300">
-        {FROZEN.fflAccelerator} Checkout is on Coriolis. This page is not a
-        second cart.
+        FFL Accelerator is the plan we put a working gun store on. We build
+        WooCommerce on your domain, wire checkout and catalogs, and stay on the
+        shop. Betsy is on that site so you can see what people asked for.
       </p>
       <div class="mt-8">
         <CtaRow />
@@ -35,53 +29,84 @@ import { LINKS, linkClass } from "../lib/links";
 
   <section class="border-b border-zinc-800/80 py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">What’s in Accelerator</h2>
-      <ul class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 text-sm text-zinc-300">
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">Managed WooCommerce you own</li>
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">FFL checkout and catalogs</li>
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">GunSearchAgent Pro (Betsy)</li>
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">Dropshipping path when you need it</li>
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">POS integrations when you need them</li>
-        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">Cloudflare, speed, on-site SEO, email</li>
-      </ul>
-      <p class="mt-6"><CommercialLine /></p>
+      <h2 class="text-xl font-semibold text-white">Price</h2>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
+        FFL Accelerator is $569 a month. Standing the store up is $500 for a
+        clean branded shop, or $2,500 if you want the full custom site and
+        email. There is no year-long lock. If you leave, the website goes with
+        you.
+      </p>
     </div>
   </section>
 
   <section class="border-b border-zinc-800/80 py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">One-time setup</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        {
-          SETUP.map((s) => (
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
-              <h3 class="text-lg font-semibold text-white">
-                {s.name} · ${s.price.toLocaleString()}
-              </h3>
-              <p class="mt-1 text-sm text-zinc-400">{s.hook}</p>
-              <ul class="mt-4 space-y-1.5 text-sm text-zinc-400">
-                {s.features.slice(0, 6).map((f) => (
-                  <li>{f}</li>
-                ))}
-              </ul>
-            </article>
-          ))
-        }
-      </div>
+      <h2 class="text-xl font-semibold text-white">What’s in it</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 text-sm text-zinc-300">
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          A WooCommerce store on your domain
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          FFL checkout for serialized firearms
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          Twenty-one distributor catalogs when you want the aisle
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          The register you already run, connected when you want the floor and
+          the site together
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          Betsy on the shop
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          Speed, Cloudflare, search work, and email after a missed sale
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          Unlimited hosting on WP Engine. Coriolis is a WP Engine agency
+          partner.
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          99.95% SLA.
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          VIP support Monday through Friday.
+        </li>
+        <li class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+          Managed email automation: welcome series, back in stock, abandoned
+          cart, thank you for purchase.
+        </li>
+      </ul>
     </div>
   </section>
 
-  <section class="py-12">
+  <section class="border-b border-zinc-800/80 py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h2 class="text-lg font-semibold text-zinc-200">Lower Coriolis tiers</h2>
-      <p class="mt-2 max-w-3xl text-sm text-zinc-500">
-        Minute Man $169, Militia $269, Gun Runner $369, Warlord $469 still
-        exist on{" "}
-        <a href={LINKS.plans} class={linkClass} target="_blank" rel="noopener noreferrer"
-          >coriolisagency.com/plans</a
-        >. Older $269 copy on this domain was Militia, not Accelerator. This
-        site sells the $569 plan.
+      <h2 class="text-xl font-semibold text-white">Setup</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
+          <h3 class="text-lg font-semibold text-white">$500 · Open the store</h3>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+            A branded shop on your domain. Theme, homepage, search, tax and
+            shipping, payments, checkout, catalogs, and Betsy’s free layer.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
+          <h3 class="text-lg font-semibold text-white">
+            $2,500 · Build the store you will keep
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+            The full custom site: up to ten pages, unlimited revisions, and
+            email that actually sends.
+          </p>
+        </article>
+      </div>
+      <p class="mt-6 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        You pay setup once. The $569 starts when the shop is yours to run.
       </p>
+      <div class="mt-8">
+        <CtaRow />
+      </div>
     </div>
   </section>
 

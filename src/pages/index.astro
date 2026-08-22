@@ -1,18 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import CommercialLine from "../components/CommercialLine.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import { FAQ_HOME } from "../lib/faq";
-import { FROZEN } from "../lib/frozen";
 import { CANON_PATHS } from "../lib/site";
-import { LINKS, linkClass } from "../lib/links";
 import { withBase } from "../lib/base";
 ---
 
 <BaseLayout
-  title="FFL Accelerator — Your site. Betsy AI included. | $569/mo"
-  description="Coriolis runs WooCommerce you own. GunSearchAgent Pro is in the plan. Already have a site? Put Betsy AI on it free. For retail FFLs and D2C firearm brands."
+  title="FFL Accelerator — a gun store website you own | $569 a month"
+  description="Coriolis builds and runs WooCommerce for gun stores. FFL checkout, distributor catalogs, and Betsy on your site. $569 a month. You leave with the website."
   path="/"
   ogImagePath={CANON_PATHS.gaHero}
   faq={FAQ_HOME}
@@ -21,217 +18,96 @@ import { withBase } from "../lib/base";
     <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
       <div>
         <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-          Coriolis · FFL Accelerator
+          FFL Accelerator
         </p>
         <h1 class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl leading-[1.12]">
-          Your site. Betsy AI included.
+          A gun store website you own
         </h1>
         <p class="mt-4 text-base leading-relaxed text-zinc-300 sm:text-lg">
-          Coriolis builds and runs WooCommerce you own — FFL checkout,
-          catalogs, hosting. GunSearchAgent Pro sits on that domain so you
-          see what people asked for, including searches that came back empty.
-        </p>
-        <p class="mt-3 text-sm text-zinc-400">
-          $569/mo. Setup $500 or $2,500. No long contract. Checkout is on
-          Coriolis — this page is the door, not a second cart.
+          Most shops rent a catalog and call it a website. Coriolis builds
+          WooCommerce on your domain and stays on it with you. You sell what is
+          in the safe. You dropship from twenty-one distributors. Or you do
+          both. That plan is FFL Accelerator.
         </p>
         <div class="mt-8">
           <CtaRow />
         </div>
-        <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-500">
-          <li>WooCommerce you own</li>
-          <li>Betsy on the site</li>
-          <li>Retail shops and D2C brands</li>
-        </ul>
       </div>
       <div class="relative">
         <img
-          src={withBase(CANON_PATHS.gaHero)}
-          alt="Betsy — included on every Accelerator site"
-          width="1600"
-          height="900"
+          src={withBase(CANON_PATHS.storefront)}
+          alt="A gun store website you own"
+          width="1024"
+          height="683"
           class="w-full rounded-2xl object-cover ring-1 ring-white/10"
         />
-        <p class="mt-2 text-center text-xs text-zinc-500">
-          Betsy comes with the plan. She is not a chatbot pitch — she writes
-          down what they hunted on your site.
-        </p>
       </div>
     </div>
   </section>
 
   <section class="border-b border-zinc-800/80 bg-zinc-950/40">
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold">
-        Two ways in
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <h2 class="text-xl font-semibold text-white">Price</h2>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
+        FFL Accelerator is $569 a month. Standing the store up is $500 for a
+        clean branded shop, or $2,500 if you want the full custom site and
+        email. There is no year-long lock. If you leave, the website goes with
+        you.
       </p>
-      <div class="mt-6 grid gap-4 lg:grid-cols-2">
-        <a
-          href={LINKS.plans}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-2xl border border-gold/40 bg-gold/5 p-6 hover:border-gold/70"
-        >
-          <p class="text-xs font-semibold uppercase tracking-wide text-gold">
-            Coriolis runs the site
-          </p>
-          <h2 class="mt-2 text-xl font-semibold text-white">
-            FFL Accelerator · $569/mo
-          </h2>
-          <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-            For a retail FFL or a D2C brand that wants an owned storefront
-            plus Betsy. Managed Woo, checkout, catalogs, GSA Pro included.
-          </p>
-          <p class="mt-4 text-sm font-medium text-gold">See the plan on Coriolis →</p>
-        </a>
-        <a
-          href={LINKS.gsa}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-2xl border border-sky-500/35 bg-sky-500/5 p-6 hover:border-sky-400/60"
-        >
-          <p class="text-xs font-semibold uppercase tracking-wide text-sky-300">
-            You already have a site
-          </p>
-          <h2 class="mt-2 text-xl font-semibold text-white">
-            GunSearchAgent · free core
-          </h2>
-          <p class="mt-2 text-sm leading-relaxed text-zinc-400">
-            Put Betsy on the shop or brand site you already run. See what
-            they typed. Google Analytics never will. Upgrade later if you
-            want Coriolis to take the storefront.
-          </p>
-          <p class="mt-4 text-sm font-medium text-sky-300">Open GunSearchAgent →</p>
-        </a>
-      </div>
     </div>
   </section>
 
   <section class="border-b border-zinc-800/80">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <p class="mb-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold">
-        What the $569 plan is for
-      </p>
-      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {
-          [
-            {
-              t: "A storefront you own",
-              d: "Managed WooCommerce with FFL checkout. Cancel and take the site.",
-              href: LINKS.plans,
-              external: true,
-            },
-            {
-              t: "Betsy on the domain",
-              d: "What shoppers asked for — including empty searches. That feed is Demand Intelligence.",
-              href: withBase("gunsearchagent-included"),
-              external: false,
-            },
-            {
-              t: "Leave a rented website",
-              d: "Gearfire or AmmoReady storefront. Keep RetailBI if you still report to it.",
-              href: LINKS.coriolisSwitch,
-              external: true,
-            },
-            {
-              t: "AXIS / RetailBI shops",
-              d: "The register series is lit. The website is still dark. We do not say dump RetailBI.",
-              href: LINKS.coriolisDemand,
-              external: true,
-            },
-          ].map((card) => (
-            <a
-              href={card.href}
-              class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5 hover:border-gold/40"
-              target={card.external ? "_blank" : undefined}
-              rel={card.external ? "noopener noreferrer" : undefined}
-            >
-              <h2 class="text-base font-semibold text-white">{card.t}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-zinc-400">{card.d}</p>
-            </a>
-          ))
-        }
+      <h2 class="text-xl font-semibold text-white">What you get</h2>
+      <div class="mt-6 space-y-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
+        <p>
+          A store on your name that can take a real firearms order. FFL
+          Checkout routes a serialized gun to a receiving dealer. FFL Cockpit
+          keeps the distributor catalogs priced and in stock. If you already
+          run a register, we connect it so the counter and the site stay in
+          step.
+        </p>
+        <p>
+          Betsy lives on that site. She writes down what people searched for,
+          including the guns you did not have.
+        </p>
+        <p>
+          We keep the shop fast and findable: speed, the cart, Cloudflare, and
+          the on-page work a store needs if it is going to rank for what you
+          sell.
+        </p>
+        <p>
+          Unlimited hosting on WP Engine. Coriolis is a WP Engine agency
+          partner.
+        </p>
+        <p>99.95% SLA.</p>
+        <p>VIP support Monday through Friday.</p>
+        <p>
+          Managed email automation: welcome series, back in stock, abandoned
+          cart, thank you for purchase.
+        </p>
       </div>
     </div>
   </section>
 
   <section class="border-b border-zinc-800/80 bg-zinc-950/40">
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight text-white">
-          Already on AXIS? The register is lit. The website is dark.
-        </h2>
-        <p class="mt-4 text-sm leading-relaxed text-zinc-400">
-          {FROZEN.doctrine} If you already report units through AXIS, keep
-          that series. Add the missing number: what people typed on a site
-          you own.
-        </p>
-        <p class="mt-4 text-sm">
-          <a
-            href={LINKS.coriolisDemand}
-            class={linkClass}
-            target="_blank"
-            rel="noopener noreferrer"
-            >RetailBI, AXIS, and a website that can see →</a
-          >
-        </p>
-        <p class="mt-2 text-sm">
-          <a href={LINKS.betsyVsRetailBi} class={linkClass} target="_blank" rel="noopener noreferrer"
-            >What RetailBI is (GunSearchEngine) →</a
-          >
-        </p>
-      </div>
-      <img
-        src={withBase(CANON_PATHS.storefront)}
-        alt="A gun shop counter — the register is not the website"
-        width="1024"
-        height="683"
-        class="w-full rounded-2xl object-cover ring-1 ring-white/10"
-      />
-    </div>
-  </section>
-
-  <section class="border-b border-zinc-800/80">
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
-      <img
-        src={withBase(CANON_PATHS.headshot)}
-        alt="Betsy"
-        width="400"
-        height="400"
-        class="mx-auto h-48 w-48 rounded-2xl object-cover ring-1 ring-sky-500/30 sm:h-56 sm:w-56"
-      />
-      <div>
-        <h2 class="text-2xl font-semibold text-white">
-          D2C brands: your site is a demand surface
-        </h2>
-        <p class="mt-4 text-sm leading-relaxed text-zinc-400">
-          If you sell direct — shop or manufacturer storefront — people type
-          models you do not have. That empty search never shows up in last
-          month’s sales report. Put Betsy on the brand site (free
-          GunSearchAgent) or let Coriolis run Woo plus Betsy (Accelerator).
-          Either way, that feed is what OEMs buy as Demand Intelligence.
-        </p>
-        <div class="mt-6">
-          <CtaRow primary="gsa" showContact={false} />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-    <div class="rounded-2xl border border-gold/30 bg-gold/5 px-5 py-8 sm:px-8">
-      <h2 class="text-xl font-semibold text-white">$569/mo · buy on Coriolis</h2>
-      <p class="mt-2 max-w-3xl text-sm text-zinc-400">
-        This site explains the plan. The contract lives at
-        coriolisagency.com/plans. Already have a site? Start on
-        GunSearchAgent for free.
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <h2 class="text-xl font-semibold text-white">
+        If you are on AmmoReady or Gearfire
+      </h2>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
+        Those platforms rent you a catalog. The inventory changes. The page
+        does not. We build the new store on your domain first. You do not give
+        notice until it works. Then you leave with the site.
       </p>
-      <div class="mt-5">
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        Coriolis is not affiliated with Gearfire or RetailBI. Keep the register
+        you already run.
+      </p>
+      <div class="mt-8">
         <CtaRow />
       </div>
-      <p class="mt-4 text-xs text-zinc-500">
-        <a href={withBase("plan")} class={linkClass}>What’s in the $569 plan →</a>
-      </p>
     </div>
   </section>
 

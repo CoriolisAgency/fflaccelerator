@@ -1,36 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import CommercialLine from "../components/CommercialLine.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import { FAQ_GSA } from "../lib/faq";
-import { FROZEN } from "../lib/frozen";
 import { CANON_PATHS } from "../lib/site";
-import { LINKS, linkClass } from "../lib/links";
 import { withBase } from "../lib/base";
 ---
 
 <BaseLayout
-  title="GunSearchAgent Pro Included — Why the Sensor Is in FFL Accelerator"
-  description="GunSearchAgent is the Google Analytics replacement for FFL websites. Core is free forever. GunSearchAgent Pro is included with the Coriolis FFL Accelerator plan ($569/mo)."
+  title="Betsy is on the shop — included with FFL Accelerator"
+  description="FFL Accelerator includes Betsy on your website. She writes down what customers searched for, including the guns you did not have."
   path="/gunsearchagent-included/"
   ogImagePath={CANON_PATHS.gaHero}
   faq={FAQ_GSA}
 >
   <section class="border-b border-zinc-800/80 py-12 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4">
-      <p
-        class="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400"
-      >
-        GunSearchAgent Pro · included
-      </p>
-      <h1 class="mt-3 max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-        Why Betsy AI is in the plan
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h1 class="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+        Betsy is on the shop
       </h1>
       <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-300">
-        {FROZEN.gunSearchAgent} A storefront without that sensor is still
-        dark. Accelerator puts Betsy on the domain so what people hunted —
-        including empty searches — becomes a feed. {FROZEN.commercialLine}
+        A store can be open and still be blind. Google Analytics will tell you
+        someone bounced. It will not tell you they typed a model you do not
+        carry. Betsy sits on your site and writes those searches down,
+        including the empty ones. That is included in FFL Accelerator.
       </p>
       <div class="mt-8">
         <CtaRow />
@@ -39,85 +32,33 @@ import { withBase } from "../lib/base";
   </section>
 
   <section class="border-b border-zinc-800/80 py-12">
-    <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <img
         src={withBase(CANON_PATHS.gaHero)}
-        alt="Betsy AI"
+        alt="Betsy is on the shop"
         width="1200"
         height="440"
         class="w-full rounded-2xl object-cover ring-1 ring-zinc-700/80"
       />
-      <p class="mt-3 text-xs text-zinc-600">
-        Product still — demand surface, not a portrait.
-      </p>
     </div>
   </section>
 
   <section class="border-b border-zinc-800/80 py-12">
-    <div class="mx-auto max-w-7xl px-4">
-      <h2 class="text-xl font-semibold text-white">The flywheel</h2>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {
-          [
-            {
-              t: "You own the site",
-              d: "Coriolis hosts WooCommerce. Cancel and take the store. No rented storefront lock-in.",
-            },
-            {
-              t: "Betsy sits on it",
-              d: "GSA Pro is included. Shoppers ask in plain English. Hits and zeros both count.",
-            },
-            {
-              t: "You see demand",
-              d: "What people came for — not bounce rate. Optional inventory sync when a feed is connected.",
-            },
-            {
-              t: "OEMs buy the feed",
-              d: FROZEN.brandIntelligence,
-            },
-          ].map((c) => (
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5">
-              <h3 class="text-sm font-semibold text-white">{c.t}</h3>
-              <p class="mt-2 text-sm text-zinc-400">{c.d}</p>
-            </article>
-          ))
-        }
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-xl font-semibold text-white">What she is for</h2>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
+        She is there so you can see demand on your own website. Stock, page, or
+        dropship from what they actually asked for. She is not a register and
+        she is not a sales report.
+      </p>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        If you already have a site and you are not ready for us to run it,
+        GunSearchAgent’s free layer can go on that shop. This page is still
+        selling FFL Accelerator.
+      </p>
+      <div class="mt-8">
+        <CtaRow />
       </div>
-    </div>
-  </section>
-
-  <section class="border-b border-zinc-800/80 py-12">
-    <div class="mx-auto max-w-7xl px-4 space-y-4">
-      <h2 class="text-xl font-semibold text-white">
-        Two doors: managed plan or free agent
-      </h2>
-      <p class="max-w-3xl text-sm leading-relaxed text-zinc-400">
-        Retail shop or D2C brand site — same job. Already have a site? Put the
-        free core on it today at{" "}
-        <a
-          href={LINKS.gsa}
-          class={linkClass}
-          target="_blank"
-          rel="noopener noreferrer">gunsearchagent.com</a
-        >. Need the storefront run for you? That is FFL Accelerator — $569/mo,
-        Pro included. Literacy on the GA job lives at{" "}
-        <a
-          href={LINKS.gsaGa}
-          class={linkClass}
-          target="_blank"
-          rel="noopener noreferrer">the GSA GA-alternative page</a
-        >.
-      </p>
-      <p class="max-w-2xl text-sm leading-relaxed text-zinc-400">
-        {FROZEN.doctrine}
-      </p>
-    </div>
-  </section>
-
-  <section class="py-12">
-    <div class="mx-auto max-w-7xl px-4 space-y-4">
-      <CommercialLine />
-      <CtaRow />
     </div>
   </section>
 
