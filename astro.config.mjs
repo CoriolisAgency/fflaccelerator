@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import { writeFile } from "node:fs/promises";
+import { copyFile, writeFile } from "node:fs/promises";
 import {
   astroRedirects,
   isSitemapExcluded,
@@ -34,6 +34,25 @@ function emitRedirectsFile() {
   };
 }
 
+/**
+ * GSC still requests the old WordPress /sitemap_index.xml.
+ * GitHub Pages has no rewrite engine, so copy the Astro-generated index.
+ * Same file as /sitemap-index.xml — not a second sitemap.
+ */
+function emitWpSitemapIndexAlias() {
+  return {
+    name: "emit-wp-sitemap-index-alias",
+    hooks: {
+      "astro:build:done": async ({ dir }) => {
+        await copyFile(
+          new URL("sitemap-index.xml", dir),
+          new URL("sitemap_index.xml", dir),
+        );
+      },
+    },
+  };
+}
+
 // @ts-check
 export default defineConfig({
   site,
@@ -47,6 +66,7 @@ export default defineConfig({
         return { ...item, url: prettySitemapUrl(item.url) };
       },
     }),
+    emitWpSitemapIndexAlias(),
     emitRedirectsFile(),
   ],
   vite: {
