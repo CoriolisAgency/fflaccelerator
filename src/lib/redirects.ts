@@ -70,6 +70,15 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
     "/trends/2025-q2/",
   ),
   ...pair(
+    "/best-software-for-managing-your-gun-store-and-ffl-records",
+    "/guides/gun-store-software/",
+  ),
+  ...pair("/category/4473", "/guides/gun-store-software/"),
+  ...pair(
+    "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
+    "/guides/gun-store-software/",
+  ),
+  ...pair(
     "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
     "/",
   ),
@@ -87,16 +96,19 @@ function gonePair(from: string): [string, string] {
 }
 
 /**
- * Leftover WP that named a POS vendor (slug or body). 410 — do not 301
- * these to `/`, `/plan/`, or a keep page.
+ * Leftover slugs that named a POS vendor. 410 — do not 301 these, and do
+ * not emit an Astro HTML refresh (that 200s and prints the slug).
  */
 const GONE_VENDOR_WP = [
   ...gonePair("/get-your-ffl-sot-with-orchids-ffl-university"),
-  ...gonePair("/best-software-for-managing-your-gun-store-and-ffl-records"),
-  ...gonePair("/category/4473"),
-  ...gonePair(
-    "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
-  ),
+  ...gonePair("/orchid"),
+  ...gonePair("/orchid-advisors"),
+  ...gonePair("/orchid-estate"),
+  ...gonePair("/ebound"),
+  ...gonePair("/orchids-ffl-university"),
+  ...gonePair("/orchid-ffl-university"),
+  ...gonePair("/category/orchid"),
+  ...gonePair("/tag/orchid"),
   ...gonePair(
     "/what-to-expect-during-an-atf-inspection-of-your-firearms-business",
   ),
@@ -135,7 +147,7 @@ export const GONE_EXACT = [
   "/checkout/",
 ] as const;
 
-/** Prefixes to 410. More-specific 301s must be listed first. */
+/** Prefixes to 410. More-specific 301s (e.g. /category/4473) must be listed first. */
 export const GONE_PREFIXES = [
   "/wp-admin/",
   "/wp-content/",
@@ -165,6 +177,13 @@ for (const rule of PERMANENT_REDIRECTS) {
 for (const path of GONE_EXACT) {
   if (isKept(path)) {
     throw new Error(`Do not 410 a keep path: ${path}`);
+  }
+}
+
+const goneSet = new Set<string>(GONE_EXACT);
+for (const rule of PERMANENT_REDIRECTS) {
+  if (goneSet.has(rule.from)) {
+    throw new Error(`Path is both 301 and 410: ${rule.from}`);
   }
 }
 
@@ -241,5 +260,10 @@ export function toBulkRedirectCsv(): string {
       : `https://fflaccelerator.com${rule.to}`;
     return `${source},${target},301,TRUE,FALSE,FALSE,FALSE`;
   });
+  for (const path of GONE_VENDOR_WP) {
+    const source = `fflaccelerator.com${path}`;
+    // 410 has no destination. Repeat the source URL so the row is importable.
+    rows.push(`${source},https://${source},410,TRUE,FALSE,FALSE,FALSE`);
+  }
   return `${[header, ...rows].join("\n")}\n`;
 }
