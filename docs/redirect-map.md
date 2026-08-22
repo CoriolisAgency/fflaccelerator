@@ -37,10 +37,6 @@ Query strings follow when the host honors `_redirects` (Cloudflare Pages) or whe
 | `/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/` | `https://www.coriolisagency.com/ecommerce` |
 | `/firearm-and-accessory-sales-trends-in-q1-2025/` | `/trends/2025-q1/` |
 | `/firearm-and-accessory-sales-trends-in-q2-2025/` | `/trends/2025-q2/` |
-| `/best-software-for-managing-your-gun-store-and-ffl-records/` | `/guides/gun-store-software/` |
-| `/category/4473/` | `/guides/gun-store-software/` |
-| `/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/` | `/guides/gun-store-software/` |
-| `/get-your-ffl-sot-with-orchids-ffl-university/` | `/` |
 | `/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/` | `/` |
 | `/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/` | `/` |
 | `/understanding-the-different-types-of-ffls/` | `/` |
@@ -48,9 +44,13 @@ Query strings follow when the host honors `_redirects` (Cloudflare Pages) or whe
 
 ## 410 Gone (no invented page)
 
+Leftover WordPress that named a POS vendor (university, 4473, software list, and related posts). Do not leave these as 200 and do not 301 them onto a keep page:
+
+`/get-your-ffl-sot-with-orchids-ffl-university/`, `/best-software-for-managing-your-gun-store-and-ffl-records/`, `/category/4473/`, `/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/`, `/what-to-expect-during-an-atf-inspection-of-your-firearms-business/`, `/ffl-renewal-process-what-you-need-to-know-to-stay-compliant/`, `/ffl-news/`.
+
 WordPress / Woo platform leftovers with no real Coriolis or FFL destination:
 
-`/wp-admin`, `/wp-login.php`, `/wp-content/*`, `/wp-includes/*`, `/wp-json/*`, `/xmlrpc.php`, `/feed`, `/comments/feed`, `/blog`, `/category` (except `/category/4473`), `/tag/*`, `/sample-page`, `/cart`, `/shop`, `/my-account`, `/checkout`.
+`/wp-admin`, `/wp-login.php`, `/wp-content/*`, `/wp-includes/*`, `/wp-json/*`, `/xmlrpc.php`, `/feed`, `/comments/feed`, `/blog`, `/category`, `/category/*`, `/tag/*`, `/sample-page`, `/cart`, `/shop`, `/my-account`, `/checkout`.
 
 GitHub Pages cannot emit HTTP 410. Those rules live in `dist/_redirects` (Cloudflare Pages) and in `src/lib/redirects.ts`. On the current GitHub Pages origin they 404 until a Cloudflare rule or Pages `_redirects` applies the 410.
 

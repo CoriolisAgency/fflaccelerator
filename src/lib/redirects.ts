@@ -70,16 +70,6 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
     "/trends/2025-q2/",
   ),
   ...pair(
-    "/best-software-for-managing-your-gun-store-and-ffl-records",
-    "/guides/gun-store-software/",
-  ),
-  ...pair("/category/4473", "/guides/gun-store-software/"),
-  ...pair(
-    "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
-    "/guides/gun-store-software/",
-  ),
-  ...pair("/get-your-ffl-sot-with-orchids-ffl-university", "/"),
-  ...pair(
     "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
     "/",
   ),
@@ -88,8 +78,35 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
   ...pair("/author/devopscoriolisagency-com", "/about/"),
 ];
 
+function gonePair(from: string): [string, string] {
+  const bare = from.replace(/\/+$/, "");
+  if (!bare) {
+    throw new Error("Refusing to 410 /");
+  }
+  return [bare, `${bare}/`];
+}
+
+/**
+ * Leftover WP that named a POS vendor (slug or body). 410 — do not 301
+ * these to `/`, `/plan/`, or a keep page.
+ */
+const GONE_VENDOR_WP = [
+  ...gonePair("/get-your-ffl-sot-with-orchids-ffl-university"),
+  ...gonePair("/best-software-for-managing-your-gun-store-and-ffl-records"),
+  ...gonePair("/category/4473"),
+  ...gonePair(
+    "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
+  ),
+  ...gonePair(
+    "/what-to-expect-during-an-atf-inspection-of-your-firearms-business",
+  ),
+  ...gonePair("/ffl-renewal-process-what-you-need-to-know-to-stay-compliant"),
+  ...gonePair("/ffl-news"),
+] as const;
+
 /** Exact paths to 410 (gone). Do not invent replacement pages. */
 export const GONE_EXACT = [
+  ...GONE_VENDOR_WP,
   "/wp-login.php",
   "/xmlrpc.php",
   "/wp-admin",
@@ -118,7 +135,7 @@ export const GONE_EXACT = [
   "/checkout/",
 ] as const;
 
-/** Prefixes to 410. More-specific 301s (e.g. /category/4473) must be listed first. */
+/** Prefixes to 410. More-specific 301s must be listed first. */
 export const GONE_PREFIXES = [
   "/wp-admin/",
   "/wp-content/",
@@ -142,6 +159,12 @@ function isKept(from: string): boolean {
 for (const rule of PERMANENT_REDIRECTS) {
   if (isKept(rule.from)) {
     throw new Error(`Do not 301 a keep path: ${rule.from}`);
+  }
+}
+
+for (const path of GONE_EXACT) {
+  if (isKept(path)) {
+    throw new Error(`Do not 410 a keep path: ${path}`);
   }
 }
 
@@ -197,13 +220,11 @@ export function toCloudflareRedirects(): string {
   lines.push("");
   lines.push("# Leftover WordPress / Woo junk with no real destination — 410 Gone");
   for (const path of GONE_EXACT) {
-    if (path === "/category/4473" || path === "/category/4473/") continue;
     lines.push(`${path} 410`);
   }
   for (const prefix of GONE_PREFIXES) {
     lines.push(`${prefix}* 410`);
   }
-  // Other leftover /category/* (not /category/4473, which 301s above)
   lines.push("/category/* 410");
   lines.push("");
   return `${lines.join("\n")}\n`;
