@@ -21,8 +21,8 @@ export const FAQ_HOME: FaqItem[] = [
     a: "No. Bring the register you already run. We connect it when you want the floor and the site in sync.",
   },
   {
-    q: "I am on AmmoReady or Gearfire. Can I leave without going dark?",
-    a: "Yes. We build on your domain first, move what ranks, test a live cart, then cut DNS. Do not give notice until the new store is ready.",
+    q: "I'm on AmmoReady or Gearfire. Can you replace the site without going dark?",
+    a: "Yes. We build WooCommerce on your domain first, move what ranks, test a live cart, then cut DNS. Do not give notice until the new store is ready.",
   },
   {
     q: "Do I own it?",
@@ -36,8 +36,8 @@ export const FAQ_HOME: FaqItem[] = [
 
 export const FAQ_PLAN: FaqItem[] = [
   {
-    q: "What do I get that a rented catalog does not?",
-    a: "The website. Your domain, your pages, your checkout. If you leave, you take it.",
+    q: "What do I get that a template AmmoReady/Gearfire site does not?",
+    a: "The website. Your domain, your pages, your checkout. If you leave, you take it. No ads you can't strip. No shared template race.",
   },
   {
     q: "Can I sell guns I do not stock?",
