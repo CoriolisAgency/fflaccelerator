@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import { FAQ_HOME } from "../lib/faq";
+import { LINKS, linkClass } from "../lib/links";
+import { INCLUDED, SETUP, SWITCH_STEPS } from "../lib/plans";
 import { CANON_PATHS } from "../lib/site";
 import { withBase } from "../lib/base";
 ---
@@ -14,19 +16,25 @@ import { withBase } from "../lib/base";
   faq={FAQ_HOME}
 >
   <section class="border-b border-zinc-800/80">
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
+    <div
+      class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16"
+    >
       <div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+        <p
+          class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold"
+        >
           FFL Accelerator
         </p>
-        <h1 class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl leading-[1.12]">
+        <h1
+          class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl leading-[1.12]"
+        >
           A gun store website you own
         </h1>
         <p class="mt-4 text-base leading-relaxed text-zinc-300 sm:text-lg">
           Most shops rent a catalog and call it a website. Coriolis builds
-          WooCommerce on your domain and stays on it with you. You sell what is
-          in the safe. You dropship from twenty-one distributors. Or you do
-          both. That plan is FFL Accelerator.
+          WooCommerce on your domain and runs it with you. You sell what is in
+          the safe. You dropship from twenty-one distributors. Or you do both.
+          That plan is FFL Accelerator.
         </p>
         <div class="mt-8">
           <CtaRow />
@@ -44,67 +52,110 @@ import { withBase } from "../lib/base";
     </div>
   </section>
 
-  <section class="border-b border-zinc-800/80 bg-zinc-950/40">
+  <section class="border-b border-zinc-800/80 bg-zinc-950/40" id="price">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <h2 class="text-xl font-semibold text-white">Price</h2>
       <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
-        FFL Accelerator is $569 a month. Standing the store up is $500 for a
-        clean branded shop, or $2,500 if you want the full custom site and
-        email. There is no year-long lock. If you leave, the website goes with
-        you.
+        FFL Accelerator is $569 a month. Setup is $500 for a branded online
+        storefront, or $2,500 for a full custom website and email. No year-long
+        lock. If you leave, the website goes with you.
+      </p>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        See all plans (Minute Man through Accelerator) on{" "}
+        <a
+          href={LINKS.plans}
+          class={linkClass}
+          target="_blank"
+          rel="noopener noreferrer">Coriolis FFL Ecommerce</a
+        >.
       </p>
     </div>
   </section>
 
-  <section class="border-b border-zinc-800/80">
+  <section class="border-b border-zinc-800/80" id="included">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">What you get</h2>
-      <div class="mt-6 space-y-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
-        <p>
-          A store on your name that can take a real firearms order. FFL
-          Checkout routes a serialized gun to a receiving dealer. FFL Cockpit
-          keeps the distributor catalogs priced and in stock. If you already
-          run a register, we connect it so the counter and the site stay in
-          step.
-        </p>
-        <p>
-          Betsy lives on that site. She writes down what people searched for,
-          including the guns you did not have.
-        </p>
-        <p>
-          We keep the shop fast and findable: speed, the cart, Cloudflare, and
-          the on-page work a store needs if it is going to rank for what you
-          sell.
-        </p>
-        <p>
-          The site runs on WP Engine with no storage cap. The host commits to
-          99.95% uptime. You get us Monday through Friday. We run the emails a
-          shop actually uses: welcome, back in stock, abandoned cart, thank
-          you.
-        </p>
+      <h2 class="text-xl font-semibold text-white">What’s included</h2>
+      <ul class="mt-6 max-w-3xl space-y-2 text-sm leading-relaxed text-zinc-300">
+        {INCLUDED.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-b border-zinc-800/80 bg-zinc-950/40" id="setup">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <h2 class="text-xl font-semibold text-white">
+        FFL Website Setup Packages
+      </h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        {
+          SETUP.map((s) => (
+            <article class="flex flex-col rounded-2xl border border-zinc-800 bg-zinc-950/50 p-6">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+                {s.hook}
+              </p>
+              <h3 class="mt-2 text-lg font-semibold text-white">{s.name}</h3>
+              <p class="mt-1 text-2xl font-semibold text-gold">
+                ${s.price.toLocaleString()}
+                <span class="text-sm font-medium text-zinc-500"> one-time</span>
+              </p>
+              <ul class="mt-4 flex-1 space-y-1.5 text-sm text-zinc-400">
+                {s.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="border-b border-zinc-800/80 bg-zinc-950/40">
+  <section class="border-b border-zinc-800/80" id="leave-a-rented-storefront">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">
-        If you are on AmmoReady or Gearfire
-      </h2>
-      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
-        Those platforms rent you a catalog. The inventory changes. The page
-        does not. We build the new store on your domain first. You do not give
-        notice until it works. Then you leave with the site.
-      </p>
-      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-        Coriolis is not affiliated with Gearfire or RetailBI. Keep the register
-        you already run.
-      </p>
+      <h2 class="text-xl font-semibold text-white">Leave a rented storefront</h2>
+      <div class="mt-4 max-w-3xl space-y-4 text-sm leading-relaxed text-zinc-300">
+        <p>
+          AmmoReady and Gearfire rent you a catalog. Inventory changes; the page
+          does not. You do not control title, slugs, or copy. Coriolis is not
+          affiliated with Gearfire or RetailBI.
+        </p>
+        <p>Keep the register you already run.</p>
+        <p>Switch, in order:</p>
+      </div>
+      <ol
+        class="mt-4 max-w-3xl list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-400"
+      >
+        {SWITCH_STEPS.map((step) => <li>{step}</li>)}
+      </ol>
       <div class="mt-8">
         <CtaRow />
       </div>
     </div>
   </section>
 
-  <FaqBlock items={FAQ_HOME} />
+  <FaqBlock items={FAQ_HOME} title="Questions we get" />
+
+  <section class="border-b border-zinc-800/80 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p class="max-w-3xl text-sm leading-relaxed text-zinc-500">
+        By subscribing to any plan or purchasing any setup package you are
+        agreeing to the terms of our{" "}
+        <a
+          href={LINKS.msa}
+          class={linkClass}
+          target="_blank"
+          rel="noopener noreferrer">Master Services Agreement</a
+        >.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p class="max-w-3xl text-sm leading-relaxed text-zinc-400">
+        Our Founder and CEO is the guy that built and ran AmmoReady.com for 9
+        years.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
