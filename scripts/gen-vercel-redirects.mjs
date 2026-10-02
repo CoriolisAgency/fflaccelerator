@@ -60,9 +60,43 @@ function same(path, next) {
   }
 }
 
+/** Byte match, or the same routes after a host rewrites whitespace or extra keys. */
+function vercelInSync(path, expected) {
+  let raw;
+  try {
+    raw = readFileSync(path, "utf8").replace(/^\uFEFF/, "");
+  } catch {
+    return false;
+  }
+  const canonical = `${JSON.stringify(expected, null, 2)}\n`;
+  if (raw === canonical || raw === canonical.replace(/\n$/, "")) return true;
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return false;
+  }
+  let install = String(parsed.installCommand ?? "");
+  const token = process.env.LEAD_FORM_READ_TOKEN;
+  if (token && install.includes(token)) {
+    install = install.split(token).join("$LEAD_FORM_READ_TOKEN");
+  }
+  if (parsed.trailingSlash !== expected.trailingSlash) return false;
+  if (install !== expected.installCommand) return false;
+  const routeKey = (rule) =>
+    `${rule.source}\n${rule.destination}\n${rule.statusCode ?? (rule.permanent === true ? 301 : rule.permanent === false ? 307 : "")}`;
+  const rewriteKey = (rule) => `${rule.source}\n${rule.destination}`;
+  const sameList = (left, right, key) =>
+    (left || []).map(key).join("\n") === (right || []).map(key).join("\n");
+  return (
+    sameList(parsed.redirects, expected.redirects, routeKey) &&
+    sameList(parsed.rewrites, expected.rewrites, rewriteKey)
+  );
+}
+
 if (check) {
   const bad = [];
-  if (!same(vercelPath, nextVercel)) bad.push("vercel.json");
+  if (!vercelInSync(vercelPath, vercelConfig())) bad.push("vercel.json");
   if (!same(redirectsPath, nextRedirects)) bad.push("public/_redirects");
   if (!same(csvPath, nextCsv)) bad.push("docs/cloudflare-bulk-redirects.csv");
   if (bad.length) {
