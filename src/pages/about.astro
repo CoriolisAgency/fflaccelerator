@@ -1,36 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import { CANON_PATHS } from "../lib/site";
+import { CANON_PATHS, SITE } from "../lib/site";
 import { withBase } from "../lib/base";
 ---
 
 <BaseLayout
-  title="About FFL Accelerator"
-  description="FFL Accelerator is Coriolis’s plan for gun store websites. $569 a month. Built in Greenville, SC."
+  title="About | FFL Accelerator"
+  description="Coriolis, LLC builds store websites from Greenville, SC."
   path="/about/"
 >
   <section class="border-b border-zinc-800/80 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="grid gap-10 lg:grid-cols-[1.2fr_0.6fr] lg:items-center">
         <div>
-          <h1
-            class="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl"
-          >
-            We build gun store websites. This is the plan.
+          <h1 class="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            We build store websites.
           </h1>
-          <div
-            class="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-300"
-          >
+          <div class="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-300">
+            <p>Coriolis, LLC. Greenville, SC.</p>
             <p>
-              FFL Accelerator is a Coriolis plan. Coriolis, LLC is in
-              Greenville, South Carolina. We build gun store websites dealers
-              own. The founder ran AmmoReady for nine years. $569 a month.
-              WooCommerce on your domain. You leave with the site.
+              FFL Accelerator is a Coriolis offer. {SITE.street}, {SITE.locality},
+              {SITE.region} {SITE.postal}. We build store websites dealers
+              own. The founder ran a catalog platform for nine years. WooCommerce on your
+              domain. You leave with the site.
             </p>
             <p>
-              Our Founder and CEO is the guy that built and ran AmmoReady.com
+              Our Founder and CEO is the guy that built and ran that catalog platform
               for 9 years.
+            </p>
+            <p>
+              <a class="font-medium text-sky-400 hover:underline" href={SITE.phoneHref}
+                >{SITE.phone}</a
+              >
             </p>
           </div>
           <div class="mt-8">
@@ -39,7 +41,7 @@ import { withBase } from "../lib/base";
         </div>
         <img
           src={withBase(CANON_PATHS.sales)}
-          alt="Add to cart on a gun store website"
+          alt="Add to cart on a store website"
           width="1024"
           height="683"
           class="mx-auto w-full rounded-2xl object-cover ring-1 ring-white/10"

@@ -6,22 +6,22 @@ export interface FaqItem {
 export const FAQ_HOME: FaqItem[] = [
   {
     q: "What is FFL Accelerator?",
-    a: "The Coriolis plan for a gun store that wants a real website. $569 a month. We build WooCommerce on your domain, connect catalogs and checkout, and put Betsy on the shop. The site is yours.",
+    a: "A managed ecommerce website for a store. We build WooCommerce on your domain, connect catalogs and checkout, and run the shop with you. The site is yours.",
   },
   {
     q: "What do I pay to start?",
-    a: "Setup is $500 for a clean launch or $2,500 for the full custom site and email. Then $569 a month. No annual contract. If you walk, you take the website.",
+    a: "Setup is $500 one-time for a branded online storefront, or $2,500 one-time for a full custom website. Then $569/mo.",
   },
   {
-    q: "Can I sell guns I do not stock?",
-    a: "Yes. FFL Cockpit streams twenty-one distributor catalogs. A serialized firearm ships to a receiving FFL. You can still sell what is in the safe. This is not legal advice. We do not run your 4473, NICS, or bound book.",
+    q: "Can I sell distributor catalog items I do not stock?",
+    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or bound book.",
   },
   {
     q: "I already have a register. Do I throw it out?",
     a: "No. Bring the register you already run. We connect it when you want the floor and the site in sync.",
   },
   {
-    q: "I'm on AmmoReady or Gearfire. Can you replace the site without going dark?",
+    q: "I'm on a hosted catalog or Gearfire. Can you replace the site without going dark?",
     a: "Yes. We build WooCommerce on your domain first, move what ranks, test a live cart, then cut DNS. Do not give notice until the new store is ready.",
   },
   {
@@ -29,41 +29,26 @@ export const FAQ_HOME: FaqItem[] = [
     a: "Yes. It is WordPress. Cancel and the site goes with you.",
   },
   {
-    q: "What if I need a lower plan?",
-    a: "Minute Man, Militia, Gun Runner, and Warlord are on Coriolis FFL Ecommerce (https://www.coriolisagency.com/ecommerce). This site is FFL Accelerator.",
+    q: "What if I need a lower tier?",
+    a: "FFL Accelerator includes everything in Minute Man, Militia, and Warlord. This site is that offer.",
   },
 ];
 
 export const FAQ_PLAN: FaqItem[] = [
   {
-    q: "What do I get that a template AmmoReady/Gearfire site does not?",
-    a: "The website. Your domain, your pages, your checkout. If you leave, you take it. No ads you can't strip. No shared template race.",
+    q: "What do I get that a template site does not?",
+    a: "The website. Your domain, your pages, your checkout. If you leave, you take it.",
   },
   {
-    q: "Can I sell guns I do not stock?",
-    a: "Yes. FFL Cockpit streams twenty-one distributor catalogs. A serialized firearm ships to a receiving FFL. You can still sell what is in the safe. This is not legal advice. We do not run your 4473, NICS, or bound book.",
+    q: "Can I sell distributor catalog items I do not stock?",
+    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or bound book.",
   },
   {
-    q: "I want a cheaper plan.",
-    a: "See Minute Man through Warlord on Coriolis FFL Ecommerce (https://www.coriolisagency.com/ecommerce). This page is FFL Accelerator at $569 a month.",
+    q: "I want a smaller offer.",
+    a: "This page is FFL Accelerator at $569/mo. It includes everything in Minute Man, Militia, and Warlord.",
   },
   {
     q: "How do I start?",
-    a: "Talk to us. We look at the store you have, pick the $500 or $2,500 setup, and build on your domain before you give anyone notice.",
-  },
-];
-
-export const FAQ_GSA: FaqItem[] = [
-  {
-    q: "Why is Betsy in the plan?",
-    a: "Because a dark website does not tell you what they asked for. Accelerator includes GunSearchAgent Pro so the store can see its own search, including empty results.",
-  },
-  {
-    q: "Is she a chatbot?",
-    a: "She answers people on the site. The reason she is in the plan is the list of what they typed.",
-  },
-  {
-    q: "Do I have to buy a second product?",
-    a: "No. On FFL Accelerator she is in the $569.",
+    a: "Use the contact form. We look at the store you have, pick the $500 or $2,500 setup, and build on your domain before you give anyone notice.",
   },
 ];

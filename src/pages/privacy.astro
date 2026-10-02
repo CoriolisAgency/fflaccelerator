@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../lib/site";
+import { PATHS, linkClass } from "../lib/links";
+import { withBase } from "../lib/base";
+---
+
+<BaseLayout
+  title="Privacy | FFL Accelerator"
+  description="What the contact form, email popup, and analytics collect, and how to ask for deletion."
+  path="/privacy/"
+>
+  <article class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+      Privacy
+    </p>
+    <h1 class="mt-3 text-3xl font-semibold tracking-tight text-white">
+      Privacy
+    </h1>
+    <div class="mt-6 space-y-4 text-sm leading-relaxed text-zinc-300">
+      <p>
+        Coriolis, LLC. {SITE.street}, {SITE.locality}, {SITE.region}
+        {SITE.postal}. Phone
+        <a class={linkClass} href={SITE.phoneHref}>{SITE.phone}</a>.
+      </p>
+      <p>
+        The contact form collects your name, company, email, phone, website,
+        topic, and message. The email popup collects an email address.
+      </p>
+      <p>
+        The first time you land here, we store the landing page and any
+        first-touch campaign parameters (UTM fields and ad click IDs) in
+        localStorage on your browser for 30 days. That helps us see which page
+        and which ad the conversation started from. It stays on this device.
+      </p>
+      <p>
+        If a measurement ID is configured for this site, pages load Google
+        Analytics 4. That records how the site is used. It is not required to
+        send the contact form.
+      </p>
+      <p>
+        Form and popup submissions go to Coriolis, LLC's internal systems so we
+        can reply. We do not sell your data.
+      </p>
+      <p>
+        To ask for deletion, call
+        <a class={linkClass} href={SITE.phoneHref}>{SITE.phone}</a>
+        or use the
+        <a class={linkClass} href={withBase(PATHS.contact)}>contact form</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

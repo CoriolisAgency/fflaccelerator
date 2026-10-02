@@ -1,35 +1,21 @@
 /**
- * Outbound lattice. Checkout lives on Coriolis. Commercial GSA SERPs stay on GSA.
+ * On-site paths only. Do not add off-site commercial URLs.
  */
-export const LINKS = {
-  home: "https://fflaccelerator.com",
-  plans: "https://www.coriolisagency.com/ecommerce",
-  coriolis: "https://www.coriolisagency.com",
-  coriolisSwitch: "https://coriolisagency.com/ammoready-alternative",
-  contact: "https://www.coriolisagency.com/contact",
-  coriolisContact: "https://www.coriolisagency.com/contact",
-  msa: "https://coriolisagency.com/msa",
-  gsa: "https://gunsearchagent.com",
-  gsaGa: "https://gunsearchagent.com/google-analytics-alternative-for-ffls",
-  gsaRetailBi: "https://gunsearchagent.com/retailbi-and-your-gun-store",
-  gse: "https://www.gunsearchengine.com",
-  betsyVsRetailBi: "https://www.gunsearchengine.com/betsy-vs-retailbi",
-  retailBiIndex: "https://www.gunsearchengine.com/retailbi-firearm-sales-index",
-  nicsVsSales: "https://www.gunsearchengine.com/nics-vs-firearm-sales",
-  demandIntel: "https://www.gunsearchengine.com/demand-intelligence",
-  oemDemand: "https://www.gunsearchengine.com/oem-firearms-demand-analytics",
-  copilot: "https://www.gunsearchengine.com/betsy/enterprise-copilot",
-  betsyLive: "https://www.gunsearchengine.com/betsy-live",
-  fflintel: "https://fflintel.com",
-  fflintelMethodology: "https://fflintel.com/methodology",
-  /** Ranking host for the old /retailbi-and-axis pillar. */
-  coriolisDemand: "https://www.coriolisagency.com/demand-intelligence",
-  youtube: "https://www.youtube.com/@BetsyAI",
-  fflCockpit: "https://fflcockpit.com",
-  fastBound: "https://fastbound.com",
+import { withBase } from "./base";
+
+export const PATHS = {
+  home: "/",
+  plan: "/plan/",
+  contact: "/contact/",
+  about: "/about/",
+  privacy: "/privacy/",
+  guide: "/guides/gun-store-software/",
+  confirmed: "/confirmed/",
 } as const;
 
-export const SAME_AS = ["https://www.coriolisagency.com"] as const;
+export function planAnchor(id: string): string {
+  return `${withBase("plan")}#${id}`;
+}
 
 export const linkClass =
   "font-medium text-sky-400 hover:underline underline-offset-2";

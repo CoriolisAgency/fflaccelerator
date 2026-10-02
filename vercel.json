@@ -1,0 +1,402 @@
+{
+  "trailingSlash": true,
+  "installCommand": "if [ -n \"$LEAD_FORM_READ_TOKEN\" ]; then u=\"https://x-access-token:$LEAD_FORM_READ_TOKEN@github.com/\"; git config --global --add url.\"$u\".insteadOf https://github.com/; git config --global --add url.\"$u\".insteadOf ssh://git@github.com/; fi; npm install",
+  "redirects": [
+    {
+      "source": "/gunsearchagent-included",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gunsearchagent-included/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ffl-ecommerce",
+      "destination": "/plan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ffl-ecommerce/",
+      "destination": "/plan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ffl-dropshipping",
+      "destination": "/plan/#inventory-dropshipping",
+      "statusCode": 301
+    },
+    {
+      "source": "/ffl-dropshipping/",
+      "destination": "/plan/#inventory-dropshipping",
+      "statusCode": 301
+    },
+    {
+      "source": "/switch",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/switch/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/retailbi-and-axis",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/retailbi-and-axis/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pricing",
+      "destination": "/plan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/plan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/switch-n-save",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/switch-n-save/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q1-2025",
+      "destination": "/trends/2025-q1/",
+      "statusCode": 301
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q1-2025/",
+      "destination": "/trends/2025-q1/",
+      "statusCode": 301
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q2-2025",
+      "destination": "/trends/2025-q2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q2-2025/",
+      "destination": "/trends/2025-q2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/best-software-for-managing-your-gun-store-and-ffl-records",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/best-software-for-managing-your-gun-store-and-ffl-records/",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/4473",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/4473/",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/",
+      "destination": "/guides/gun-store-software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/understanding-the-different-types-of-ffls",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/understanding-the-different-types-of-ffls/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/devopscoriolisagency-com",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/devopscoriolisagency-com/",
+      "destination": "/about/",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/get-your-ffl-sot-with-orchids-ffl-university",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/get-your-ffl-sot-with-orchids-ffl-university/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-advisors",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-advisors/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-estate",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-estate/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ebound",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ebound/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchids-ffl-university",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchids-ffl-university/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-ffl-university",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/orchid-ffl-university/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/orchid",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/orchid/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/tag/orchid",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/tag/orchid/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/what-to-expect-during-an-atf-inspection-of-your-firearms-business",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/what-to-expect-during-an-atf-inspection-of-your-firearms-business/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-renewal-process-what-you-need-to-know-to-stay-compliant",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-renewal-process-what-you-need-to-know-to-stay-compliant/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-news",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-news/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-admin",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-admin/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-json",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-json/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/feed",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/feed/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/blog",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/tag",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/tag/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/sample-page",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/sample-page/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/cart",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/cart/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/shop",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/shop/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/my-account",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/my-account/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/api/gone"
+    }
+  ]
+}

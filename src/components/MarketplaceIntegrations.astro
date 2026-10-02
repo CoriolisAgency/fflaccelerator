@@ -1,0 +1,25 @@
+---
+import { MARKETPLACE_NAMES } from "../lib/plans";
+
+interface Props {
+  /** "count" is one line and hides the names. "names" lists each marketplace as plain text. */
+  mode?: "names" | "count";
+}
+
+const { mode = "count" } = Astro.props;
+---
+
+{
+  mode === "count" ? (
+    <p>Integrations with {MARKETPLACE_NAMES.length} online marketplaces</p>
+  ) : (
+    <div>
+      <span>Marketplace Integrations:</span>
+      <ul class="mt-1.5 list-disc space-y-1 pl-5 text-zinc-400">
+        {MARKETPLACE_NAMES.map((name) => (
+          <li>{name}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}

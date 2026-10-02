@@ -1,62 +1,77 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CtaRow from "../components/CtaRow.astro";
+import PlanSummary from "../components/PlanSummary.astro";
+import FeatureLines from "../components/FeatureLines.astro";
 import FaqBlock from "../components/FaqBlock.astro";
+import MsaNote from "../components/MsaNote.astro";
+import CtaRow from "../components/CtaRow.astro";
 import { FAQ_PLAN } from "../lib/faq";
-import { LINKS, linkClass } from "../lib/links";
-import { INCLUDED, SETUP } from "../lib/plans";
+import { PATHS } from "../lib/links";
+import { GROUPS, SETUP, SWITCH_STEPS } from "../lib/plans";
+import { withBase } from "../lib/base";
+
+const planTitle = "What is included | FFL Accelerator";
+const planDescription =
+  "Hosting, design, catalogs, checkout, point of sale, email, monitoring, and analytics.";
+
+const toc = [
+  ...GROUPS.map((group) => ({ href: `#${group.id}`, label: group.title })),
+  { href: "#switch-existing-site", label: "Switch" },
+  { href: "#setup", label: "Setup" },
+];
 ---
 
-<BaseLayout
-  title="FFL Accelerator plan — $569 a month"
-  description="What is in FFL Accelerator: a WooCommerce store you own, FFL checkout, twenty-one catalogs, Betsy on the site. Setup $500 or $2,500."
-  path="/plan/"
-  faq={FAQ_PLAN}
->
+<BaseLayout title={planTitle} description={planDescription} path="/plan/" faq={FAQ_PLAN}>
   <section class="border-b border-zinc-800/80 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h1
-        class="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-5xl"
-      >
-        $569 a month. The site is yours.
-      </h1>
-      <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-300">
-        FFL Accelerator is WooCommerce on your domain — a website that actually
-        works. FFL Checkout, twenty-one distributor catalogs, support that stays
-        on the shop. Betsy writes down what people searched for on your site.
-      </p>
-      <div class="mt-8">
-        <CtaRow />
-      </div>
+      <PlanSummary />
+      <nav class="mt-10 flex flex-wrap gap-2" aria-label="On this page">
+        {
+          toc.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-sm border border-zinc-700 px-2.5 py-1.5 text-xs text-zinc-300 hover:border-gold/50 hover:text-gold"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
     </div>
   </section>
 
-  <section class="border-b border-zinc-800/80 py-12" id="price">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">Price</h2>
-      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
-        FFL Accelerator is $569 a month. Setup is $500 for a branded online
-        storefront, or $2,500 for a full custom website and email. No year-long
-        lock. If you leave, the website goes with you.
-      </p>
-      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-        See all plans (Minute Man through Accelerator) on{" "}
-        <a
-          href={LINKS.plans}
-          class={linkClass}
-          target="_blank"
-          rel="noopener noreferrer">Coriolis FFL Ecommerce</a
-        >.
-      </p>
-    </div>
-  </section>
+  {
+    GROUPS.map((group) => (
+      <section class="border-b border-zinc-800/80 py-12" id={group.id}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 class="text-xl font-semibold text-white">{group.title}</h2>
+          {group.id === "store-hosting" && (
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400">
+              Your domain, your pages, your hosting.
+            </p>
+          )}
+          <FeatureLines features={group.features} />
+          <a
+            href={withBase(PATHS.contact)}
+            class="mt-6 inline-flex items-center justify-center rounded-sm border border-zinc-500 px-3 py-1.5 text-xs font-semibold text-zinc-100 hover:bg-zinc-800"
+          >
+            Talk to us
+          </a>
+        </div>
+      </section>
+    ))
+  }
 
-  <section class="border-b border-zinc-800/80 py-12" id="included">
+  <section class="border-b border-zinc-800/80 py-12" id="switch-existing-site">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <h2 class="text-xl font-semibold text-white">What’s included</h2>
-      <ul class="mt-6 max-w-3xl space-y-2 text-sm leading-relaxed text-zinc-300">
-        {INCLUDED.map((item) => <li>{item}</li>)}
-      </ul>
+      <h2 class="text-xl font-semibold text-white">Switch an existing site</h2>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        Keep the register you already run. We replace the website. Coriolis is
+        not affiliated with Gearfire or RetailBI.
+      </p>
+      <ol class="mt-4 max-w-3xl list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-300">
+        {SWITCH_STEPS.map((step) => <li>{step}</li>)}
+      </ol>
     </div>
   </section>
 
@@ -91,4 +106,5 @@ import { INCLUDED, SETUP } from "../lib/plans";
   </section>
 
   <FaqBlock items={FAQ_PLAN} title="FAQ" />
+  <MsaNote />
 </BaseLayout>

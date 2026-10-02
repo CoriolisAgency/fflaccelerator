@@ -1,21 +1,22 @@
 /**
  * FFL Accelerator origin redirects.
  *
- * Campaign door stays on this host: `/` and `/plan/`.
- * Ranking host for the moved commercial pillars is Coriolis (www).
+ * Every destination stays on this host. Astro `redirects` is the in-repo
+ * mechanism. `_redirects` is emitted at build for Cloudflare Pages / hosts
+ * that read that file. GitHub Pages cannot emit HTTP 410. On Vercel, gone
+ * paths rewrite to /api/gone (HTTP 410).
  *
- * Astro `redirects` is the in-repo mechanism. `_redirects` is emitted at
- * build for Cloudflare Pages / hosts that read that file. GitHub Pages
- * cannot emit HTTP 410; leftover WP junk we cannot map is listed as gone
- * so a Cloudflare rule or Pages `_redirects` can apply it.
+ * www to apex is Vercel domain config, not a rule in this file.
  */
 
-export const CORIOLIS_WWW = {
-  ecommerce: "https://www.coriolisagency.com/ecommerce",
-  dropshipping: "https://www.coriolisagency.com/firearms-dropshipping",
-  switch: "https://www.coriolisagency.com/ammoready-alternative",
-  demand: "https://www.coriolisagency.com/demand-intelligence",
-  contact: "https://www.coriolisagency.com/contact",
+export const ON_SITE = {
+  home: "/",
+  plan: "/plan/",
+  dropshipping: "/plan/#inventory-dropshipping",
+  guide: "/guides/gun-store-software/",
+  about: "/about/",
+  trendsQ1: "/trends/2025-q1/",
+  trendsQ2: "/trends/2025-q2/",
 } as const;
 
 /** Do not 301 these (or anything under /trends/). */
@@ -23,7 +24,8 @@ export const KEEP_PREFIXES = [
   "/",
   "/plan",
   "/about",
-  "/gunsearchagent-included",
+  "/contact",
+  "/privacy",
   "/guides/gun-store-software",
   "/trends",
   "/confirmed",
@@ -46,45 +48,35 @@ function pair(from: string, to: string): RedirectRule[] {
   ];
 }
 
-/** Permanent 301s — slash and slashless both go to the destination. */
+/** Permanent 301s. Slash and slashless both go to an on-site destination. */
 export const PERMANENT_REDIRECTS: RedirectRule[] = [
-  ...pair("/ffl-ecommerce", CORIOLIS_WWW.ecommerce),
-  ...pair("/ffl-dropshipping", CORIOLIS_WWW.dropshipping),
-  ...pair("/switch", CORIOLIS_WWW.switch),
-  ...pair("/retailbi-and-axis", CORIOLIS_WWW.demand),
-  ...pair("/pricing", CORIOLIS_WWW.ecommerce),
-  ...pair("/contact", CORIOLIS_WWW.contact),
+  ...pair("/gunsearchagent-included", ON_SITE.home),
+  ...pair("/ffl-ecommerce", ON_SITE.plan),
+  ...pair("/ffl-dropshipping", ON_SITE.dropshipping),
+  ...pair("/switch", ON_SITE.home),
+  ...pair("/retailbi-and-axis", ON_SITE.home),
+  ...pair("/pricing", ON_SITE.plan),
 
-  // Leftover WordPress permalinks we can map to a real Coriolis or FFL URL.
-  ...pair("/switch-n-save", CORIOLIS_WWW.switch),
+  ...pair("/switch-n-save", ON_SITE.home),
   ...pair(
     "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
-    CORIOLIS_WWW.ecommerce,
+    ON_SITE.guide,
   ),
-  ...pair(
-    "/firearm-and-accessory-sales-trends-in-q1-2025",
-    "/trends/2025-q1/",
-  ),
-  ...pair(
-    "/firearm-and-accessory-sales-trends-in-q2-2025",
-    "/trends/2025-q2/",
-  ),
+  ...pair("/firearm-and-accessory-sales-trends-in-q1-2025", ON_SITE.trendsQ1),
+  ...pair("/firearm-and-accessory-sales-trends-in-q2-2025", ON_SITE.trendsQ2),
   ...pair(
     "/best-software-for-managing-your-gun-store-and-ffl-records",
-    "/guides/gun-store-software/",
+    ON_SITE.guide,
   ),
-  ...pair("/category/4473", "/guides/gun-store-software/"),
+  ...pair("/category/4473", ON_SITE.guide),
   ...pair(
     "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
-    "/guides/gun-store-software/",
+    ON_SITE.guide,
   ),
-  ...pair(
-    "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
-    "/",
-  ),
+  ...pair("/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl", "/"),
   ...pair("/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl", "/"),
   ...pair("/understanding-the-different-types-of-ffls", "/"),
-  ...pair("/author/devopscoriolisagency-com", "/about/"),
+  ...pair("/author/devopscoriolisagency-com", ON_SITE.about),
 ];
 
 function gonePair(from: string): [string, string] {
@@ -96,7 +88,7 @@ function gonePair(from: string): [string, string] {
 }
 
 /**
- * Leftover slugs that named a POS vendor. 410 — do not 301 these, and do
+ * Leftover slugs that named a POS vendor. 410. Do not 301 these, and do
  * not emit an Astro HTML refresh (that 200s and prints the slug).
  */
 const GONE_VENDOR_WP = [
@@ -147,7 +139,7 @@ export const GONE_EXACT = [
   "/checkout/",
 ] as const;
 
-/** Prefixes to 410. More-specific 301s (e.g. /category/4473) must be listed first. */
+/** Prefixes to 410. More-specific 301s (for example /category/4473) are listed first. */
 export const GONE_PREFIXES = [
   "/wp-admin/",
   "/wp-content/",
@@ -161,7 +153,8 @@ function isKept(from: string): boolean {
   const bare = from.replace(/\/+$/, "") || "/";
   if (bare === "/plan") return true;
   if (bare === "/about") return true;
-  if (bare === "/gunsearchagent-included") return true;
+  if (bare === "/contact") return true;
+  if (bare === "/privacy") return true;
   if (bare === "/guides/gun-store-software") return true;
   if (bare === "/confirmed") return true;
   if (bare === "/trends" || bare.startsWith("/trends/")) return true;
@@ -169,6 +162,9 @@ function isKept(from: string): boolean {
 }
 
 for (const rule of PERMANENT_REDIRECTS) {
+  if (!rule.to.startsWith("/")) {
+    throw new Error(`Redirect must stay on this site: ${rule.from} -> ${rule.to}`);
+  }
   if (isKept(rule.from)) {
     throw new Error(`Do not 301 a keep path: ${rule.from}`);
   }
@@ -192,7 +188,7 @@ export function astroRedirects(): Record<
   { status: 301; destination: string }
 > {
   // trailingSlash: "always" collapses /path and /path/ into one route.
-  // Register the slashed form; slashless is covered by _redirects + GH Pages.
+  // Register the slashed form; slashless is covered by _redirects and Vercel.
   return Object.fromEntries(
     PERMANENT_REDIRECTS.filter((rule) => rule.from.endsWith("/")).map((rule) => [
       rule.from,
@@ -201,7 +197,7 @@ export function astroRedirects(): Record<
   );
 }
 
-/** URLs that must not appear in the FFL sitemap after the 301s. */
+/** URLs that must not appear in the sitemap. */
 export function isSitemapExcluded(pageUrl: string): boolean {
   let pathname = pageUrl;
   try {
@@ -209,13 +205,16 @@ export function isSitemapExcluded(pageUrl: string): boolean {
   } catch {
     /* already a path */
   }
+  if (pathname === "/trends" || pathname.startsWith("/trends/")) return true;
   const skip = [
     "/ffl-ecommerce",
     "/ffl-dropshipping",
     "/switch",
+    "/switch-n-save",
     "/retailbi-and-axis",
     "/pricing",
-    "/contact",
+    "/gunsearchagent-included",
+    "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
   ];
   return skip.some(
     (p) => pathname === p || pathname === `${p}/` || pathname.startsWith(`${p}/`),
@@ -224,20 +223,21 @@ export function isSitemapExcluded(pageUrl: string): boolean {
 
 /**
  * Cloudflare / Netlify `_redirects`.
- * Query strings follow on hosts that honor this file (CF Pages, Netlify).
+ * Query strings follow on hosts that honor this file.
  * More-specific 301s are listed before prefix 410s.
  */
 export function toCloudflareRedirects(): string {
   const lines = [
     "# FFL Accelerator redirects. Generated from src/lib/redirects.ts",
-    "# Do not 301 / or /plan/ — campaign door stays on this host.",
+    "# Do not 301 / or /plan/. The campaign door stays on this host.",
+    "# Destinations stay on this host.",
     "",
   ];
   for (const rule of PERMANENT_REDIRECTS) {
     lines.push(`${rule.from} ${rule.to} ${rule.status}`);
   }
   lines.push("");
-  lines.push("# Leftover WordPress / Woo junk with no real destination — 410 Gone");
+  lines.push("# Leftover WordPress / Woo junk with no real destination. 410 Gone");
   for (const path of GONE_EXACT) {
     lines.push(`${path} 410`);
   }
@@ -255,15 +255,21 @@ export function toBulkRedirectCsv(): string {
     "source,target,status,preserve_query_string,include_subdomains,subpath_matching,preserve_path_suffix";
   const rows = PERMANENT_REDIRECTS.map((rule) => {
     const source = `fflaccelerator.com${rule.from}`;
-    const target = rule.to.startsWith("http")
-      ? rule.to
-      : `https://fflaccelerator.com${rule.to}`;
+    const target = `https://fflaccelerator.com${rule.to}`;
     return `${source},${target},301,TRUE,FALSE,FALSE,FALSE`;
   });
   for (const path of GONE_VENDOR_WP) {
     const source = `fflaccelerator.com${path}`;
-    // 410 has no destination. Repeat the source URL so the row is importable.
     rows.push(`${source},https://${source},410,TRUE,FALSE,FALSE,FALSE`);
   }
   return `${[header, ...rows].join("\n")}\n`;
+}
+
+export const VERCEL_INSTALL_COMMAND =
+  'if [ -n "$LEAD_FORM_READ_TOKEN" ]; then u="https://x-access-token:$LEAD_FORM_READ_TOKEN@github.com/"; git config --global --add url."$u".insteadOf https://github.com/; git config --global --add url."$u".insteadOf ssh://git@github.com/; fi; npm install';
+
+if (VERCEL_INSTALL_COMMAND.length >= 256) {
+  throw new Error(
+    `installCommand is ${VERCEL_INSTALL_COMMAND.length} characters (max 255)`,
+  );
 }
