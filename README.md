@@ -1,17 +1,15 @@
 # FFL Accelerator
 
-Retailer firebase for **Coriolis’s FFL Accelerator** plan ($569/mo, GunSearchAgent Pro included).  
-Conversion: [coriolisagency.com/plans](https://coriolisagency.com/plans).
-
-This domain replaces the WordPress site.
-
-Email popup posts CORS to public marketing subscribe `POST https://www.coriolisagency.com/api/forms/subscribe` (source `popup_fflaccelerator`). Lead mints only after the confirm link.
+Managed ecommerce website for a gun store. The offer, the contact form, and privacy stay on this host.
 
 ## Stack
 
 - [Astro](https://astro.build) 7 (static) + Tailwind CSS v4
-- Host: **GitHub Pages**
-- Custom domain: `fflaccelerator.com` (`public/CNAME`)
+- Host today: GitHub Pages (`public/CNAME`, `.github/workflows/deploy.yml`)
+- Host next: Vercel, so `/api/lead` and `/api/subscribe` can run on this origin
+- Custom domain: `fflaccelerator.com`
+
+Do not delete the Pages workflow or `public/CNAME` until the Vercel certificate is valid. See [docs/vercel-cutover.md](docs/vercel-cutover.md). Until then, Pages deploys only when someone runs the workflow by hand, so a merge does not replace the live site with a build whose API routes 404.
 
 ## Local
 
@@ -23,51 +21,53 @@ npm run build
 
 Node `>=22.12.0`.
 
-## Deploy (GitHub Pages)
+`@coriolis/lead-form` is a private git dependency (`git+https://github.com/CoriolisAgency/lead-form.git#v0.1.1`). There is no `.npmrc`. Local `npm install` needs read access to that repo. On Vercel and in GitHub Actions, `LEAD_FORM_READ_TOKEN` rewrites `https://github.com/` and `ssh://git@github.com/` before install. The token is a fine-grained PAT with Contents: Read on `CoriolisAgency/lead-form` only.
 
-1. Create GitHub repo (e.g. `CoriolisAgency/fflaccelerator`), push `main`
-2. Settings → Pages → Source: **GitHub Actions**
-3. Confirm `.github/workflows/deploy.yml` sets `ASTRO_SITE=https://fflaccelerator.com`
-4. After the first green deploy, GitHub will serve from Pages
+If the Actions secret is missing, CI fails with a clear message. It does not skip the install.
 
-## DNS / Cloudflare cutover
+## Contact form
 
-Do this **after** Pages is serving the custom domain (certificate issued).
+`/contact/` renders `<LeadForm site="fflaccelerator" defaultPillar="Ecommerce" />`. The browser posts to `/api/lead`. `api/lead.ts` re-exports the package handler. The handler forwards to Ops in the same request. Ops failure returns 502 and the visitor sees the retry message. A success is the only "Sent" path.
 
-1. **Cloudflare** zone `fflaccelerator.com`
-   - Apex: either GitHub Pages A records, or CNAME-flatten to `<org>.github.io`
-   - `www` CNAME → `<org>.github.io` (or 301 www → apex)
-   - Proxy (orange cloud) is fine; set SSL/TLS to **Full (strict)** once GitHub has the cert
-2. **GitHub repo** → Settings → Pages → Custom domain `fflaccelerator.com` (matches `public/CNAME`)
-3. **301 map** — add Cloudflare Bulk Redirects from [docs/redirect-map.md](docs/redirect-map.md) *before* or at cutover so WP permalinks do not 404
-4. Turn off or park the WordPress origin so it cannot answer the hostname
-5. Search Console: add/verify the new property if needed; submit `https://fflaccelerator.com/sitemap-index.xml`
+The email popup posts to `/api/subscribe` (source `popup_fflaccelerator`). Confirm still lands on `/confirmed/`.
 
-GitHub Pages A records (confirm current list at GitHub docs):
+Env on Vercel (never commit values):
 
 ```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
+LEAD_FORM_SITE=fflaccelerator
+CORIOLIS_OS_URL=
+FORM_INTAKE_SECRET=
+LEAD_FORM_READ_TOKEN=
+PUBLIC_GA4_ID=
 ```
 
-AAAA (IPv6) also published by GitHub if you use them.
+Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
 
-## Redirects
+Optional Mailgun, sent only after Ops accepts a lead: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_SUBJECT_PREFIX`.
 
-Astro `redirects` in `src/lib/redirects.ts` (slash and slashless). Build also emits `dist/_redirects` (301 + 410). Cloudflare Bulk Redirects CSV: [docs/cloudflare-bulk-redirects.csv](docs/cloudflare-bulk-redirects.csv).
+`PUBLIC_GA4_ID` is a new web stream for this host. gtag is omitted when it is unset. On a successful contact post the page fires `generate_lead` once. A successful popup fires `sign_up` when gtag is loaded.
 
-Do not 301 `/` or `/plan/`. Coriolis is the ranking host for the moved pillars.
+Recommend a Vercel Firewall rate limit on `POST /api/lead` and `POST /api/subscribe` (for example 10 per minute per IP). No Turnstile.
+
+## Scripts
+
+- `npm run build` checks redirect sync, builds, then checks plan copy, social titles, and banned links.
+- `npm run check:links` runs the banned-link gate (needs `dist/`).
+- `npm run gen:vercel` rewrites `vercel.json`, `public/_redirects`, and `docs/cloudflare-bulk-redirects.csv`.
+- `npm run test:handlers` posts to a local mock Ops on 127.0.0.1. It does not call production.
 
 ## Docs
 
-- [SEO lattice](docs/seo-lattice.md)
+- [Vercel cutover](docs/vercel-cutover.md)
 - [Redirect map](docs/redirect-map.md)
-- Frozen strings: `src/lib/frozen.ts` (from GSE entity-kit)
+- [DNS](docs/dns-cutover.md)
+- [SEO lattice](docs/seo-lattice.md)
 
 ## Rules
 
-- Plan CTAs → Coriolis. Do not clone checkout.
-- Never H1 “RetailBI alternative.” Never “switch off RetailBI.” Never 4473 automation.
-- Pricing: Accelerator **$569/mo**. Not the old WP $269.
+- Plan and header calls to action go to `/contact/` on this site.
+- No price and no tier name in `<title>`, `og:title`, `og:description`, `twitter:title`, or `twitter:description`. Prices stay in the page body.
+- `/plan/` section ids: `#store-hosting`, `#inventory-dropshipping`, `#marketplaces`, `#support`, `#pos`, `#performance-monitoring`, `#email-marketing`, `#analytics`, `#sla`.
+- Marketplace names are plain text.
+- Do not print an email address. Phone is 828-290-9005.
+- Never H1 "RetailBI alternative." Never 4473 automation.

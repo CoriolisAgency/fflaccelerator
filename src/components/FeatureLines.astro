@@ -1,0 +1,36 @@
+---
+import type { FeatureLine } from "../lib/plans";
+import MarketplaceIntegrations from "./MarketplaceIntegrations.astro";
+
+interface Props {
+  features: readonly FeatureLine[];
+  dense?: boolean;
+  /** Marketplace list. Default is the name list. "count" swaps in the one-line version. */
+  marketplaces?: "names" | "count";
+}
+
+const { features, dense = false, marketplaces = "names" } = Astro.props;
+---
+
+<ul class:list={[dense ? "mt-3 space-y-1.5" : "mt-4 space-y-3", "text-sm text-zinc-300"]}>
+  {
+    features.map((line) =>
+      typeof line === "string" ? (
+        <li>{line}</li>
+      ) : line.label === "Marketplace Integrations:" ? (
+        <li>
+          <MarketplaceIntegrations mode={marketplaces} />
+        </li>
+      ) : (
+        <li>
+          <span>{line.label}</span>
+          <ul class="mt-1.5 list-disc space-y-1 pl-5 text-zinc-400">
+            {line.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </li>
+      ),
+    )
+  }
+</ul>

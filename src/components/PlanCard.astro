@@ -1,6 +1,15 @@
 ---
-import type { Plan } from "../lib/plans";
-import { LINKS, btnPlan, btnSecondary } from "../lib/links";
+import { PATHS, btnPlan, btnSecondary } from "../lib/links";
+import { withBase } from "../lib/base";
+
+interface Plan {
+  name: string;
+  price: number;
+  hook: string;
+  featured?: boolean;
+  includesFrom?: string;
+  features: string[];
+}
 
 interface Props {
   plan: Plan;
@@ -52,11 +61,9 @@ const { plan } = Astro.props;
     }
   </ul>
   <a
-    href={LINKS.plans}
-    target="_blank"
-    rel="noopener noreferrer"
+    href={withBase(PATHS.contact)}
     class:list={["mt-6", plan.featured ? btnPlan : btnSecondary]}
   >
-    {plan.featured ? "Get FFL Accelerator →" : "See on Coriolis →"}
+    {plan.featured ? "Start FFL Accelerator" : "Talk to Coriolis"}
   </a>
 </article>

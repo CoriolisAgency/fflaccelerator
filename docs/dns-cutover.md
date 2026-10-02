@@ -1,20 +1,20 @@
-# DNS cutover — fflaccelerator.com
+# DNS
 
-GitHub Pages is live. Public DNS still points at WordPress (`141.193.213.10`). This flip replaces the WP site.
+The live site is still GitHub Pages until the Vercel certificate is valid. Follow [vercel-cutover.md](vercel-cutover.md). Do not remove Pages A records before that document's post-cert step.
 
-## Records
+## After the certificate is valid
 
-**Apex `fflaccelerator.com` A**
+Apex `fflaccelerator.com` points at Vercel, DNS-only. www redirects to the apex in the Vercel domain settings (not a `vercel.json` rule).
 
-- `185.199.108.153`
-- `185.199.109.153`
-- `185.199.110.153`
-- `185.199.111.153`
+Remove GitHub Pages A records only in that post-cert step:
 
-**`www` CNAME** → `CoriolisAgency.github.io`
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
 
-## Redirects
-
-The origin map lives in `src/lib/redirects.ts` (Astro `redirects` + `dist/_redirects`). Import [cloudflare-bulk-redirects.csv](cloudflare-bulk-redirects.csv) for true 301s at the Cloudflare edge (query string preserved). 410s for leftover WP junk need `_redirects` or a Cloudflare custom rule — Bulk Redirects cannot express 410.
+Redirects: `src/lib/redirects.ts`, emitted to `dist/_redirects` and mirrored in `vercel.json`. Bulk Redirect import: [cloudflare-bulk-redirects.csv](cloudflare-bulk-redirects.csv). Every target stays on this host.
 
 Do not 301 `/` or `/plan/`.

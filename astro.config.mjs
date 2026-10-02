@@ -11,7 +11,7 @@ import {
 
 /**
  * Custom domain (default): https://fflaccelerator.com  → base /
- * GitHub project path only: ASTRO_BASE=/fflaccelerator/ ASTRO_SITE=https://coriolisagency.github.io
+ * GitHub project path only: set ASTRO_BASE and ASTRO_SITE for that host.
  */
 const base = process.env.ASTRO_BASE || "/";
 const site = process.env.ASTRO_SITE || "https://fflaccelerator.com";

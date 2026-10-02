@@ -1,13 +1,28 @@
 export const SITE = {
   name: "FFL Accelerator",
   legalName: "Coriolis, LLC",
-  titleDefault:
-    "FFL Accelerator — a gun store website you own | $569 a month",
+  /** Social and document titles must not include a price or a tier name. */
+  titleDefault: "A gun store website you own | FFL Accelerator",
   description:
-    "Coriolis builds and runs WooCommerce for gun stores. FFL checkout, distributor catalogs, and Betsy on your site. $569 a month. You leave with the website.",
+    "Managed ecommerce for a gun store on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
   role: "A gun store website you own",
   origin: "Greenville, SC",
+  street: "109 Brennan Place",
+  locality: "Greenville",
+  region: "SC",
+  postal: "29609",
+  phone: "828-290-9005",
+  phoneHref: "tel:828-290-9005",
 } as const;
+
+/** Visible footer identity. Same string on every page. No email. */
+export const FOOTER_IDENTITY =
+  "Coriolis, LLC · 109 Brennan Place, Greenville, SC 29609 · 828-290-9005";
+
+export const TRADEMARK_LINE =
+  "Google Analytics and Google Search Console are trademarks of Google LLC. WordPress is a trademark of the WordPress Foundation. WooCommerce is a trademark of Automattic Inc. Cloudflare is a trademark of Cloudflare, Inc. Other product and marketplace names are trademarks of their owners.";
+
+export const SITE_ORIGIN = "https://fflaccelerator.com";
 
 export const CANON_PATHS = {
   logo: "brand/ffl-accelerator-logo.png",
