@@ -17,7 +17,6 @@ www to apex is Vercel domain config, not a row in this map.
 | `/about/` |
 | `/contact/` |
 | `/privacy/` |
-| `/gunsearchagent-included/` |
 | `/guides/gun-store-software/` |
 | `/trends/*` (still reachable, `noindex`, omitted from the sitemap) |
 | `/confirmed/` |
@@ -26,6 +25,7 @@ www to apex is Vercel domain config, not a row in this map.
 
 | From | To |
 |------|----|
+| `/gunsearchagent-included` | `/` |
 | `/ffl-ecommerce`, `/pricing` | `/plan/` |
 | `/ffl-dropshipping` | `/plan/#inventory-dropshipping` |
 | `/switch`, `/switch-n-save`, `/retailbi-and-axis` | `/` |

@@ -13,7 +13,6 @@ const path =
 
 const nav = [
   { href: "plan", label: "Plan" },
-  { href: "gunsearchagent-included", label: "Betsy on the shop" },
   { href: "about", label: "About" },
 ] as const;
 
@@ -28,8 +27,7 @@ const footerBeforePhone = FOOTER_IDENTITY.slice(0, phoneAt);
 const siteNav = [
   { href: withBase("plan"), label: "Plan" },
   { href: withBase("about"), label: "About" },
-  { href: withBase("gunsearchagent-included"), label: "Betsy on the shop" },
-  { href: withBase("guides/gun-store-software"), label: "Gun store software" },
+  { href: withBase("guides/gun-store-software"), label: "Store software" },
   { href: withBase(PATHS.contact), label: "Contact" },
   { href: withBase(PATHS.privacy), label: "Privacy" },
 ].filter((item) => {

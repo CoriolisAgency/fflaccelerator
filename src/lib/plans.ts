@@ -15,9 +15,9 @@ export const PLAN = {
   badge: "Webmaster Included",
   priceLabel: "$569/mo",
   description:
-    "A single, all-in-one, managed ecommerce plan. It includes hosting, site design (Basic or Retail), VIP support, POS integration (any POS), email automation, and analytics (Google Analytics, Google Search Console, GunSearchEngine.com, and email/SMS).",
+    "A single, all-in-one, managed ecommerce plan. It includes hosting, site design (Basic or Retail), VIP support, POS integration (any POS), email automation, and analytics (Google Analytics, Google Search Console, on-site search, and email/SMS).",
   includes:
-    "Everything in Minute Man, Militia, Gun Runner, and Warlord, plus the FFL Accelerator features.",
+    "Everything in Minute Man, Militia, and Warlord, plus the FFL Accelerator features.",
 } as const;
 
 /** Plain-text marketplace names. Never render these as links. */
@@ -109,9 +109,9 @@ export const GROUPS: readonly FeatureGroup[] = [
         items: [
           "AIM Point of Sale",
           "MicroBiz POS",
-          "Rapid Gun Systems",
           "Trident 1 POS",
           "Corestore POS",
+          "and other registers",
         ],
       },
       "Unlimited API Requests",
@@ -149,7 +149,7 @@ export const GROUPS: readonly FeatureGroup[] = [
   {
     id: "analytics",
     title: "Analytics",
-    features: ["Google Analytics Admin", "GunSearchEngine.com Pro"],
+    features: ["Google Analytics Admin", "On-site search"],
   },
   {
     id: "sla",
@@ -176,7 +176,7 @@ export const SETUP = [
       "FFL Checkout License & Configuration",
       "Payment Gateway Installation",
       "Email Capture Implementation",
-      "GunSearchEngine.com setup (free plan)",
+      "On-site search setup (free plan)",
       "DNS Configuration (Launch)",
       "Additional custom pages $125 each",
     ],

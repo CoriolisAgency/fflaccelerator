@@ -2,10 +2,10 @@ export const SITE = {
   name: "FFL Accelerator",
   legalName: "Coriolis, LLC",
   /** Social and document titles must not include a price or a tier name. */
-  titleDefault: "A gun store website you own | FFL Accelerator",
+  titleDefault: "A store website you own | FFL Accelerator",
   description:
-    "Managed ecommerce for a gun store on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
-  role: "A gun store website you own",
+    "Managed ecommerce for a store on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
+  role: "A store website you own",
   origin: "Greenville, SC",
   street: "109 Brennan Place",
   locality: "Greenville",

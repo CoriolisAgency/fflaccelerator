@@ -2,11 +2,11 @@
 import { MARKETPLACE_NAMES } from "../lib/plans";
 
 interface Props {
-  /** "names" lists each marketplace. "count" is one line and hides the names. */
+  /** "count" is one line and hides the names. "names" lists each marketplace as plain text. */
   mode?: "names" | "count";
 }
 
-const { mode = "names" } = Astro.props;
+const { mode = "count" } = Astro.props;
 ---
 
 {

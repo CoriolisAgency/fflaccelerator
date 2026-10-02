@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node --experimental-strip-types scripts/gen-vercel-redirects.mjs --check && astro build && node scripts/check-plan-copy.mjs && node scripts/check-social-meta.mjs && node scripts/check-banned-links.mjs",
+    "build": "node --experimental-strip-types scripts/gen-vercel-redirects.mjs --check && astro build && node scripts/check-plan-copy.mjs && node scripts/check-social-meta.mjs && node scripts/check-ad-copy.mjs && node scripts/check-banned-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "gen:vercel": "node --experimental-strip-types scripts/gen-vercel-redirects.mjs",

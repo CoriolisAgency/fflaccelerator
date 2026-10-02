@@ -26,7 +26,6 @@ export const KEEP_PREFIXES = [
   "/about",
   "/contact",
   "/privacy",
-  "/gunsearchagent-included",
   "/guides/gun-store-software",
   "/trends",
   "/confirmed",
@@ -51,6 +50,7 @@ function pair(from: string, to: string): RedirectRule[] {
 
 /** Permanent 301s. Slash and slashless both go to an on-site destination. */
 export const PERMANENT_REDIRECTS: RedirectRule[] = [
+  ...pair("/gunsearchagent-included", ON_SITE.home),
   ...pair("/ffl-ecommerce", ON_SITE.plan),
   ...pair("/ffl-dropshipping", ON_SITE.dropshipping),
   ...pair("/switch", ON_SITE.home),
@@ -155,7 +155,6 @@ function isKept(from: string): boolean {
   if (bare === "/about") return true;
   if (bare === "/contact") return true;
   if (bare === "/privacy") return true;
-  if (bare === "/gunsearchagent-included") return true;
   if (bare === "/guides/gun-store-software") return true;
   if (bare === "/confirmed") return true;
   if (bare === "/trends" || bare.startsWith("/trends/")) return true;
@@ -214,6 +213,7 @@ export function isSitemapExcluded(pageUrl: string): boolean {
     "/switch-n-save",
     "/retailbi-and-axis",
     "/pricing",
+    "/gunsearchagent-included",
     "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
   ];
   return skip.some(

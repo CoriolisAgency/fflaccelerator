@@ -2,6 +2,8 @@
 # Do not 301 / or /plan/. The campaign door stays on this host.
 # Destinations stay on this host.
 
+/gunsearchagent-included / 301
+/gunsearchagent-included/ / 301
 /ffl-ecommerce /plan/ 301
 /ffl-ecommerce/ /plan/ 301
 /ffl-dropshipping /plan/#inventory-dropshipping 301

@@ -1,11 +1,11 @@
 # FFL Accelerator
 
-FFL Accelerator is Coriolis's managed ecommerce website for a gun store. We build WooCommerce on your domain and run it with you. If you leave, the website goes with you.
+FFL Accelerator is Coriolis's managed ecommerce website for a store. We build WooCommerce on your domain and run it with you. If you leave, the website goes with you.
 
 Publisher: Coriolis, LLC. 109 Brennan Place, Greenville, SC 29609. Phone 828-290-9005.
 
 ## What you get
-A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, point of sale when you want it, email campaigns, and analytics including GunSearchEngine.com Pro. Webmaster included. 99.95% uptime commitment.
+A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, point of sale when you want it, email campaigns, and analytics including on-site search. Webmaster included. 99.95% uptime commitment.
 
 ## Pages
 - https://fflaccelerator.com/ 
@@ -13,7 +13,6 @@ A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, 
 - https://fflaccelerator.com/contact/
 - https://fflaccelerator.com/about/
 - https://fflaccelerator.com/privacy/
-- https://fflaccelerator.com/gunsearchagent-included/
 - https://fflaccelerator.com/guides/gun-store-software/
 - https://fflaccelerator.com/confirmed/
 

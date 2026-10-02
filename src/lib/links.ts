@@ -10,7 +10,6 @@ export const PATHS = {
   about: "/about/",
   privacy: "/privacy/",
   guide: "/guides/gun-store-software/",
-  betsy: "/gunsearchagent-included/",
   confirmed: "/confirmed/",
 } as const;
 

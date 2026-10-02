@@ -1,6 +1,6 @@
 # FFL Accelerator
 
-Managed ecommerce website for a gun store. The offer, the contact form, and privacy stay on this host.
+Managed ecommerce website for a store. The offer, the contact form, and privacy stay on this host.
 
 ## Stack
 
@@ -68,6 +68,6 @@ Recommend a Vercel Firewall rate limit on `POST /api/lead` and `POST /api/subscr
 - Plan and header calls to action go to `/contact/` on this site.
 - No price and no tier name in `<title>`, `og:title`, `og:description`, `twitter:title`, or `twitter:description`. Prices stay in the page body.
 - `/plan/` section ids: `#store-hosting`, `#inventory-dropshipping`, `#marketplaces`, `#support`, `#pos`, `#performance-monitoring`, `#email-marketing`, `#analytics`, `#sla`.
-- Marketplace names are plain text.
+- Marketplace names stay in one component and are not rendered. The pages show "Integrations with 13 online marketplaces".
 - Do not print an email address. Phone is 828-290-9005.
 - Never H1 "RetailBI alternative." Never 4473 automation.

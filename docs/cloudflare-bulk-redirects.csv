@@ -1,4 +1,6 @@
 source,target,status,preserve_query_string,include_subdomains,subpath_matching,preserve_path_suffix
+fflaccelerator.com/gunsearchagent-included,https://fflaccelerator.com/,301,TRUE,FALSE,FALSE,FALSE
+fflaccelerator.com/gunsearchagent-included/,https://fflaccelerator.com/,301,TRUE,FALSE,FALSE,FALSE
 fflaccelerator.com/ffl-ecommerce,https://fflaccelerator.com/plan/,301,TRUE,FALSE,FALSE,FALSE
 fflaccelerator.com/ffl-ecommerce/,https://fflaccelerator.com/plan/,301,TRUE,FALSE,FALSE,FALSE
 fflaccelerator.com/ffl-dropshipping,https://fflaccelerator.com/plan/#inventory-dropshipping,301,TRUE,FALSE,FALSE,FALSE

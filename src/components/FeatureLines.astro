@@ -5,11 +5,11 @@ import MarketplaceIntegrations from "./MarketplaceIntegrations.astro";
 interface Props {
   features: readonly FeatureLine[];
   dense?: boolean;
-  /** Marketplace list. Default is the name list. "count" swaps in the one-line version. */
+  /** Marketplace list. Default is the count line so marketplace names stay off the page. */
   marketplaces?: "names" | "count";
 }
 
-const { features, dense = false, marketplaces = "names" } = Astro.props;
+const { features, dense = false, marketplaces = "count" } = Astro.props;
 ---
 
 <ul class:list={[dense ? "mt-3 space-y-1.5" : "mt-4 space-y-3", "text-sm text-zinc-300"]}>

@@ -3,6 +3,16 @@
   "installCommand": "if [ -n \"$LEAD_FORM_READ_TOKEN\" ]; then u=\"https://x-access-token:$LEAD_FORM_READ_TOKEN@github.com/\"; git config --global --add url.\"$u\".insteadOf https://github.com/; git config --global --add url.\"$u\".insteadOf ssh://git@github.com/; fi; npm install",
   "redirects": [
     {
+      "source": "/gunsearchagent-included",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gunsearchagent-included/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/ffl-ecommerce",
       "destination": "/plan/",
       "statusCode": 301
