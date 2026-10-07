@@ -6,7 +6,7 @@ import FaqBlock from "../components/FaqBlock.astro";
 import MsaNote from "../components/MsaNote.astro";
 import { FAQ_HOME } from "../lib/faq";
 import { GROUPS } from "../lib/plans";
-import { planAnchor } from "../lib/links";
+import { linkClass, planAnchor } from "../lib/links";
 import { SITE } from "../lib/site";
 ---
 
@@ -49,6 +49,10 @@ import { SITE } from "../lib/site";
       <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-300">
         Setup is $500 one-time for a branded online storefront, or $2,500
         one-time for a full custom website. Details are on the plan page.
+      </p>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+        FFL Accelerator is a plan from Coriolis, LLC in Greenville, SC.
+        <a class={linkClass} href="https://www.coriolisagency.com/about" target="_blank" rel="noopener">About Coriolis, LLC</a>
       </p>
     </div>
   </section>

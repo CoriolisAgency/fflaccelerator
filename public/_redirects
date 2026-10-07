@@ -18,10 +18,6 @@
 /switch-n-save/ / 301
 /how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers /guides/gun-store-software/ 301
 /how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers/ /guides/gun-store-software/ 301
-/firearm-and-accessory-sales-trends-in-q1-2025 /trends/2025-q1/ 301
-/firearm-and-accessory-sales-trends-in-q1-2025/ /trends/2025-q1/ 301
-/firearm-and-accessory-sales-trends-in-q2-2025 /trends/2025-q2/ 301
-/firearm-and-accessory-sales-trends-in-q2-2025/ /trends/2025-q2/ 301
 /best-software-for-managing-your-gun-store-and-ffl-records /guides/gun-store-software/ 301
 /best-software-for-managing-your-gun-store-and-ffl-records/ /guides/gun-store-software/ 301
 /category/4473 /guides/gun-store-software/ 301
@@ -62,6 +58,18 @@
 /ffl-renewal-process-what-you-need-to-know-to-stay-compliant/ 410
 /ffl-news 410
 /ffl-news/ 410
+/firearm-and-accessory-sales-trends-in-q1-2025 410
+/firearm-and-accessory-sales-trends-in-q1-2025/ 410
+/firearm-and-accessory-sales-trends-in-q2-2025 410
+/firearm-and-accessory-sales-trends-in-q2-2025/ 410
+/trends 410
+/trends/ 410
+/trends/2025-q1 410
+/trends/2025-q1/ 410
+/trends/2025-q2 410
+/trends/2025-q2/ 410
+/category/shot-show 410
+/category/shot-show/ 410
 /wp-login.php 410
 /xmlrpc.php 410
 /wp-admin 410
@@ -93,5 +101,6 @@
 /wp-includes/* 410
 /wp-json/* 410
 /tag/* 410
+/trends/* 410
 /category/* 410
 

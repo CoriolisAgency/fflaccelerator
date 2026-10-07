@@ -83,26 +83,6 @@
       "statusCode": 301
     },
     {
-      "source": "/firearm-and-accessory-sales-trends-in-q1-2025",
-      "destination": "/trends/2025-q1/",
-      "statusCode": 301
-    },
-    {
-      "source": "/firearm-and-accessory-sales-trends-in-q1-2025/",
-      "destination": "/trends/2025-q1/",
-      "statusCode": 301
-    },
-    {
-      "source": "/firearm-and-accessory-sales-trends-in-q2-2025",
-      "destination": "/trends/2025-q2/",
-      "statusCode": 301
-    },
-    {
-      "source": "/firearm-and-accessory-sales-trends-in-q2-2025/",
-      "destination": "/trends/2025-q2/",
-      "statusCode": 301
-    },
-    {
       "source": "/best-software-for-managing-your-gun-store-and-ffl-records",
       "destination": "/guides/gun-store-software/",
       "statusCode": 301
@@ -271,6 +251,54 @@
       "destination": "/api/gone"
     },
     {
+      "source": "/firearm-and-accessory-sales-trends-in-q1-2025",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q1-2025/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q2-2025",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/firearm-and-accessory-sales-trends-in-q2-2025/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/2025-q1",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/2025-q1/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/2025-q2",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/2025-q2/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/shot-show",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/shot-show/",
+      "destination": "/api/gone"
+    },
+    {
       "source": "/wp-login.php",
       "destination": "/api/gone"
     },
@@ -379,7 +407,15 @@
       "destination": "/api/gone"
     },
     {
+      "source": "/wp-admin/:path*/",
+      "destination": "/api/gone"
+    },
+    {
       "source": "/wp-content/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-content/:path*/",
       "destination": "/api/gone"
     },
     {
@@ -387,7 +423,15 @@
       "destination": "/api/gone"
     },
     {
+      "source": "/wp-includes/:path*/",
+      "destination": "/api/gone"
+    },
+    {
       "source": "/wp-json/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-json/:path*/",
       "destination": "/api/gone"
     },
     {
@@ -395,7 +439,23 @@
       "destination": "/api/gone"
     },
     {
+      "source": "/tag/:path*/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/trends/:path*/",
+      "destination": "/api/gone"
+    },
+    {
       "source": "/category/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/category/:path*/",
       "destination": "/api/gone"
     }
   ]

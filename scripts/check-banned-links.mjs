@@ -36,6 +36,16 @@ const MARKET_HOSTS = [
   "bulletblaster.com",
 ];
 
+/**
+ * One allowed proof link (Paul override, 2026-10-07, SEO S3.2). Homepage only.
+ * The file must carry exactly one copy of the exact anchor href; that href is
+ * stripped before the normal scan, so any other agency mention on the
+ * homepage still fails. Every other file stays fully banned (including /lp/).
+ */
+const ALLOWED = [
+  { file: "index.html", href: `https://www.${APEX[0]}/about` },
+];
+
 const TEXT_EXT = new Set([".html", ".xml", ".txt", ".json", ".js", ".css"]);
 
 function hostRe(host) {
@@ -105,6 +115,32 @@ export function scanText(name, content) {
   return hits;
 }
 
+/** Normalize a dist-relative name ("dist/index.html", "index.html") for ALLOWED. */
+function distName(name) {
+  return name.replace(/\\/g, "/").replace(/^dist\//, "");
+}
+
+/**
+ * Scan with the scoped allow-list. Returns hits; a missing or duplicated
+ * allowed link is a hit too.
+ */
+export function scanFile(name, content) {
+  const rel = distName(name);
+  const allowed = ALLOWED.filter((entry) => entry.file === rel);
+  if (allowed.length === 0) return scanText(name, content);
+  const hits = [];
+  let text = content;
+  for (const entry of allowed) {
+    const needle = `href="${entry.href}"`;
+    const count = text.split(needle).length - 1;
+    if (count !== 1) {
+      hits.push(`${name}: expected exactly 1 allowed ${needle}, found ${count}`);
+    }
+    text = text.split(needle).join('href=""');
+  }
+  return [...hits, ...scanText(name, text)];
+}
+
 function selfTest() {
   const agency = APEX[0];
   const gse = APEX[1];
@@ -136,6 +172,31 @@ function selfTest() {
   mustPass.forEach((sample, i) => {
     const hits = scanText(`pass-${i}`, sample);
     if (hits.length) errors.push(`self-test expected pass: ${sample} -> ${hits.join("; ")}`);
+  });
+  // Scoped allow-list (S3.2): the one homepage proof link.
+  const proof = `<a class="x" href="https://www.${agency}/about" target="_blank" rel="noopener">About Coriolis, LLC</a>`;
+  const fileCases = [
+    { name: "dist/index.html", text: `<p>${proof}</p>`, pass: true },
+    { name: "dist/lp/index.html", text: `<p>${proof}</p>`, pass: false },
+    { name: "dist/plan/index.html", text: `<p>${proof}</p>`, pass: false },
+    { name: "dist/index.html", text: `<p>${proof}</p><p>${proof}</p>`, pass: false },
+    { name: "dist/index.html", text: "<p>no link</p>", pass: false },
+    {
+      name: "dist/index.html",
+      text: `<p>${proof}</p><a href="https://www.${agency}/ecommerce">x</a>`,
+      pass: false,
+    },
+    { name: "dist/index.html", text: `<p>${proof}</p> plain ${agency} in text`, pass: false },
+    { name: "dist/index.html", text: `<p>${proof}</p> support@${agency}`, pass: false },
+  ];
+  fileCases.forEach((c, i) => {
+    const hits = scanFile(c.name, c.text);
+    if (c.pass && hits.length) {
+      errors.push(`self-test expected pass (file case ${i}): ${hits.join("; ")}`);
+    }
+    if (!c.pass && hits.length === 0) {
+      errors.push(`self-test expected failure (file case ${i}): ${c.name}`);
+    }
   });
   if (errors.length) {
     console.error(errors.join("\n"));
@@ -195,7 +256,7 @@ const hits = [];
 for (const file of [...files, ...extra]) {
   const text = readFileSync(file, "utf8");
   const rel = file.startsWith(root) ? file.slice(root.length + 1) : file;
-  hits.push(...scanText(rel, text));
+  hits.push(...scanFile(rel, text));
 }
 
 if (hits.length) {
