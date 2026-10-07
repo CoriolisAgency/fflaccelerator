@@ -20,6 +20,7 @@ www to apex is Vercel domain config, not a row in this map.
 | `/guides/gun-store-software/` |
 | `/trends/*` (still reachable, `noindex`, omitted from the sitemap) |
 | `/confirmed/` |
+| `/lp/` (SOC-7 ad landing; `noindex`, omitted from the sitemap) |
 
 ## Permanent 301 (slash and slashless)
 

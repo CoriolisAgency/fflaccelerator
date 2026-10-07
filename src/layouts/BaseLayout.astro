@@ -19,6 +19,8 @@ interface Props {
   /** Email capture modal. Off for confirm and contact. @default true */
   emailCapture?: boolean;
   noindex?: boolean;
+  /** Meta ad landing: no header nav, no sitemap chrome. */
+  adLanding?: boolean;
 }
 
 const {
@@ -30,6 +32,7 @@ const {
   faq,
   emailCapture = true,
   noindex = false,
+  adLanding = false,
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA4_ID;
@@ -186,7 +189,7 @@ const jsonLd = {
     }
   </head>
   <body class="min-h-dvh flex flex-col">
-    <SiteChrome>
+    <SiteChrome adLanding={adLanding}>
       <slot />
     </SiteChrome>
     {emailCapture ? <AccelEmailCapture /> : null}

@@ -11,6 +11,7 @@ export const PATHS = {
   privacy: "/privacy/",
   guide: "/guides/gun-store-software/",
   confirmed: "/confirmed/",
+  lp: "/lp/",
 } as const;
 
 export function planAnchor(id: string): string {
