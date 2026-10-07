@@ -39,7 +39,7 @@ const siteNav = [
   { href: withBase(PATHS.privacy), label: "Privacy" },
 ].filter((item) => {
   if (!onCampaignDoor) return true;
-  return !item.href.includes("/guides/") && !item.href.includes("/trends/");
+  return !item.href.includes("/guides/");
 });
 ---
 
@@ -49,15 +49,29 @@ const siteNav = [
   <div
     class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6"
   >
-    <a href={withBase("/")} class="shrink-0">
-      <img
-        src={withBase(CANON.logo)}
-        alt="FFL Accelerator"
-        width="500"
-        height="200"
-        class="h-10 w-auto sm:h-12"
-      />
-    </a>
+    {
+      adLanding ? (
+        <span class="shrink-0">
+          <img
+            src={withBase(CANON.logo)}
+            alt="FFL Accelerator"
+            width="500"
+            height="200"
+            class="h-10 w-auto sm:h-12"
+          />
+        </span>
+      ) : (
+        <a href={withBase("/")} class="shrink-0">
+          <img
+            src={withBase(CANON.logo)}
+            alt="FFL Accelerator"
+            width="500"
+            height="200"
+            class="h-10 w-auto sm:h-12"
+          />
+        </a>
+      )
+    }
     {
       !adLanding && (
         <nav

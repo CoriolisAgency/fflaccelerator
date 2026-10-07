@@ -22,11 +22,14 @@ function vercelConfig() {
   for (const path of GONE_EXACT) {
     rewrites.push({ source: path, destination: "/api/gone" });
   }
-  for (const prefix of GONE_PREFIXES) {
+  // trailingSlash: true sends /x/y to /x/y/ first, and `/x/:path*` does not
+  // match a trailing slash, so each prefix also gets a slashed source.
+  // (Without it /category/shot-show/ and /tag/x/ answered 404, not 410.)
+  for (const prefix of [...GONE_PREFIXES, "/category/"]) {
     const base = prefix.endsWith("/") ? prefix.slice(0, -1) : prefix;
     rewrites.push({ source: `${base}/:path*`, destination: "/api/gone" });
+    rewrites.push({ source: `${base}/:path*/`, destination: "/api/gone" });
   }
-  rewrites.push({ source: "/category/:path*", destination: "/api/gone" });
   return {
     trailingSlash: true,
     installCommand: VERCEL_INSTALL_COMMAND,

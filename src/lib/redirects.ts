@@ -15,11 +15,9 @@ export const ON_SITE = {
   dropshipping: "/plan/#inventory-dropshipping",
   guide: "/guides/gun-store-software/",
   about: "/about/",
-  trendsQ1: "/trends/2025-q1/",
-  trendsQ2: "/trends/2025-q2/",
 } as const;
 
-/** Do not 301 these (or anything under /trends/). */
+/** Do not 301 these. (/trends/* was retired to 410 in SEO S3, 2026-10-07.) */
 export const KEEP_PREFIXES = [
   "/",
   "/plan",
@@ -27,7 +25,6 @@ export const KEEP_PREFIXES = [
   "/contact",
   "/privacy",
   "/guides/gun-store-software",
-  "/trends",
   "/confirmed",
   "/lp",
 ] as const;
@@ -63,8 +60,6 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
     "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
     ON_SITE.guide,
   ),
-  ...pair("/firearm-and-accessory-sales-trends-in-q1-2025", ON_SITE.trendsQ1),
-  ...pair("/firearm-and-accessory-sales-trends-in-q2-2025", ON_SITE.trendsQ2),
   ...pair(
     "/best-software-for-managing-your-gun-store-and-ffl-records",
     ON_SITE.guide,
@@ -109,9 +104,24 @@ const GONE_VENDOR_WP = [
   ...gonePair("/ffl-news"),
 ] as const;
 
+/**
+ * Retired in SEO S3 (Paul 2026-10-07): the Q1/Q2 2025 trend notes and their
+ * legacy WordPress slugs, plus the old SHOT Show category ("the SHOT note").
+ * 410, not 301. No replacement page, and no SHOT page.
+ */
+const GONE_RETIRED = [
+  ...gonePair("/firearm-and-accessory-sales-trends-in-q1-2025"),
+  ...gonePair("/firearm-and-accessory-sales-trends-in-q2-2025"),
+  ...gonePair("/trends"),
+  ...gonePair("/trends/2025-q1"),
+  ...gonePair("/trends/2025-q2"),
+  ...gonePair("/category/shot-show"),
+] as const;
+
 /** Exact paths to 410 (gone). Do not invent replacement pages. */
 export const GONE_EXACT = [
   ...GONE_VENDOR_WP,
+  ...GONE_RETIRED,
   "/wp-login.php",
   "/xmlrpc.php",
   "/wp-admin",
@@ -147,6 +157,7 @@ export const GONE_PREFIXES = [
   "/wp-includes/",
   "/wp-json/",
   "/tag/",
+  "/trends/",
 ] as const;
 
 function isKept(from: string): boolean {
@@ -158,7 +169,6 @@ function isKept(from: string): boolean {
   if (bare === "/privacy") return true;
   if (bare === "/guides/gun-store-software") return true;
   if (bare === "/confirmed") return true;
-  if (bare === "/trends" || bare.startsWith("/trends/")) return true;
   return false;
 }
 
@@ -260,7 +270,7 @@ export function toBulkRedirectCsv(): string {
     const target = `https://fflaccelerator.com${rule.to}`;
     return `${source},${target},301,TRUE,FALSE,FALSE,FALSE`;
   });
-  for (const path of GONE_VENDOR_WP) {
+  for (const path of [...GONE_VENDOR_WP, ...GONE_RETIRED]) {
     const source = `fflaccelerator.com${path}`;
     rows.push(`${source},https://${source},410,TRUE,FALSE,FALSE,FALSE`);
   }

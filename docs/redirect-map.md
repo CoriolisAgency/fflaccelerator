@@ -18,7 +18,6 @@ www to apex is Vercel domain config, not a row in this map.
 | `/contact/` |
 | `/privacy/` |
 | `/guides/gun-store-software/` |
-| `/trends/*` (still reachable, `noindex`, omitted from the sitemap) |
 | `/confirmed/` |
 | `/lp/` (SOC-7 ad landing; `noindex`, omitted from the sitemap) |
 
@@ -31,8 +30,6 @@ www to apex is Vercel domain config, not a row in this map.
 | `/ffl-dropshipping` | `/plan/#inventory-dropshipping` |
 | `/switch`, `/switch-n-save`, `/retailbi-and-axis` | `/` |
 | `/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers` | `/guides/gun-store-software/` |
-| `/firearm-and-accessory-sales-trends-in-q1-2025` | `/trends/2025-q1/` |
-| `/firearm-and-accessory-sales-trends-in-q2-2025` | `/trends/2025-q2/` |
 | `/best-software-for-managing-your-gun-store-and-ffl-records` | `/guides/gun-store-software/` |
 | `/category/4473` | `/guides/gun-store-software/` |
 | `/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage` | `/guides/gun-store-software/` |
@@ -46,6 +43,8 @@ www to apex is Vercel domain config, not a row in this map.
 Leftover vendor slugs and WordPress or Woo paths with no replacement page. On Vercel they rewrite to `/api/gone` (HTTP 410). GitHub Pages cannot emit 410. Those paths 404 there until cutover.
 
 `/wp-admin`, `/wp-login.php`, `/wp-content/*`, `/wp-includes/*`, `/wp-json/*`, `/xmlrpc.php`, `/feed`, `/comments/feed`, `/blog`, `/category`, `/category/*` (except `/category/4473`, which is a 301), `/tag/*`, `/sample-page`, `/cart`, `/shop`, `/my-account`, `/checkout`.
+
+Retired in SEO S3 (Paul 2026-10-07), slash and slashless, 410 and not 301: `/firearm-and-accessory-sales-trends-in-q1-2025`, `/firearm-and-accessory-sales-trends-in-q2-2025` (were 301s to the trend notes), `/trends`, `/trends/*` (including `/trends/2025-q1/` and `/trends/2025-q2/`), and `/category/shot-show/` ("the SHOT note"; no SHOT page). Prefix rules also have a slashed Vercel source (`/x/:path*/`): with `trailingSlash: true` a request lands on the slashed form, which the slashless pattern does not match.
 
 Vendor slugs: `/get-your-ffl-sot-with-orchids-ffl-university/`, `/orchid/`, `/orchid-advisors/`, `/orchid-estate/`, `/ebound/`, `/orchids-ffl-university/`, `/orchid-ffl-university/`, `/category/orchid/`, `/tag/orchid/`, `/what-to-expect-during-an-atf-inspection-of-your-firearms-business/`, `/ffl-renewal-process-what-you-need-to-know-to-stay-compliant/`, `/ffl-news/`.
 
