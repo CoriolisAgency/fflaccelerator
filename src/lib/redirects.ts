@@ -29,6 +29,7 @@ export const KEEP_PREFIXES = [
   "/guides/gun-store-software",
   "/trends",
   "/confirmed",
+  "/lp",
 ] as const;
 
 export type RedirectRule = {
@@ -206,6 +207,7 @@ export function isSitemapExcluded(pageUrl: string): boolean {
     /* already a path */
   }
   if (pathname === "/trends" || pathname.startsWith("/trends/")) return true;
+  if (pathname === "/lp" || pathname.startsWith("/lp/")) return true;
   const skip = [
     "/ffl-ecommerce",
     "/ffl-dropshipping",

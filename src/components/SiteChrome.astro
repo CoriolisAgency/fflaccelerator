@@ -3,6 +3,13 @@ import { PATHS } from "../lib/links";
 import { CANON_PATHS as CANON, FOOTER_IDENTITY, SITE, TRADEMARK_LINE } from "../lib/site";
 import { withBase } from "../lib/base";
 
+interface Props {
+  /** Hide nav and site links. Used for the Meta ad landing. */
+  adLanding?: boolean;
+}
+
+const { adLanding = false } = Astro.props;
+
 const base = import.meta.env.BASE_URL || "/";
 const rawPath = Astro.url.pathname;
 const path =
@@ -51,32 +58,34 @@ const siteNav = [
         class="h-10 w-auto sm:h-12"
       />
     </a>
-    <nav
-      class="flex flex-wrap items-center justify-end gap-1 sm:gap-1.5"
-      aria-label="Main"
-    >
-      {
-        nav.map((item) => (
+    {
+      !adLanding && (
+        <nav
+          class="flex flex-wrap items-center justify-end gap-1 sm:gap-1.5"
+          aria-label="Main"
+        >
+          {nav.map((item) => (
+            <a
+              href={withBase(item.href)}
+              class:list={[
+                "rounded-sm border px-2.5 py-1.5 text-xs font-medium transition-colors sm:text-sm",
+                active(item.href)
+                  ? "border-gold/50 bg-gold/10 text-gold"
+                  : "border-zinc-700 text-zinc-200 hover:bg-zinc-800",
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
           <a
-            href={withBase(item.href)}
-            class:list={[
-              "rounded-sm border px-2.5 py-1.5 text-xs font-medium transition-colors sm:text-sm",
-              active(item.href)
-                ? "border-gold/50 bg-gold/10 text-gold"
-                : "border-zinc-700 text-zinc-200 hover:bg-zinc-800",
-            ]}
+            href={withBase(PATHS.contact)}
+            class="rounded-sm border border-gold/70 bg-gold px-2.5 py-1.5 text-xs font-semibold text-ink hover:bg-amber-300 sm:text-sm"
           >
-            {item.label}
+            Start FFL Accelerator
           </a>
-        ))
-      }
-      <a
-        href={withBase(PATHS.contact)}
-        class="rounded-sm border border-gold/70 bg-gold px-2.5 py-1.5 text-xs font-semibold text-ink hover:bg-amber-300 sm:text-sm"
-      >
-        Start FFL Accelerator
-      </a>
-    </nav>
+        </nav>
+      )
+    }
   </div>
 </header>
 
@@ -101,17 +110,25 @@ const siteNav = [
       </p>
       <p class="text-xs leading-relaxed text-zinc-500">{TRADEMARK_LINE}</p>
     </div>
-    <nav
-      class="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-400"
-      aria-label="Site"
-    >
-      {
-        siteNav.map((item) => (
-          <a href={item.href} class="hover:text-gold">
-            {item.label}
+    {
+      !adLanding ? (
+        <nav
+          class="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-400"
+          aria-label="Site"
+        >
+          {siteNav.map((item) => (
+            <a href={item.href} class="hover:text-gold">
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      ) : (
+        <p class="text-xs text-zinc-400">
+          <a href={withBase(PATHS.privacy)} class="hover:text-gold">
+            Privacy
           </a>
-        ))
-      }
-    </nav>
+        </p>
+      )
+    }
   </div>
 </footer>
