@@ -53,7 +53,8 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
   ...pair("/ffl-dropshipping", ON_SITE.dropshipping),
   ...pair("/switch", ON_SITE.home),
   ...pair("/retailbi-and-axis", ON_SITE.home),
-  ...pair("/pricing", ON_SITE.plan),
+  // Old product page ($299 SEO offer). Home, not /plan/ (OPS-2, decision 2026-10-07-seo-ownership).
+  ...pair("/pricing", ON_SITE.home),
 
   ...pair("/switch-n-save", ON_SITE.home),
   ...pair(

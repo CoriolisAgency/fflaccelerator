@@ -26,7 +26,8 @@ www to apex is Vercel domain config, not a row in this map.
 | From | To |
 |------|----|
 | `/gunsearchagent-included` | `/` |
-| `/ffl-ecommerce`, `/pricing` | `/plan/` |
+| `/ffl-ecommerce` | `/plan/` |
+| `/pricing` | `/` (OPS-2, decision 2026-10-07-seo-ownership: old $299 SEO product page; was `/plan/`) |
 | `/ffl-dropshipping` | `/plan/#inventory-dropshipping` |
 | `/switch`, `/switch-n-save`, `/retailbi-and-axis` | `/` |
 | `/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers` | `/guides/gun-store-software/` |
