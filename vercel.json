@@ -54,12 +54,12 @@
     },
     {
       "source": "/pricing",
-      "destination": "/plan/",
+      "destination": "/",
       "statusCode": 301
     },
     {
       "source": "/pricing/",
-      "destination": "/plan/",
+      "destination": "/",
       "statusCode": 301
     },
     {
