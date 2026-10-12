@@ -160,7 +160,7 @@ function selfTest() {
     "analytics (Google Analytics, Google Search Console, GunSearchEngine.com, and email/SMS).",
     "Coriolis, LLC. Greenville, SC.",
     '<a href="/contact/">Start FFL Accelerator</a>',
-    "828-290-9005",
+    "(279) 258-6771",
     "GunBroker.com, AmmoSeek.com, Gun.Deals",
     '<a href="/plan/#inventory-dropshipping">Catalogs</a>',
   ];

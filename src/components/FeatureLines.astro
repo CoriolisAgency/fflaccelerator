@@ -9,10 +9,10 @@ interface Props {
   marketplaces?: "names" | "count";
 }
 
-const { features, dense = false, marketplaces = "count" } = Astro.props;
+const { features, marketplaces = "count" } = Astro.props;
 ---
 
-<ul class:list={[dense ? "mt-3 space-y-1.5" : "mt-4 space-y-3", "text-sm text-zinc-300"]}>
+<ul class="ticks">
   {
     features.map((line) =>
       typeof line === "string" ? (
@@ -23,8 +23,8 @@ const { features, dense = false, marketplaces = "count" } = Astro.props;
         </li>
       ) : (
         <li>
-          <span>{line.label}</span>
-          <ul class="mt-1.5 list-disc space-y-1 pl-5 text-zinc-400">
+          {line.label}
+          <ul class="ticks mt-1">
             {line.items.map((item) => (
               <li>{item}</li>
             ))}

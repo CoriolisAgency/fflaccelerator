@@ -57,7 +57,8 @@ const check = process.argv.includes("--check");
 
 function same(path, next) {
   try {
-    return readFileSync(path, "utf8") === next;
+    const onDisk = readFileSync(path, "utf8").replace(/\r\n/g, "\n");
+    return onDisk === next.replace(/\r\n/g, "\n");
   } catch {
     return false;
   }

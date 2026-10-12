@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
-import { CANON_PATHS, SITE } from "../lib/site";
+import { SITE } from "../lib/site";
 import { withBase } from "../lib/base";
 ---
 
@@ -10,43 +10,41 @@ import { withBase } from "../lib/base";
   description="Coriolis, LLC builds store websites from Greenville, SC."
   path="/about/"
 >
-  <section class="border-b border-zinc-800/80 py-12 sm:py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      <div class="grid gap-10 lg:grid-cols-[1.2fr_0.6fr] lg:items-center">
-        <div>
-          <h1 class="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            We build store websites.
-          </h1>
-          <div class="mt-6 max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-300">
-            <p>Coriolis, LLC. Greenville, SC.</p>
-            <p>
-              FFL Accelerator is a Coriolis offer. {SITE.street}, {SITE.locality},
-              {SITE.region} {SITE.postal}. We build store websites dealers
-              own. The founder ran a catalog platform for nine years. WooCommerce on your
-              domain. You leave with the site.
-            </p>
-            <p>
-              Our Founder and CEO is the guy that built and ran that catalog platform
-              for 9 years.
-            </p>
-            <p>
-              <a class="font-medium text-sky-400 hover:underline" href={SITE.phoneHref}
-                >{SITE.phone}</a
-              >
-            </p>
-          </div>
-          <div class="mt-8">
-            <CtaRow />
-          </div>
-        </div>
-        <img
-          src={withBase(CANON_PATHS.sales)}
-          alt="Add to cart on a store website"
-          width="1024"
-          height="683"
-          class="mx-auto w-full rounded-2xl object-cover ring-1 ring-white/10"
-        />
-      </div>
+  <section class="grid lg:grid-cols-2">
+    <div
+      class="flex flex-col justify-center px-5 py-16 sm:px-8 lg:py-24 lg:pr-16 xl:pl-16"
+    >
+      <h1 class="type-display text-5xl text-ink sm:text-6xl">
+        We build FFL websites.
+      </h1>
+      <p class="mt-4 text-sm font-medium tracking-wide text-muted">
+        Coriolis, LLC. Greenville, SC.
+      </p>
+      <p class="mt-8 max-w-xl text-lg leading-relaxed">
+        FFL Accelerator is the managed ecommerce plan from Coriolis for FFLs, 2A
+        retailers, manufacturers, and brands. We build, host, support, and
+        promote your open source WooCommerce website on your domain. The plan
+        includes site design, VIP support, POS integration, email automation,
+        and analytics, so the site can bring in traffic and sell.
+      </p>
+      <p class="type-pull mt-8 max-w-xl text-2xl sm:text-3xl">
+        No contract, cancel any time, and take the website with you if you do.
+      </p>
+      <p class="mt-8">
+        <a
+          href={SITE.phoneHref}
+          class="type-display text-2xl underline decoration-line underline-offset-4 hover:decoration-ink"
+          >{SITE.phone}</a
+        >
+      </p>
+      <CtaRow />
+    </div>
+    <div class="relative min-h-80 lg:min-h-full">
+      <img
+        src={withBase("photos/workbench.jpg")}
+        alt="Cleaning a pistol at a workbench"
+        class="h-full w-full object-cover lg:absolute lg:inset-0"
+      />
     </div>
   </section>
 </BaseLayout>

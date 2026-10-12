@@ -4,27 +4,23 @@ import CtaRow from "../../components/CtaRow.astro";
 ---
 
 <BaseLayout
-  title="Store software is not one product | FFL Accelerator"
-  description="Records, the register, the website, and search are different jobs. This site is the website."
+  title="FFL software is not one product | FFL Accelerator"
+  description="Records, the register, and the website are different jobs. This site is the website."
   path="/guides/gun-store-software/"
 >
-  <article class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
-    <p
-      class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold"
-    >
-      Guide
-    </p>
-    <h1 class="mb-4 text-3xl font-semibold tracking-tight text-white">
-      Store software is not one product
+  <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <p class="text-sm font-medium text-muted">Guide</p>
+    <h1 class="type-display mt-3 text-5xl sm:text-6xl">
+      FFL software is not one product
     </h1>
-    <p class="mb-6 text-sm leading-relaxed text-zinc-300">
-      People search for the best store software and get four different
-      jobs in one pile. Your bound book is not your website. Your register is
-      not your website. FFL Accelerator is the website.
+    <p class="mt-6 text-lg leading-relaxed">
+      People search for the best FFL software and get three different jobs in
+      one pile. Your bound book is not your website. Your register is not your
+      website. FFL Accelerator is the website.
     </p>
 
-    <h2 class="mt-10 text-lg font-semibold text-white">Four jobs</h2>
-    <div class="mt-4 space-y-3">
+    <h2 class="type-display mt-12 text-3xl">Three jobs</h2>
+    <div class="mt-4">
       {
         [
           {
@@ -39,37 +35,15 @@ import CtaRow from "../../components/CtaRow.astro";
             t: "The website",
             d: "The public store you own. WooCommerce, FFL checkout, optional distributor catalogs. That is FFL Accelerator.",
           },
-          {
-            t: "What they typed",
-            d: "Searches on your site, including zeros. That record stays on your website.",
-          },
         ].map((b) => (
-          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5">
-            <h3 class="text-sm font-semibold text-white">{b.t}</h3>
-            <p class="mt-2 text-sm text-zinc-400">{b.d}</p>
-          </div>
+          <section class="border-t border-line py-5">
+            <h3 class="type-display text-2xl">{b.t}</h3>
+            <p class="mt-2 max-w-xl">{b.d}</p>
+          </section>
         ))
       }
     </div>
 
-    <h2 class="mt-10 text-lg font-semibold text-white">
-      What we will not claim
-    </h2>
-    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-zinc-400">
-      <li>We do not fill out a 4473.</li>
-      <li>We do not replace your bound book.</li>
-      <li>We do not run the register you already have.</li>
-    </ul>
-
-    <h2 class="mt-10 text-lg font-semibold text-white">
-      If the gap is the website
-    </h2>
-    <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-      You already have a register and a records system. The public site is
-      still rented or dead. That is the $569 job.
-    </p>
-    <div class="mt-6">
-      <CtaRow />
-    </div>
+    <CtaRow />
   </article>
 </BaseLayout>

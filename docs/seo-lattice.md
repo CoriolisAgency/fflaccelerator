@@ -9,7 +9,7 @@ This host is the retailer door for the managed ecommerce website. Contact, the p
 | The website offer | `/` and `/plan/` |
 | Contact | `/contact/` |
 | Privacy | `/privacy/` |
-| Store software is not one product | `/guides/gun-store-software/` |
+| FFL software is not one product | `/guides/gun-store-software/` |
 | Plan ladder (all five tiers) | coriolisagency.com `/ecommerce`. Not targeted here; this site sells one plan |
 | Trend notes | `/trends/*` — retired 2026-10 (410), S3 |
 

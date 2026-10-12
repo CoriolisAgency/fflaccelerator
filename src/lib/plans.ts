@@ -6,18 +6,27 @@ export interface FeatureGroup {
   /** Section id on /plan/. One id per group, matching the social plan. */
   id: string;
   title: string;
+  lede?: string;
   features: readonly FeatureLine[];
 }
 
 export const PLAN = {
-  eyebrow: "Add Jet Fuel",
+  eyebrow: "Accelerate online FFL sales",
   name: "FFL Accelerator",
   badge: "Webmaster Included",
   priceLabel: "$569/mo",
   description:
-    "A single, all-in-one, managed ecommerce plan. It includes hosting, site design (Basic or Retail), VIP support, POS integration (any POS), email automation, and analytics (Google Analytics, Google Search Console, on-site search, and email/SMS).",
+    "A single, all-in-one, managed ecommerce plan for FFLs, 2A retailers, manufacturers, and brands. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
+  stack:
+    "We build, host, support, and promote your open source WooCommerce website to drive traffic and increase sales.",
+  pull: "No contract, cancel any time, and take the website with you if you do.",
   includes:
     "Everything in Minute Man, Militia, and Warlord, plus the FFL Accelerator features.",
+  /** /lp/ only. No 2A. OPS-4 keyword match. */
+  lpLead:
+    "Ecommerce software for FFL dealers: your store, 21 distributor catalogs, unlimited orders, and FFL Checkout, managed for you.",
+  lpBody:
+    "A single, all-in-one, managed ecommerce plan. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
 } as const;
 
 /** Plain-text marketplace names. Never render these as links. */
@@ -48,6 +57,7 @@ export const GROUPS: readonly FeatureGroup[] = [
   {
     id: "store-hosting",
     title: "Store and hosting",
+    lede: "Your domain, your pages, your hosting.",
     features: [
       "Custom website design",
       "Your custom domain",

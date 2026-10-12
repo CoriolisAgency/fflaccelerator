@@ -51,7 +51,7 @@ const graph: Record<string, unknown>[] = [
     alternateName: ["Coriolis Agency", "FFL Accelerator"],
     url: SITE_ORIGIN,
     description: SITE.description,
-    telephone: "+1-828-290-9005",
+    telephone: "+1-279-258-6771",
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.street,
@@ -109,7 +109,13 @@ const jsonLd = {
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0a1220" />
+    <meta name="theme-color" content="#0a2744" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
     <link rel="icon" type="image/png" href={withBase(CANON_PATHS.icon)} />
     <link
       rel="icon"

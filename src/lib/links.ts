@@ -19,13 +19,13 @@ export function planAnchor(id: string): string {
 }
 
 export const linkClass =
-  "font-medium text-sky-400 hover:underline underline-offset-2";
+  "underline decoration-line underline-offset-4 hover:decoration-ink";
 
 export const btnPlan =
-  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-gold/70 bg-gold px-5 py-3 text-sm font-semibold text-ink transition hover:bg-amber-300";
+  "inline-flex min-h-11 items-center bg-gold px-4 text-sm font-semibold text-ink transition-colors duration-150 hover:bg-field hover:text-paper";
 
 export const btnSecondary =
-  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-zinc-500 bg-transparent px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:bg-zinc-800";
+  "inline-flex min-h-11 items-center text-sm font-medium underline decoration-line underline-offset-4 hover:decoration-ink";
 
 export const btnSky =
-  "inline-flex w-full sm:w-auto items-center justify-center rounded-sm border border-sky-400 bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400";
+  "inline-flex min-h-11 items-center bg-gold px-4 text-sm font-semibold text-ink transition-colors duration-150 hover:bg-field hover:text-paper";
