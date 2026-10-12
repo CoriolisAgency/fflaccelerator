@@ -1,9 +1,26 @@
 ---
 import { PATHS, btnPlan, btnSecondary } from "../lib/links";
 import { withBase } from "../lib/base";
+
+interface Props {
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  primaryHref = PATHS.contact,
+  primaryLabel = "Start FFL Accelerator",
+  secondaryLabel = "Talk to Coriolis",
+} = Astro.props;
+
+function hrefOf(path: string) {
+  if (path.startsWith("#") || /^https?:\/\//.test(path)) return path;
+  return withBase(path);
+}
 ---
 
-<div class="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
-  <a href={withBase(PATHS.contact)} class={btnPlan}>Start FFL Accelerator</a>
-  <a href={withBase(PATHS.contact)} class={btnSecondary}>Talk to Coriolis</a>
+<div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+  <a href={hrefOf(primaryHref)} class={btnPlan}>{primaryLabel}</a>
+  <a href={withBase(PATHS.contact)} class={btnSecondary}>{secondaryLabel}</a>
 </div>

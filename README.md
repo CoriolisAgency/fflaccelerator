@@ -69,5 +69,5 @@ Recommend a Vercel Firewall rate limit on `POST /api/lead` and `POST /api/subscr
 - No price and no tier name in `<title>`, `og:title`, `og:description`, `twitter:title`, or `twitter:description`. Prices stay in the page body.
 - `/plan/` section ids: `#store-hosting`, `#inventory-dropshipping`, `#marketplaces`, `#support`, `#pos`, `#performance-monitoring`, `#email-marketing`, `#analytics`, `#sla`.
 - Marketplace names stay in one component and are not rendered. The pages show "Integrations with 13 online marketplaces".
-- Do not print an email address. Phone is 828-290-9005.
+- Do not print an email address. Phone is (279) 258-6771.
 - Never H1 "RetailBI alternative." Never 4473 automation.

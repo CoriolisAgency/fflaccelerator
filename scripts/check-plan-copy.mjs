@@ -5,12 +5,13 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const LINES = [
-  "Add Jet Fuel",
+  "Accelerate online FFL sales",
   "FFL Accelerator",
   "Webmaster Included",
   "$569/mo",
-  "A single, all-in-one, managed ecommerce plan. It includes hosting, site design (Basic or Retail), VIP support, POS integration (any POS), email automation, and analytics (Google Analytics, Google Search Console, on-site search, and email/SMS).",
-  "Everything in Minute Man, Militia, and Warlord, plus the FFL Accelerator features.",
+  "A single, all-in-one, managed ecommerce plan for FFLs, 2A retailers, manufacturers, and brands. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
+  "We build, host, support, and promote your open source WooCommerce website to drive traffic and increase sales.",
+  "No contract, cancel any time, and take the website with you if you do.",
   "Custom website design",
   "Your custom domain",
   "Unlimited hosting",
@@ -152,7 +153,7 @@ for (const rel of doorPages) {
   }
 }
 
-const footer = "Coriolis, LLC · 109 Brennan Place, Greenville, SC 29609 · 828-290-9005";
+const footer = "Coriolis, LLC · 109 Brennan Place, Greenville, SC 29609 · (279) 258-6771";
 const trademark =
   "Google Analytics and Google Search Console are trademarks of Google LLC.";
 for (const rel of [

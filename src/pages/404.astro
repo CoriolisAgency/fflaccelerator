@@ -10,20 +10,19 @@ import { withBase } from "../lib/base";
   description="That link may be old. The website offer is still here."
   path="/404"
 >
-  <section class="mx-auto max-w-5xl px-4 py-16">
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8">
     <img
       src={withBase(CANON_PATHS.logo)}
       alt="FFL Accelerator"
-      width="500"
-      height="200"
+      width="437"
+      height="163"
       class="mb-8 h-10 w-auto"
+      style="filter: brightness(0)"
     />
-    <h1 class="text-3xl font-semibold text-white">That page is not here</h1>
-    <p class="mt-4 max-w-xl text-sm text-zinc-400">
+    <h1 class="type-display text-5xl">That page is not here</h1>
+    <p class="mt-4 max-w-xl text-lg text-muted">
       The link may be old. FFL Accelerator is still a store website you own.
     </p>
-    <div class="mt-8">
-      <CtaRow />
-    </div>
+    <CtaRow />
   </section>
 </BaseLayout>

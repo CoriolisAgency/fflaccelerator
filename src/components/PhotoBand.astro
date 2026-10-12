@@ -1,0 +1,18 @@
+---
+import { withBase } from "../lib/base";
+
+interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<figure class="band relative border-y border-line">
+  <img
+    src={withBase(src)}
+    alt={alt}
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+</figure>
