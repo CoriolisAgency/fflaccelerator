@@ -16,7 +16,7 @@ export const PLAN = {
   badge: "Webmaster Included",
   priceLabel: "$569/mo",
   description:
-    "A single, all-in-one, managed ecommerce plan for FFLs, 2A retailers, manufacturers, and brands. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
+    "A single, all-in-one, managed ecommerce plan for FFLs, retailers, manufacturers, and brands. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
   stack:
     "We build, host, support, and promote your open source WooCommerce website to drive traffic and increase sales.",
   pull: "No contract, cancel any time, and take the website with you if you do.",
