@@ -206,24 +206,51 @@ const jsonLd = {
     }
     <script is:inline>
       (function () {
+        var sent = false;
+        function fireLead() {
+          if (sent) return;
+          sent = true;
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "generate_lead", { method: "contact_form" });
+          }
+          if (typeof window.fbq === "function") {
+            window.fbq("track", "Lead");
+          }
+        }
+        function isLeadUrl(input) {
+          var url = "";
+          try {
+            if (typeof input === "string") url = input;
+            else if (input && typeof input.url === "string") url = input.url;
+            else url = String(input || "");
+          } catch (err) {
+            return false;
+          }
+          return /\/api\/lead(?:\?|$)/.test(url);
+        }
+        if (typeof window.fetch === "function") {
+          var origFetch = window.fetch;
+          window.fetch = function (input, init) {
+            return origFetch.apply(this, arguments).then(function (res) {
+              if (isLeadUrl(input)) {
+                res
+                  .clone()
+                  .json()
+                  .then(function (json) {
+                    if (json && json.ok) fireLead();
+                  })
+                  .catch(function () {});
+              }
+              return res;
+            });
+          };
+        }
         function arm(form) {
           var status = form.querySelector("[data-lf-status]");
           if (!status || status.dataset.lfTrackArmed === "1") return;
           status.dataset.lfTrackArmed = "1";
-          var sent = false;
           new MutationObserver(function () {
-            if (sent) return;
-            if (status.classList.contains("lf-status-ok")) {
-              sent = true;
-              if (typeof window.gtag === "function") {
-                window.gtag("event", "generate_lead", {
-                  method: "contact_form",
-                });
-              }
-              if (typeof window.fbq === "function") {
-                window.fbq("track", "Lead");
-              }
-            }
+            if (status.classList.contains("lf-status-ok")) fireLead();
           }).observe(status, {
             attributes: true,
             attributeFilter: ["class"],
