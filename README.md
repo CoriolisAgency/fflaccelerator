@@ -39,6 +39,7 @@ CORIOLIS_OS_URL=
 FORM_INTAKE_SECRET=
 LEAD_FORM_READ_TOKEN=
 PUBLIC_GA4_ID=
+PUBLIC_META_PIXEL_ID=
 ```
 
 Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
@@ -46,6 +47,8 @@ Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
 Optional Mailgun, sent only after Ops accepts a lead: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_SUBJECT_PREFIX`.
 
 `PUBLIC_GA4_ID` is a new web stream for this host. gtag is omitted when it is unset. On a successful contact post the page fires `generate_lead` once. A successful popup fires `sign_up` when gtag is loaded.
+
+`PUBLIC_META_PIXEL_ID` is the Meta dataset ID for this host. The pixel is omitted when it is unset. On a successful contact post the page fires `fbq('track','Lead')` once. The email popup does not fire Lead.
 
 Recommend a Vercel Firewall rate limit on `POST /api/lead` and `POST /api/subscribe` (for example 10 per minute per IP). No Turnstile.
 

@@ -36,6 +36,7 @@ const {
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA4_ID;
+const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
 
 const siteOrigin = Astro.site ?? new URL(SITE_ORIGIN);
 const pagePath = path === "/" ? "/" : withBase(path);
@@ -158,41 +159,86 @@ const jsonLd = {
             gtag("js", new Date());
             gtag("config", gaId);
           </script>
-          <script is:inline>
-            (function () {
-              function arm(form) {
-                var status = form.querySelector("[data-lf-status]");
-                if (!status || status.dataset.lfGaArmed === "1") return;
-                status.dataset.lfGaArmed = "1";
-                var sent = false;
-                new MutationObserver(function () {
-                  if (sent) return;
-                  if (status.classList.contains("lf-status-ok")) {
-                    sent = true;
-                    if (typeof window.gtag === "function") {
-                      window.gtag("event", "generate_lead", {
-                        method: "contact_form",
-                      });
-                    }
-                  }
-                }).observe(status, {
-                  attributes: true,
-                  attributeFilter: ["class"],
-                });
-              }
-              function scan() {
-                document.querySelectorAll("form[data-lf-form]").forEach(arm);
-              }
-              if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", scan);
-              } else {
-                scan();
-              }
-            })();
-          </script>
         </>
       ) : null
     }
+    {
+      pixelId ? (
+        <>
+          <script is:inline define:vars={{ pixelId }}>
+            !(function (f, b, e, v, n, t, s) {
+              if (f.fbq) return;
+              n = f.fbq = function () {
+                n.callMethod
+                  ? n.callMethod.apply(n, arguments)
+                  : n.queue.push(arguments);
+              };
+              if (!f._fbq) f._fbq = n;
+              n.push = n;
+              n.loaded = !0;
+              n.version = "2.0";
+              n.queue = [];
+              t = b.createElement(e);
+              t.async = !0;
+              t.src = v;
+              s = b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t, s);
+            })(
+              window,
+              document,
+              "script",
+              "https://connect.facebook.net/en_US/fbevents.js",
+            );
+            window.fbq("init", pixelId);
+            window.fbq("track", "PageView");
+          </script>
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style="display:none"
+              src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+              alt=""
+            />
+          </noscript>
+        </>
+      ) : null
+    }
+    <script is:inline>
+      (function () {
+        function arm(form) {
+          var status = form.querySelector("[data-lf-status]");
+          if (!status || status.dataset.lfTrackArmed === "1") return;
+          status.dataset.lfTrackArmed = "1";
+          var sent = false;
+          new MutationObserver(function () {
+            if (sent) return;
+            if (status.classList.contains("lf-status-ok")) {
+              sent = true;
+              if (typeof window.gtag === "function") {
+                window.gtag("event", "generate_lead", {
+                  method: "contact_form",
+                });
+              }
+              if (typeof window.fbq === "function") {
+                window.fbq("track", "Lead");
+              }
+            }
+          }).observe(status, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+        }
+        function scan() {
+          document.querySelectorAll("form[data-lf-form]").forEach(arm);
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", scan);
+        } else {
+          scan();
+        }
+      })();
+    </script>
   </head>
   <body class="min-h-dvh">
     <SiteChrome adLanding={adLanding}>

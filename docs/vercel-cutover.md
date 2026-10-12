@@ -13,6 +13,7 @@ This build's contact form and email popup post to `/api/lead` and `/api/subscrib
    - `LEAD_FORM_SITE=fflaccelerator`
    - `LEAD_FORM_READ_TOKEN` (fine-grained PAT, Contents: Read on `CoriolisAgency/lead-form` only). Sensitive. Install only.
    - `PUBLIC_GA4_ID` (a new GA4 web stream for this host, not another site's id)
+   - `PUBLIC_META_PIXEL_ID` (Meta dataset ID for this host; omit the pixel when unset)
    - Optional: `LEAD_FORM_HOST=fflaccelerator.com` so preview deploys still tag `site=fflaccelerator.com`
    - Optional Mailgun, used only after Ops accepts a lead: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_SUBJECT_PREFIX`
 3. Add the same `LEAD_FORM_READ_TOKEN` as a GitHub Actions secret so pull request CI can `npm ci`.
