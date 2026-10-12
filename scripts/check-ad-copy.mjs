@@ -12,12 +12,12 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const WORD =
-  /\b(handguns?|shotguns?|guns?|firearms?|serialized)\b|(?:^|[^a-z])ammo/i;
+  /\b(handguns?|shotguns?|rifles?|pistols?|guns?|firearms?|weapons?|serialized|2a)\b|(?:^|[^a-z])ammo/i;
 
 function hits(text) {
   const found = [];
   const re =
-    /\b(handguns?|shotguns?|guns?|firearms?|serialized)\b|(?:^|[^a-z])(ammo)/gi;
+    /\b(handguns?|shotguns?|rifles?|pistols?|guns?|firearms?|weapons?|serialized|2a)\b|(?:^|[^a-z])(ammo)/gi;
   let match;
   while ((match = re.exec(text))) {
     found.push(match[1] || match[2]);
@@ -35,9 +35,13 @@ function assert(cond, message) {
 assert(hits("Can I sell guns I do not stock?").length > 0, "guns");
 assert(hits("A serialized firearm ships").length >= 2, "serialized firearm");
 assert(hits("Rapid Gun Systems").some((w) => w.toLowerCase() === "gun"), "Rapid Gun");
+assert(hits("A rifle on a wood bench").some((w) => w.toLowerCase() === "rifle"), "rifle");
+assert(hits("Cleaning a pistol").some((w) => w.toLowerCase() === "pistol"), "pistol");
+assert(hits("2A retailers").some((w) => w.toLowerCase() === "2a"), "2A");
 assert(hits("AmmoReady for nine years").some((w) => w.toLowerCase() === "ammo"), "AmmoReady");
 assert(hits("bulk ammo").length > 0, "ammo");
 assert(hits("FFL Accelerator").length === 0, "FFL should pass");
+assert(hits("Webmaster Included").length === 0, "Webmaster should pass");
 assert(hits("GunSearchEngine.com Pro").length === 0, "product token should pass");
 assert(hits("MAILGUN_API_KEY").length === 0, "mailgun should pass");
 assert(hits("Integrations with 13 online marketplaces").length === 0, "count line");
