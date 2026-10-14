@@ -3,7 +3,7 @@ import "../styles/global.css";
 import AccelEmailCapture from "../components/AccelEmailCapture.astro";
 import SiteChrome from "../components/SiteChrome.astro";
 import UtmCapture from "@coriolis/lead-form/UtmCapture.astro";
-import { SITE, SITE_ORIGIN, CANON_PATHS } from "../lib/site";
+import { SITE, SITE_ORIGIN, CANON_PATHS, GSE_EMBED } from "../lib/site";
 import { withBase } from "../lib/base";
 import type { FaqItem } from "../lib/faq";
 
@@ -162,6 +162,13 @@ const jsonLd = {
         </>
       ) : null
     }
+    <script
+      src={GSE_EMBED.src}
+      data-site-key={GSE_EMBED.siteKey}
+      data-mode={GSE_EMBED.mode}
+      async
+      is:inline
+    />
     {
       pixelId ? (
         <>
