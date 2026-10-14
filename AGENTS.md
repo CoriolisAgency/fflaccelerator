@@ -18,3 +18,7 @@ Then:
 This block wins over anything below it, including any "push it" or work-on-main instructions. `BATTLEPLAN.md` and `BATTLEPLAN-ARCHIVE.md` in coriolis are a read-only archive now.
 Lane for this repo: FFLA and micro-sites (board prefix FFLA).
 <!-- END Coriolis process pointer -->
+
+## Studio reporting
+
+Studio reporting: `.github/workflows/studio.yml` reports status to Botopticon via the shared reporter in CoriolisAgency/botopticon. It is status only. GitHub Actions never merge; merging stays with the agents/Paul. See the reporting rule in CoriolisAgency/botopticon AGENTS.md.
