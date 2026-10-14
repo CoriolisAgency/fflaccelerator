@@ -167,6 +167,99 @@ footer :focus-visible {
   left: 0;
 }
 
+.feature-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin-top: 2rem;
+}
+
+@media (width >= 640px) {
+  .feature-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .feature-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.35rem;
+    margin-top: 2.5rem;
+  }
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 0 rgba(12, 27, 51, 0.04);
+  padding: 1.25rem 1.2rem 1.35rem;
+}
+
+.feature-card::before {
+  content: "";
+  display: block;
+  height: 2px;
+  margin: -1.25rem -1.2rem 1rem;
+  background: var(--color-gold);
+}
+
+.feature-card__body {
+  margin-top: 0.85rem;
+}
+
+.feature-cards__note {
+  margin-top: 1.75rem;
+}
+
+.faq-item {
+  border-top: 1px solid var(--color-line);
+  padding: 1.5rem 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker {
+  content: "";
+}
+
+.faq-item summary::after {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45em;
+  border-right: 1.5px solid var(--color-ink);
+  border-bottom: 1.5px solid var(--color-ink);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(225deg);
+  margin-top: 0.7em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item summary::after {
+    transition: none;
+  }
+}
+
 .jump {
   scrollbar-width: none;
   gap: 1.15rem;
