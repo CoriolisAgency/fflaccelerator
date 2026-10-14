@@ -46,6 +46,18 @@ a {
   text-decoration: none;
 }
 
+/* Header Plan/About: unlayered `a` beats Tailwind text-fog/text-paper utilities. */
+header nav[aria-label="Main"] a.text-fog {
+  color: var(--color-fog);
+}
+
+header nav[aria-label="Main"] a.text-fog:hover,
+header nav[aria-label="Main"] a.text-fog:focus-visible,
+header nav[aria-label="Main"] a.text-paper,
+header nav[aria-label="Main"] a[aria-current] {
+  color: var(--color-paper);
+}
+
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 3px;
