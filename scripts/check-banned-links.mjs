@@ -46,6 +46,37 @@ const ALLOWED = [
   { file: "index.html", href: `https://www.${APEX[0]}/about` },
 ];
 
+/** One allowed GSE URL: observe embed script src. Never an href. */
+const GSE_EMBED_SRC = "https://www.gunsearchengine.com/embed.js";
+const GSE_EMBED_KEY = "pk_live_87fae3f0e1b11b555706fd4216fe44fa";
+const GSE_EMBED_MODE = "observe";
+
+function stripAllowedGseEmbed(content) {
+  return content.split(`src="${GSE_EMBED_SRC}"`).join('src=""');
+}
+
+function isRedirectStub(content) {
+  const title = /<title>([\s\S]*?)<\/title>/i.exec(content)?.[1] ?? "";
+  return title.trim().startsWith("Redirecting");
+}
+
+function missingGseEmbed(name, content) {
+  if (!/\.html$/i.test(name.replace(/\\/g, "/"))) return [];
+  if (isRedirectStub(content)) return [];
+  const hits = [];
+  const srcCount = content.split(`src="${GSE_EMBED_SRC}"`).length - 1;
+  if (srcCount !== 1) {
+    hits.push(`${name}: expected exactly 1 GSE embed src, found ${srcCount}`);
+  }
+  if (!content.includes(`data-site-key="${GSE_EMBED_KEY}"`)) {
+    hits.push(`${name}: missing GSE embed data-site-key`);
+  }
+  if (!content.includes(`data-mode="${GSE_EMBED_MODE}"`)) {
+    hits.push(`${name}: missing GSE embed data-mode=observe`);
+  }
+  return hits;
+}
+
 const TEXT_EXT = new Set([".html", ".xml", ".txt", ".json", ".js", ".css"]);
 
 function hostRe(host) {
@@ -79,6 +110,7 @@ function attrValues(content) {
 
 export function scanText(name, content) {
   const hits = [];
+  content = stripAllowedGseEmbed(content);
   for (const host of APEX) {
     const re = new RegExp(host.replace(/\./g, "\\."), "gi");
     let match;
@@ -158,6 +190,7 @@ function selfTest() {
   const mustPass = [
     "GunSearchEngine.com Pro is included.",
     "analytics (Google Analytics, Google Search Console, GunSearchEngine.com, and email/SMS).",
+    `<script src="${GSE_EMBED_SRC}" data-site-key="${GSE_EMBED_KEY}" data-mode="${GSE_EMBED_MODE}" async></script>`,
     "Coriolis, LLC. Greenville, SC.",
     '<a href="/contact/">Start FFL Accelerator</a>',
     "(279) 258-6771",
@@ -188,6 +221,21 @@ function selfTest() {
     },
     { name: "dist/index.html", text: `<p>${proof}</p> plain ${agency} in text`, pass: false },
     { name: "dist/index.html", text: `<p>${proof}</p> support@${agency}`, pass: false },
+    {
+      name: "dist/index.html",
+      text: `<p>${proof}</p><script src="${GSE_EMBED_SRC}" data-site-key="${GSE_EMBED_KEY}" data-mode="${GSE_EMBED_MODE}" async></script>`,
+      pass: true,
+    },
+    {
+      name: "dist/lp/index.html",
+      text: `<script src="${GSE_EMBED_SRC}" async></script>`,
+      pass: true,
+    },
+    {
+      name: "dist/lp/index.html",
+      text: `<a href="${GSE_EMBED_SRC}">x</a>`,
+      pass: false,
+    },
   ];
   fileCases.forEach((c, i) => {
     const hits = scanFile(c.name, c.text);
@@ -257,6 +305,7 @@ for (const file of [...files, ...extra]) {
   const text = readFileSync(file, "utf8");
   const rel = file.startsWith(root) ? file.slice(root.length + 1) : file;
   hits.push(...scanFile(rel, text));
+  if (file.startsWith(dist)) hits.push(...missingGseEmbed(rel, text));
 }
 
 if (hits.length) {

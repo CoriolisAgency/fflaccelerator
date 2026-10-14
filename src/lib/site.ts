@@ -24,6 +24,13 @@ export const TRADEMARK_LINE =
 
 export const SITE_ORIGIN = "https://fflaccelerator.com";
 
+/** Public GSE observe sensor. Not a secret. No shopper href. */
+export const GSE_EMBED = {
+  src: "https://www.gunsearchengine.com/embed.js",
+  siteKey: "pk_live_87fae3f0e1b11b555706fd4216fe44fa",
+  mode: "observe",
+} as const;
+
 export const CANON_PATHS = {
   logo: "brand/ffl-accelerator-logo.png",
   icon: "brand/ffl-accelerator-icon.png",
