@@ -14,14 +14,16 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 function vercelConfig() {
   // One canonical host (FFLA-L4, G8): www 308s to the apex, path kept.
-  const hostRedirect = {
-    source: "/:path*",
-    has: [{ type: "host", value: "www.fflaccelerator.com" }],
-    destination: "https://fflaccelerator.com/:path*",
-    permanent: true,
-  };
+  // trailingSlash: true means `/:path*` misses "/" and slashed paths, so the
+  // root and the slashed form get their own rules ahead of the file rule.
+  const www = [{ type: "host", value: "www.fflaccelerator.com" }];
+  const hostRedirects = [
+    { source: "/", has: www, destination: "https://fflaccelerator.com/", permanent: true },
+    { source: "/:path*/", has: www, destination: "https://fflaccelerator.com/:path*/", permanent: true },
+    { source: "/:path*", has: www, destination: "https://fflaccelerator.com/:path*", permanent: true },
+  ];
   const redirects = [
-    hostRedirect,
+    ...hostRedirects,
     ...PERMANENT_REDIRECTS.map((rule) => ({
       source: rule.from,
       destination: rule.to,
