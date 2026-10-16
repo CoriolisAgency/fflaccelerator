@@ -13,11 +13,21 @@ import {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 function vercelConfig() {
-  const redirects = PERMANENT_REDIRECTS.map((rule) => ({
-    source: rule.from,
-    destination: rule.to,
-    statusCode: 301,
-  }));
+  // One canonical host (FFLA-L4, G8): www 308s to the apex, path kept.
+  const hostRedirect = {
+    source: "/:path*",
+    has: [{ type: "host", value: "www.fflaccelerator.com" }],
+    destination: "https://fflaccelerator.com/:path*",
+    permanent: true,
+  };
+  const redirects = [
+    hostRedirect,
+    ...PERMANENT_REDIRECTS.map((rule) => ({
+      source: rule.from,
+      destination: rule.to,
+      statusCode: 301,
+    })),
+  ];
   const rewrites = [];
   for (const path of GONE_EXACT) {
     rewrites.push({ source: path, destination: "/api/gone" });

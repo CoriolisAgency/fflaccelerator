@@ -2,9 +2,9 @@ export const SITE = {
   name: "FFL Accelerator",
   legalName: "Coriolis, LLC",
   /** Social and document titles must not include a price or a tier name. */
-  titleDefault: "A store website you own | FFL Accelerator",
+  titleDefault: "Managed FFL Website You Own | FFL Accelerator",
   description:
-    "Managed ecommerce for a store on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
+    "A managed WooCommerce website for FFL dealers, on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
   role: "A store website you own",
   origin: "Greenville, SC",
   street: "109 Brennan Place",

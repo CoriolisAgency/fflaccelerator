@@ -219,6 +219,7 @@ export function isSitemapExcluded(pageUrl: string): boolean {
   }
   if (pathname === "/trends" || pathname.startsWith("/trends/")) return true;
   if (pathname === "/lp" || pathname.startsWith("/lp/")) return true;
+  if (pathname === "/confirmed" || pathname.startsWith("/confirmed/")) return true;
   const skip = [
     "/ffl-ecommerce",
     "/ffl-dropshipping",
