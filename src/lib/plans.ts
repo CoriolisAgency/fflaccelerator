@@ -19,9 +19,9 @@ export const PLAN = {
     "A single, all-in-one, managed ecommerce plan for FFLs, retailers, manufacturers, and brands. It includes hosting, site design, VIP support, POS integration (any POS), email automation, and analytics.",
   stack:
     "We build, host, support, and promote your open source WooCommerce website to drive traffic and increase sales.",
-  pull: "No contract, cancel any time, and take the website with you if you do.",
+  pull: "Month to month. MSA at signup.",
   includes:
-    "Everything in Minute Man, Militia, and Warlord, plus the FFL Accelerator features.",
+    "Everything in the lower plans, plus the FFL Accelerator features.",
   /** /lp/ only. No 2A. OPS-4 keyword match. */
   lpLead:
     "Ecommerce software for FFL dealers: your store, 21 distributor catalogs, unlimited orders, and FFL Checkout, managed for you.",

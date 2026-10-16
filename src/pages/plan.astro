@@ -8,9 +8,9 @@ import CtaRow from "../components/CtaRow.astro";
 import { FAQ_PLAN } from "../lib/faq";
 import { GROUPS, SETUP, SWITCH_STEPS } from "../lib/plans";
 
-const planTitle = "What is included | FFL Accelerator";
+const planTitle = "What's Included in a Managed FFL Website | FFL Accelerator";
 const planDescription =
-  "Hosting, design, catalogs, checkout, point of sale, email, monitoring, and analytics.";
+  "What a managed FFL website includes: hosting, design, catalogs, checkout, register integration, email, monitoring, analytics, and a webmaster.";
 
 const toc = [
   ...GROUPS.map((group) => ({ href: `#${group.id}`, label: group.title })),
@@ -25,6 +25,7 @@ const toc = [
     alt="An open steel safe"
     focus="center"
     primaryLabel="Schedule Demo"
+    heading="What FFL Accelerator includes"
   />
   <nav
     class="sticky top-16 z-30 border-b border-line bg-paper"

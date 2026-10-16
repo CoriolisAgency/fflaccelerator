@@ -6,7 +6,7 @@ export interface FaqItem {
 export const FAQ_HOME: FaqItem[] = [
   {
     q: "What is FFL Accelerator?",
-    a: "A managed ecommerce website for a store. We build WooCommerce on your domain, connect catalogs and checkout, and run the shop with you. The site is yours.",
+    a: "A managed WooCommerce website for FFL dealers. We build WooCommerce on your domain, connect catalogs and checkout, and run the shop with you. The site is yours.",
   },
   {
     q: "What do I pay to start?",
@@ -14,7 +14,7 @@ export const FAQ_HOME: FaqItem[] = [
   },
   {
     q: "Can I sell distributor catalog items I do not stock?",
-    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or bound book.",
+    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or records.",
   },
   {
     q: "I already have a register. Do I throw it out?",
@@ -30,7 +30,7 @@ export const FAQ_HOME: FaqItem[] = [
   },
   {
     q: "What if I need a lower tier?",
-    a: "FFL Accelerator includes everything in Minute Man, Militia, and Warlord. This site is that offer.",
+    a: "FFL Accelerator includes everything in the lower plans. This site is that offer.",
   },
 ];
 
@@ -41,11 +41,11 @@ export const FAQ_PLAN: FaqItem[] = [
   },
   {
     q: "Can I sell distributor catalog items I do not stock?",
-    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or bound book.",
+    a: "Yes. You can sell distributor catalog items you do not stock. FFL Cockpit streams 21 distributor catalogs, and compliance is handled at checkout. You can still sell what you already have on the shelf. This is not legal advice. We do not run your 4473, NICS, or records.",
   },
   {
     q: "I want a smaller offer.",
-    a: "This page is FFL Accelerator at $569/mo. It includes everything in Minute Man, Militia, and Warlord.",
+    a: "This page is FFL Accelerator at $569/mo. It includes everything in the lower plans.",
   },
   {
     q: "How do I start?",

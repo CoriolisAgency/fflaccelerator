@@ -8,6 +8,7 @@ import CtaRow from "../components/CtaRow.astro";
   description="Notes on store websites. Unsubscribe any time."
   path="/confirmed/"
   emailCapture={false}
+  noindex={true}
 >
   <article class="mx-auto max-w-xl px-5 py-16 sm:px-8">
     <p class="text-sm font-medium text-muted">FFL Accelerator</p>
@@ -18,7 +19,7 @@ import CtaRow from "../components/CtaRow.astro";
       </p>
     </div>
     <div id="confirm-bad" hidden>
-      <h1 class="type-display mt-3 text-5xl">That link did not work</h1>
+      <h2 class="type-display mt-3 text-5xl">That link did not work</h2>
       <p class="mt-4 text-lg leading-relaxed text-muted">
         It may have expired. Open the popup again and we’ll send a fresh
         confirmation.
