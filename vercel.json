@@ -3,6 +3,28 @@
   "installCommand": "if [ -n \"$LEAD_FORM_READ_TOKEN\" ]; then u=\"https://x-access-token:$LEAD_FORM_READ_TOKEN@github.com/\"; git config --global --add url.\"$u\".insteadOf https://github.com/; git config --global --add url.\"$u\".insteadOf ssh://git@github.com/; fi; npm install",
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fflaccelerator.com"
+        }
+      ],
+      "destination": "https://fflaccelerator.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fflaccelerator.com"
+        }
+      ],
+      "destination": "https://fflaccelerator.com/:path*/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
