@@ -2,6 +2,7 @@
 import FeatureLines from "./FeatureLines.astro";
 import { GROUPS } from "../lib/plans";
 import { planAnchor } from "../lib/links";
+import { withBase } from "../lib/base";
 ---
 
 <section id="included" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
@@ -28,10 +29,9 @@ import { planAnchor } from "../lib/links";
   <p class="feature-cards__note text-sm leading-relaxed text-muted">
     FFL Accelerator is a plan from Coriolis, LLC in Greenville, SC.
     <a
-      href="https://www.coriolisagency.com/about"
+      href={withBase("about")}
       class="text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
-      target="_blank"
-      rel="noopener">About Coriolis, LLC</a
+>About Coriolis, LLC</a
     >
   </p>
 </section>
