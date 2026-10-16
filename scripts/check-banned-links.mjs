@@ -37,14 +37,11 @@ const MARKET_HOSTS = [
 ];
 
 /**
- * One allowed proof link (Paul override, 2026-10-07, SEO S3.2). Homepage only.
- * The file must carry exactly one copy of the exact anchor href; that href is
- * stripped before the normal scan, so any other agency mention on the
- * homepage still fails. Every other file stays fully banned (including /lp/).
+ * Scoped allow-list. Empty since FFLA-L6 (Chief 2026-10-16, Gads ad-blocker
+ * fix): the homepage proof link now points to on-site /about/, so every file,
+ * including the homepage, is fully banned from linking to the agency.
  */
-const ALLOWED = [
-  { file: "index.html", href: `https://www.${APEX[0]}/about` },
-];
+const ALLOWED = [];
 
 /** One allowed GSE URL: observe embed script src. Never an href. */
 const GSE_EMBED_SRC = "https://www.gunsearchengine.com/embed.js";
@@ -206,14 +203,14 @@ function selfTest() {
     const hits = scanText(`pass-${i}`, sample);
     if (hits.length) errors.push(`self-test expected pass: ${sample} -> ${hits.join("; ")}`);
   });
-  // Scoped allow-list (S3.2): the one homepage proof link.
+  // FFLA-L6: the old homepage agency proof link now fails everywhere.
   const proof = `<a class="x" href="https://www.${agency}/about" target="_blank" rel="noopener">About Coriolis, LLC</a>`;
   const fileCases = [
-    { name: "dist/index.html", text: `<p>${proof}</p>`, pass: true },
+    { name: "dist/index.html", text: `<p>${proof}</p>`, pass: false },
     { name: "dist/lp/index.html", text: `<p>${proof}</p>`, pass: false },
     { name: "dist/plan/index.html", text: `<p>${proof}</p>`, pass: false },
     { name: "dist/index.html", text: `<p>${proof}</p><p>${proof}</p>`, pass: false },
-    { name: "dist/index.html", text: "<p>no link</p>", pass: false },
+    { name: "dist/index.html", text: "<p>no link</p>", pass: true },
     {
       name: "dist/index.html",
       text: `<p>${proof}</p><a href="https://www.${agency}/ecommerce">x</a>`,
@@ -224,7 +221,7 @@ function selfTest() {
     {
       name: "dist/index.html",
       text: `<p>${proof}</p><script src="${GSE_EMBED_SRC}" data-site-key="${GSE_EMBED_KEY}" data-mode="${GSE_EMBED_MODE}" async></script>`,
-      pass: true,
+      pass: false,
     },
     {
       name: "dist/lp/index.html",
