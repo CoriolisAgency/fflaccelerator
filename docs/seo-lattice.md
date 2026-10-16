@@ -20,7 +20,7 @@ Legacy paths 301 to on-site URLs. See [redirect-map.md](redirect-map.md). `/ffl-
 1. Calls to action go to `/contact/` on this host. Do not 301 `/` or `/plan/`.
 2. Document titles, `og:title`, `og:description`, `twitter:title`, and `twitter:description` do not include a price or a tier name. The brand name FFL Accelerator is fine. Prices and tier names stay in the page body.
 3. FAQ JSON-LD on `/` and `/plan/`.
-4. Organization `url` is `https://fflaccelerator.com`. There is no `sameAs`. No page links to the agency. The homepage proof line links to on-site `/about/` (FFLA-L6, Chief 2026-10-16, Gads no-off-site-link fix; replaces the 2026-10-07 agency /about link). Every page may load `https://www.gunsearchengine.com/embed.js` as a script src (observe mode). The build gate (`scripts/check-banned-links.mjs`) allows no agency href anywhere and only that one GSE script src; GSE hrefs stay banned.
+4. Organization `url` is `https://fflaccelerator.com`. There is no `sameAs`. The homepage carries one link to `https://www.coriolisagency.com/about` (Paul override 2026-10-07). No other page links to the agency. Every page may load `https://www.gunsearchengine.com/embed.js` as a script src (observe mode). The build gate (`scripts/check-banned-links.mjs`) allows exactly that one agency href in `dist/index.html` and that one GSE script src; GSE hrefs stay banned.
 5. Never H1 "RetailBI alternative." Never "switch off RetailBI." Never 4473 automation.
 6. Do not add an OEM or Demand Intelligence pitch on this domain.
 7. Pricing in the body: $569/mo. Setup $500 or $2,500, on `/plan/#setup`.
