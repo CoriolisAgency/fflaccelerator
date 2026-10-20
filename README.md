@@ -39,7 +39,6 @@ CORIOLIS_OS_URL=
 FORM_INTAKE_SECRET=
 LEAD_FORM_READ_TOKEN=
 PUBLIC_GA4_ID=
-PUBLIC_META_PIXEL_ID=
 ```
 
 Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
@@ -47,8 +46,6 @@ Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
 Optional Mailgun, sent only after Ops accepts a lead: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_SUBJECT_PREFIX`.
 
 `PUBLIC_GA4_ID` is a new web stream for this host. gtag is omitted when it is unset. On a successful contact post the page fires `generate_lead` once. A successful popup fires `sign_up` when gtag is loaded.
-
-`PUBLIC_META_PIXEL_ID` is the Meta dataset ID for this host. The pixel is omitted when it is unset. On a successful contact post the page fires `fbq('track','Lead')` once. The email popup does not fire Lead.
 
 Every page loads the GunSearchEngine observe embed (`public/embed.js` on gunsearchengine.com) with site key `pk_live_87fae3f0e1b11b555706fd4216fe44fa` and `data-mode="observe"`. That is a public publishable key. There is no chat widget and no shopper link to GSE.
 
