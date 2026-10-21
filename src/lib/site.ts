@@ -7,17 +7,15 @@ export const SITE = {
     "A managed WooCommerce website for FFL dealers, on your domain. Hosting, design, checkout, catalogs, email, and analytics.",
   role: "A store website you own",
   origin: "Greenville, SC",
-  street: "109 Brennan Place",
   locality: "Greenville",
   region: "SC",
-  postal: "29609",
   phone: "(279) 258-6771",
   phoneHref: "tel:+12792586771",
 } as const;
 
 /** Visible footer identity. Same string on every page. No email. */
 export const FOOTER_IDENTITY =
-  "Coriolis, LLC · 109 Brennan Place, Greenville, SC 29609 · (279) 258-6771";
+  "Coriolis, LLC · Greenville, SC · (279) 258-6771";
 
 export const TRADEMARK_LINE =
   "Google Analytics and Google Search Console are trademarks of Google LLC. WordPress is a trademark of the WordPress Foundation. WooCommerce is a trademark of Automattic Inc. Cloudflare is a trademark of Cloudflare, Inc. Other product and marketplace names are trademarks of their owners.";

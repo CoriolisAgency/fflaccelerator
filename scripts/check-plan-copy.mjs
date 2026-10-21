@@ -154,7 +154,7 @@ for (const rel of doorPages) {
   }
 }
 
-const footer = "Coriolis, LLC · 109 Brennan Place, Greenville, SC 29609 · (279) 258-6771";
+const footer = "Coriolis, LLC · Greenville, SC · (279) 258-6771";
 const trademark =
   "Google Analytics and Google Search Console are trademarks of Google LLC.";
 for (const rel of [
@@ -176,6 +176,22 @@ const planRaw = readFileSync(resolve(root, "dist/plan/index.html"), "utf8");
 const talk = planRaw.match(/Talk to us/g) || [];
 if (talk.length < 9) {
   errors.push(`dist/plan/index.html has ${talk.length} "Talk to us" buttons, expected 9`);
+}
+
+// SEO-U28: no street address anywhere in the built site.
+{
+  const { readdirSync, statSync } = await import("node:fs");
+  const walk = (dir) =>
+    readdirSync(dir).flatMap((name) => {
+      const p = resolve(dir, name);
+      return statSync(p).isDirectory() ? walk(p) : [p];
+    });
+  for (const p of walk(resolve(root, "dist"))) {
+    if (!/\.(html|txt|xml|json)$/.test(p)) continue;
+    if (/brennan|29609/i.test(readFileSync(p, "utf8"))) {
+      errors.push(`${p.slice(root.length + 1)} prints the street address`);
+    }
+  }
 }
 
 if (errors.length) {
