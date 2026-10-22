@@ -15,6 +15,7 @@ export const ON_SITE = {
   dropshipping: "/plan/#inventory-dropshipping",
   guide: "/guides/gun-store-software/",
   about: "/about/",
+  migration: "/ffl-website-migration/",
 } as const;
 
 /** Do not 301 these. (/trends/* was retired to 410 in SEO S3, 2026-10-07.) */
@@ -27,6 +28,9 @@ export const KEEP_PREFIXES = [
   "/guides/gun-store-software",
   "/confirmed",
   "/lp",
+  "/ffl-website-migration",
+  "/managed-ffl-website-hosting",
+  "/ffl-software-home-based-business",
 ] as const;
 
 export type RedirectRule = {
@@ -58,12 +62,13 @@ function fileRedirect(from: string, to: string): RedirectRule {
 export const PERMANENT_REDIRECTS: RedirectRule[] = [
   ...pair("/ffl-ecommerce", ON_SITE.plan),
   ...pair("/ffl-dropshipping", ON_SITE.dropshipping),
-  ...pair("/switch", ON_SITE.home),
+  // SEO-U12 (Chief 10:06 AM ET 2026-10-22): was / since U23.
+  ...pair("/switch", ON_SITE.migration),
   ...pair("/retailbi-and-axis", ON_SITE.home),
   // Old product page ($299 SEO offer). Home, not /plan/ (OPS-2, decision 2026-10-07-seo-ownership).
   ...pair("/pricing", ON_SITE.home),
 
-  ...pair("/switch-n-save", ON_SITE.home),
+  ...pair("/switch-n-save", ON_SITE.migration),
   ...pair(
     "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
     ON_SITE.guide,

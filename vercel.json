@@ -57,12 +57,12 @@
     },
     {
       "source": "/switch",
-      "destination": "/",
+      "destination": "/ffl-website-migration/",
       "statusCode": 301
     },
     {
       "source": "/switch/",
-      "destination": "/",
+      "destination": "/ffl-website-migration/",
       "statusCode": 301
     },
     {
@@ -87,12 +87,12 @@
     },
     {
       "source": "/switch-n-save",
-      "destination": "/",
+      "destination": "/ffl-website-migration/",
       "statusCode": 301
     },
     {
       "source": "/switch-n-save/",
-      "destination": "/",
+      "destination": "/ffl-website-migration/",
       "statusCode": 301
     },
     {

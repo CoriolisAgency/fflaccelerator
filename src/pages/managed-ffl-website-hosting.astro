@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaRow from "../components/CtaRow.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import ProofBar from "../components/ProofBar.astro";
+import LeadForm from "@coriolis/lead-form/LeadForm.astro";
+import { FAQ_HOSTING } from "../lib/faq";
+import { PATHS, linkClass, planAnchor } from "../lib/links";
+import { SITE } from "../lib/site";
+import { withBase } from "../lib/base";
+
+const includes = [
+  "Custom website design",
+  "Your custom domain",
+  "Unlimited hosting, storage and bandwidth",
+  "Unlimited products and orders",
+  "DNS and email administration",
+  "SMTP mail server",
+];
+
+// D-A9 Google review quote, verbatim, attributed by shop name only.
+// The em dash is inside the verbatim quote and stays.
+const quote = {
+  text: "Paul took the time to understand the vision and personality behind Nightshade Optics. He didn’t just create the site and disappear — ongoing support after launch. Five stars all the way.",
+  shop: "Nightshade Optics",
+};
+---
+
+<BaseLayout
+  title="Managed FFL Website Hosting | FFL Accelerator"
+  description="Managed FFL website hosting with a webmaster included. Monitoring, speed work and support on your domain. Backed by WP Engine's 99.95% uptime SLA."
+  path="/managed-ffl-website-hosting/"
+  faq={FAQ_HOSTING}
+>
+  <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h1 class="type-display text-5xl sm:text-6xl">
+      Managed FFL website hosting, with a webmaster included
+    </h1>
+    <p class="mt-6 text-lg leading-relaxed">
+      We build, host, support, and promote your WooCommerce website on your
+      domain. A webmaster is included, so you run the store and we keep the
+      site running.
+    </p>
+    <ProofBar />
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">What managed hosting includes</h2>
+      <ul class="ticks mt-4">
+        {includes.map((line) => <li>{line}</li>)}
+      </ul>
+      <p class="mt-4 leading-relaxed">
+        The full list is under <a href={planAnchor("store-hosting")} class={linkClass}>Store and hosting</a>.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Already have a site? <a href={withBase(PATHS.migration)} class={linkClass}>Switch your FFL website</a> without going dark.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">Your FFL webmaster</h2>
+      <p class="mt-4 leading-relaxed">
+        Webmaster included. Your webmaster covers VIP support for WordPress,
+        WooCommerce, your custom theme and all other plugins. WordPress and
+        plugin updates are included, and so are backups. Support by email
+        and chat is free, and onboarding is concierge style, so you aren't left
+        to set things up alone.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        See <a href={planAnchor("support")} class={linkClass}>Support</a>.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">Uptime, speed and monitoring</h2>
+      <p class="mt-4 leading-relaxed">Backed by WP Engine's 99.95% uptime SLA.</p>
+      <p class="mt-4 leading-relaxed">
+        Uptime monitoring runs around the clock, with advanced site monitoring
+        on top. Page speed and the shopping cart are both tuned for you. Web
+        rules keep bad bots off the site.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        See <a href={planAnchor("performance-monitoring")} class={linkClass}>Performance and monitoring</a> and <a href={planAnchor("sla")} class={linkClass}>SLA</a>.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">You own the site</h2>
+      <p class="mt-4 leading-relaxed">
+        We allow FFL stores. It's WordPress and WooCommerce on your domain.
+        Month to month. MSA at
+        signup. Cancel and the site goes with you.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        See <a href={withBase(PATHS.about)} class={linkClass}>who builds it</a>.
+      </p>
+    </section>
+
+    <figure class="mt-12 border-t border-line pt-8">
+      <blockquote class="text-lg leading-relaxed">
+        <p>"{quote.text}"</p>
+      </blockquote>
+      <figcaption class="mt-2 text-sm font-medium tracking-wide text-muted">
+        {quote.shop}
+      </figcaption>
+    </figure>
+  </article>
+
+  <FaqBlock items={FAQ_HOSTING} title="Questions about hosting and upkeep" />
+
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h2 class="type-display text-3xl">Want someone else to run the site?</h2>
+    <p class="mt-4 text-lg leading-relaxed">
+      Tell us about your store and the site you have now. We'll show you what
+      we'd take off your plate. Rather talk? Call <a href={SITE.phoneHref} class={linkClass}>{SITE.phone}</a>.
+    </p>
+    <div class="relative mt-8 bg-paper-2 p-6 sm:p-8">
+      <LeadForm site="fflaccelerator" defaultPillar="Ecommerce" pillars={["Ecommerce"]} />
+    </div>
+    <CtaRow />
+  </section>
+</BaseLayout>

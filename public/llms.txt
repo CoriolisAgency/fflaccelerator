@@ -11,6 +11,9 @@ A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, 
 - https://fflaccelerator.com/ : the offer, a managed FFL website you own.
 - https://fflaccelerator.com/plan/ : what a managed FFL website includes, plus setup.
 - https://fflaccelerator.com/guides/gun-store-software/ : how to think about FFL software; the website is the job, records software is not.
+- https://fflaccelerator.com/ffl-website-migration/ : how an FFL website migration works without going dark.
+- https://fflaccelerator.com/managed-ffl-website-hosting/ : managed FFL website hosting, with a webmaster included.
+- https://fflaccelerator.com/ffl-software-home-based-business/ : FFL software for a home-based business.
 - https://fflaccelerator.com/contact/ : start or ask a question.
 - https://fflaccelerator.com/about/ : who builds it.
 - https://fflaccelerator.com/privacy/ : privacy.

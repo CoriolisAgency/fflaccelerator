@@ -17,8 +17,13 @@ export const LASTMOD: Readonly<Record<string, string>> = {
   // plans.ts WPE uptime SLA line). / and /plan/ via plans.ts + IncludedIndex.
   // SEO-U6 commit (home H1, Hero proof bar on / and /plan/, FAQ_HOME question).
   "/": "2026-10-22T09:32:29-04:00",
-  "/plan/": "2026-10-22T09:32:29-04:00",
+  // SEO-U12 commit (/plan/ and guide links to the three new pages).
+  "/plan/": "2026-10-22T10:10:59-04:00",
   "/about/": "2026-10-22T09:03:50-04:00",
   "/contact/": "2026-10-22T09:03:50-04:00",
-  "/guides/gun-store-software/": "2026-10-22T09:03:50-04:00",
+  "/guides/gun-store-software/": "2026-10-22T10:10:59-04:00",
+  // SEO-U12 commit (new pages).
+  "/ffl-website-migration/": "2026-10-22T10:10:59-04:00",
+  "/managed-ffl-website-hosting/": "2026-10-22T10:10:59-04:00",
+  "/ffl-software-home-based-business/": "2026-10-22T10:10:59-04:00",
 };
