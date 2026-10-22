@@ -120,7 +120,6 @@ export const GROUPS: readonly FeatureGroup[] = [
           "AIM Point of Sale",
           "MicroBiz POS",
           "Trident 1 POS",
-          "Corestore POS",
           "and other registers",
         ],
       },
