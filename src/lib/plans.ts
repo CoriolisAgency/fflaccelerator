@@ -163,7 +163,7 @@ export const GROUPS: readonly FeatureGroup[] = [
   {
     id: "sla",
     title: "SLA",
-    features: ["SLA with 99.95% uptime guarantee"],
+    features: ["Backed by WP Engine's 99.95% uptime SLA"],
   },
 ];
 

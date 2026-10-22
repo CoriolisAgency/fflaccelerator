@@ -1,49 +1,159 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaRow from "../../components/CtaRow.astro";
+import FaqBlock from "../../components/FaqBlock.astro";
+import LeadForm from "@coriolis/lead-form/LeadForm.astro";
+import { FAQ_GUIDE } from "../../lib/faq";
+
+const jobs = [
+  {
+    t: "Records",
+    d: [
+      "Your records software keeps the bound book and the paperwork your license depends on. That job belongs to a dedicated records vendor and your counsel. It is not us. We don't run your records, and nothing on this site is legal advice.",
+      "Pick records software for accuracy, not looks. Ask how it backs up your data and how you get your data out if you switch.",
+    ],
+  },
+  {
+    t: "The register",
+    d: [
+      "The register is the counter. It rings up the sale and tracks what is on the shelf. You probably have one already. Keep it.",
+      "A new website should not force a new register. If a website vendor says you have to switch registers to get their site, ask why.",
+    ],
+  },
+  {
+    t: "The website",
+    d: [
+      "The website is your public store. It's where shoppers find you, see what you carry, and check out. It should live on your own domain, and you should own it.",
+      "This is the job FFL Accelerator does. We build a WooCommerce store on your domain, add FFL Checkout, connect distributor catalogs if you want them, and run the site for you. Month to month.",
+    ],
+  },
+];
+
+const fits = [
+  "Picture three boxes on the same counter. Records answer to your license. The register answers to your floor. The website answers to shoppers.",
+  "The website and the register can share inventory. When they're connected, the counter and the site work from the same stock. FFL Accelerator connects to the register you already run by API. You keep that register. Connecting it is your call. Some dealers want the floor and the site in sync. Others sell catalog items online and keep the counter on its own.",
+  "The website can also do something the register can't. It can list what's in distributor catalogs, not just what's on your shelf. FFL Accelerator carries 21 distributor catalogs, with inventory updates every 20 minutes and automated dropshipping. Sell your own stock, the catalogs, or both.",
+  "The website does not keep your records. FFL Checkout handles the FFL step at checkout. Your records system stays your records system.",
+];
+
+const asks = [
+  {
+    q: "Who owns the site?",
+    a: "If you leave, do you take the website and the domain, or does it go dark?",
+  },
+  { q: "Is it on my domain?", a: "Your name, your address bar, your pages." },
+  { q: "Do I have to change registers?", a: "The right answer is no." },
+  {
+    q: "Can I sell what I don't stock?",
+    a: "Ask how many distributor catalogs, and how often inventory updates.",
+  },
+  {
+    q: "How does checkout handle the FFL step?",
+    a: "Have them show you a real order, start to finish.",
+  },
+  {
+    q: "Who fixes it when it breaks?",
+    a: "Ask for the support channel and the response time. Then ask who does the work: you or them.",
+  },
+  {
+    q: "Am I locked in?",
+    a: "Ask what the term is and what happens when you leave.",
+  },
+  {
+    q: "Can you move what already ranks?",
+    a: "If you have a site today, ask how they keep the pages Google already shows.",
+  },
+];
+
+const answers = [
+  "You own it. It's WordPress and WooCommerce. Cancel and the site goes with you.",
+  "We build the new store on your domain before you give your current vendor notice.",
+  "Keep your register. We connect it only if you want the counter and the site in sync.",
+  "21 distributor catalogs, 20-minute inventory updates, and automated dropshipping.",
+  "FFL Checkout is included.",
+  "A webmaster is included, with email and chat support and a one hour response time.",
+  "We move the catalog you care about and redirect the pages that already rank.",
+  "Month to month. MSA at signup.",
+];
 ---
 
 <BaseLayout
-  title="FFL software is not one product | FFL Accelerator"
-  description="Records, the register, and the website are different jobs. This site is the website."
+  title="FFL Software: Three Jobs, Not One Product | FFL Accelerator"
+  description="Records, the register, and the website are three different FFL software jobs. What each one does, what to ask a vendor, and where the website fits."
   path="/guides/gun-store-software/"
+  faq={FAQ_GUIDE}
 >
   <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
     <p class="text-sm font-medium text-muted">Guide</p>
     <h1 class="type-display mt-3 text-5xl sm:text-6xl">
-      FFL software is not one product
+      FFL software is three jobs, not one product
     </h1>
     <p class="mt-6 text-lg leading-relaxed">
-      People search for the best FFL software and get three different jobs in
-      one pile. Your bound book is not your website. Your register is not your
-      website. FFL Accelerator is the website.
+      Search for the best FFL software and you get three different jobs in one
+      pile. Records software keeps your bound book. A register runs the
+      counter. A website sells online. They are separate systems, so buy them
+      that way.
+    </p>
+    <p class="mt-4 text-lg leading-relaxed">
+      This guide sorts them out: what each job is, what to ask before you sign,
+      and where your website fits. FFL Accelerator is the website. We'll say
+      that up front.
     </p>
 
-    <h2 class="type-display mt-12 text-3xl">Three jobs</h2>
+    <h2 class="type-display mt-12 text-3xl">The three jobs</h2>
     <div class="mt-4">
       {
-        [
-          {
-            t: "Records",
-            d: "Your records system and your counsel. Dedicated vendors. Not us.",
-          },
-          {
-            t: "The register",
-            d: "The counter system you already run. That is sell-through. Keep it.",
-          },
-          {
-            t: "The website",
-            d: "The public store you own. WooCommerce, FFL checkout, optional distributor catalogs. That is FFL Accelerator.",
-          },
-        ].map((b) => (
+        jobs.map((b) => (
           <section class="border-t border-line py-5">
             <h3 class="type-display text-2xl">{b.t}</h3>
-            <p class="mt-2 max-w-xl">{b.d}</p>
+            {b.d.map((line) => (
+              <p class="mt-2 max-w-xl">{line}</p>
+            ))}
           </section>
         ))
       }
     </div>
 
-    <CtaRow />
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">Where the website fits</h2>
+      {fits.map((line) => <p class="mt-4 leading-relaxed">{line}</p>)}
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">What to ask a website vendor</h2>
+      <p class="mt-4 leading-relaxed">
+        Ask these before you sign. Write the answers down.
+      </p>
+      <ol class="mt-4 list-decimal space-y-3 pl-6">
+        {
+          asks.map((item) => (
+            <li class="leading-relaxed">
+              <strong>{item.q}</strong> {item.a}
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">How FFL Accelerator answers</h2>
+      <ul class="ticks mt-4">
+        {answers.map((line) => <li>{line}</li>)}
+      </ul>
+    </section>
   </article>
+
+  <FaqBlock items={FAQ_GUIDE} title="Questions about FFL software" />
+
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h2 class="type-display text-3xl">Want the website part done for you?</h2>
+    <p class="mt-4 text-lg leading-relaxed">
+      Tell us about your store. We'll look at what you run today and show you
+      where the website fits.
+    </p>
+    <div class="relative mt-8 bg-paper-2 p-6 sm:p-8">
+      <LeadForm site="fflaccelerator" defaultPillar="Ecommerce" pillars={["Ecommerce"]} />
+    </div>
+    <CtaRow />
+  </section>
 </BaseLayout>

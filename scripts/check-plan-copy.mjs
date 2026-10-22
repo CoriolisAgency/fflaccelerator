@@ -57,7 +57,7 @@ const LINES = [
   "Abandoned Cart",
   "Google Analytics Admin",
   "On-site search",
-  "SLA with 99.95% uptime guarantee",
+  "Backed by WP Engine's 99.95% uptime SLA",
 ];
 
 const SECTION_IDS = [
@@ -87,6 +87,7 @@ const FORBIDDEN = [
   "On-site technical SEO",
   "Cloudflare DNS & CDN",
   "Corestore POS",
+  "SLA with 99.95% uptime guarantee",
 ];
 
 function decode(html) {
@@ -146,11 +147,21 @@ if (/<ul[\s\S]*21 distributor catalogs[\s\S]*<ul/i.test(inventory)) {
   errors.push("21 distributor catalogs has a nested sub-list");
 }
 
+// Campaign doors: no /trends/ links. /plan/ has no /guides/ links. / has
+// exactly one, the SEO-U23 (c) POS-card line to the slash-form guide URL.
+const GUIDE_HREF = 'href="/guides/gun-store-software/"';
 const doorPages = ["dist/index.html", "dist/plan/index.html"];
 for (const rel of doorPages) {
   const raw = readFileSync(resolve(root, rel), "utf8");
-  if (/href="[^"]*\/guides\//.test(raw) || /href="[^"]*\/trends\//.test(raw)) {
-    errors.push(`${rel} links to /guides/ or /trends/`);
+  if (/href="[^"]*\/trends\//.test(raw)) {
+    errors.push(`${rel} links to /trends/`);
+  }
+  const guides = raw.match(/href="[^"]*\/guides\/[^"]*"/g) || [];
+  const allowed = rel === "dist/index.html" ? [GUIDE_HREF] : [];
+  if (guides.length !== allowed.length || guides.some((h, i) => h !== allowed[i])) {
+    errors.push(
+      `${rel} guide links: expected ${JSON.stringify(allowed)}, found ${JSON.stringify(guides)}`,
+    );
   }
 }
 

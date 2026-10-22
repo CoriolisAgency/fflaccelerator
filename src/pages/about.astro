@@ -3,11 +3,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaRow from "../components/CtaRow.astro";
 import { SITE } from "../lib/site";
 import { withBase } from "../lib/base";
+
+// D-A9 Google review quotes, verbatim, attributed by shop name only.
+// First two only (Chief 8:54): Big RanDaddy's waits on SEO-U8 Flag 3.
+const quotes = [
+  {
+    text: "Paul and his team took the time to understand that we are not a simple one-category retail operation. Responsive, patient, and willing to work through the details instead of a one-size-fits-all website.",
+    shop: "Down Range Chico",
+  },
+  {
+    text: "Paul took the time to understand the vision and personality behind Nightshade Optics. He didn’t just create the site and disappear — ongoing support after launch. Five stars all the way.",
+    shop: "Nightshade Optics",
+  },
+];
 ---
 
 <BaseLayout
   title="About | FFL Accelerator"
-  description="Coriolis, LLC builds store websites from Greenville, SC."
+  description="Coriolis, LLC builds and runs FFL websites from Greenville, SC. 100+ clients. 5-star Google rating from 17 reviews."
   path="/about/"
 >
   <section class="grid lg:grid-cols-2">
@@ -18,7 +31,8 @@ import { withBase } from "../lib/base";
         We build FFL websites.
       </h1>
       <p class="mt-4 text-sm font-medium tracking-wide text-muted">
-        Coriolis, LLC. Greenville, SC.
+        Coriolis, LLC. Based in Greenville, SC. We work with dealers across the
+        United States.
       </p>
       <p class="mt-8 max-w-xl text-lg leading-relaxed">
         FFL Accelerator is the managed ecommerce plan from Coriolis for FFLs,
@@ -30,6 +44,27 @@ import { withBase } from "../lib/base";
       <p class="type-pull mt-8 max-w-xl text-2xl sm:text-3xl">
         Month to month. MSA at signup. Take the website with you if you leave.
       </p>
+      <p class="mt-8 max-w-xl text-lg leading-relaxed">
+        100+ clients. 5-star Google rating from 17 reviews.
+      </p>
+      <p class="mt-2 max-w-xl text-sm font-medium tracking-wide text-muted">
+        Member of NSSF, FPC and GOA.
+      </p>
+      <section class="mt-10 max-w-xl border-t border-line pt-8">
+        <h2 class="type-display text-3xl text-ink">What dealers say</h2>
+        {
+          quotes.map((item) => (
+            <figure class="mt-6">
+              <blockquote class="text-lg leading-relaxed">
+                <p>"{item.text}"</p>
+              </blockquote>
+              <figcaption class="mt-2 text-sm font-medium tracking-wide text-muted">
+                {item.shop}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </section>
       <p class="mt-8">
         <a
           href={SITE.phoneHref}

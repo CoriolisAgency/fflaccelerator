@@ -52,3 +52,30 @@ export const FAQ_PLAN: FaqItem[] = [
     a: "Use the contact form. We look at the store you have, pick the $500 or $2,500 setup, and build on your domain before you give anyone notice.",
   },
 ];
+
+export const FAQ_GUIDE: FaqItem[] = [
+  {
+    q: "What is FFL software?",
+    a: "It is three jobs sold under one name. Records software keeps your bound book. A register runs the counter. A website sells online. They are usually separate products.",
+  },
+  {
+    q: "What is the best FFL software?",
+    a: "The best one for each job. Pick records software for accuracy, a register your staff likes, and a website you own on your own domain. FFL Accelerator only does the website.",
+  },
+  {
+    q: "Do I need a new register to get a new website?",
+    a: "No. Keep the register you already run. FFL Accelerator connects to it by API if you want the counter and the site to share inventory.",
+  },
+  {
+    q: "Does FFL Accelerator keep my records?",
+    a: "No. Records belong to your records vendor and your counsel. We don't run your records, and this is not legal advice.",
+  },
+  {
+    q: "What should I ask an FFL website vendor?",
+    a: "Ask who owns the site if you leave, whether it runs on your domain, whether you have to change registers, how many distributor catalogs it carries, who fixes it when it breaks, and whether it is month to month.",
+  },
+  {
+    q: "Can I sell products I don't stock?",
+    a: "Yes. FFL Accelerator carries 21 distributor catalogs, with inventory updates every 20 minutes and automated dropshipping. Sell your own stock, the catalogs, or both.",
+  },
+];
