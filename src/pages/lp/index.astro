@@ -23,8 +23,8 @@ const description = SITE.description;
   >
     <div class="lg:col-span-5">
       <p class="text-sm font-medium text-muted">{PLAN.eyebrow}</p>
-      <h1 class="type-display mt-3 text-5xl text-ink sm:text-6xl">{PLAN.name}</h1>
-      <p class="mt-3 text-xl leading-snug text-ink">A managed WooCommerce website for FFL dealers.</p>
+      <h1 class="lp-hero__title mt-3 text-ink">FFL Ecommerce <span class="lp-hero__accent">as a Service</span></h1>
+      <p class="lp-hero__sub mt-4 text-ink">Your online store, run for you.</p>
       <p class="mt-4 text-sm font-medium tracking-wide text-muted">{PLAN.badge}</p>
       <p class="type-display mt-6 text-3xl">{PLAN.priceLabel}</p>
       <p class="mt-6 max-w-md text-lg leading-relaxed">{PLAN.lpLead}</p>
@@ -91,7 +91,7 @@ const description = SITE.description;
         <article id="pos" class="border-t border-line pt-5">
           <h3 class="type-display text-2xl">Keep the register you run</h3>
           <p class="mt-3 leading-relaxed">
-            The site and the counter share inventory by API. Works with AIM Point of
+            The site and the counter share inventory by API, with two-way sync. Works with AIM Point of
             Sale, GunBiz POS, Trident 1 POS, and other registers.
           </p>
         </article>
@@ -121,3 +121,54 @@ const description = SITE.description;
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /*
+   * FFLA-LP-H1: /lp/ H1 and subline match the homepage hero and the
+   * "FFL Ecommerce as a Service" ads (HomeHero.astro type treatment:
+   * Barlow Condensed, uppercase, #f49e10 bar under "as a Service").
+   * HomeHero's rules are scoped to the navy homepage hero, so the type
+   * rules are mirrored here for the paper /lp/ column; the homepage is
+   * unchanged. The H1 wraps inside its own column at every width.
+   */
+  .lp-hero__title {
+    max-width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .lp-hero__accent {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 0.06em;
+    padding-bottom: 0.2em;
+    background: linear-gradient(#f49e10, #f49e10) left bottom / 100% 0.085em
+      no-repeat;
+  }
+
+  .lp-hero__sub {
+    max-width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(1.3rem, 5.4vw, 1.75rem);
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  @media (width >= 1024px) {
+    .lp-hero__title {
+      font-size: clamp(2.75rem, 4.4vw, 4rem);
+    }
+
+    .lp-hero__sub {
+      font-size: clamp(1.4rem, 1.9vw, 1.75rem);
+    }
+  }
+</style>
