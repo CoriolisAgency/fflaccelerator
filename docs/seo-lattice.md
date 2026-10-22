@@ -72,7 +72,7 @@ Not targeted anywhere here: record-keeping, compliance, "ATF approved" or backgr
 | ffl ecommerce, ffl online store, ecommerce for ffl dealers | Agency SEO; FFLA Ads only |
 | ffl website, ffl website design, ffl dealer website, ffl website builder | Split: agency keeps head terms, "builder" and "best"; FFLA takes "managed / done-for-you ffl website" on `/`. Ads on both |
 | ffl dropshipping | Agency SEO; FFLA Ads only |
-| register integrations (AIM, MicroBiz, Trident 1, Corestore) | Agency SEO; FFLA Ads only |
+| register integrations (AIM, MicroBiz, Trident 1) | Agency SEO; FFLA Ads only |
 | ffl email marketing | Agency SEO; FFLA Ads only |
 | woocommerce for ffl | Agency SEO; FFLA Ads only |
 | ffl website hosting | Split: agency keeps "hosting" head terms and plans; FFLA takes maintenance / webmaster / support / "managed hosting" |
