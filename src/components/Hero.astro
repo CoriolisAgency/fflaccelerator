@@ -1,5 +1,6 @@
 ---
 import CtaRow from "./CtaRow.astro";
+import ProofBar from "./ProofBar.astro";
 import { PLAN } from "../lib/plans";
 import { withBase } from "../lib/base";
 
@@ -39,6 +40,7 @@ const {
     </p>
     <p class="mt-4 max-w-xl text-base leading-relaxed text-muted">{PLAN.stack}</p>
     <p class="type-pull mt-8 max-w-xl text-2xl text-ink sm:text-3xl">{PLAN.pull}</p>
+    <ProofBar />
     <CtaRow primaryHref={primaryHref} primaryLabel={primaryLabel} />
   </div>
   <div class="hero-photo">

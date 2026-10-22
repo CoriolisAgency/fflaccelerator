@@ -1,0 +1,43 @@
+---
+/**
+ * SEO-U6 P1 proof bar, rendered by Hero on / and /plan/.
+ * Plain text only: no links, logos, star graphics or review schema.
+ * Dots are CSS-only (li + li::before) so screen readers skip them;
+ * on mobile the items stack with no dots.
+ */
+const ITEMS = [
+  "100+ clients",
+  "5-star Google rating from 17 reviews",
+  "Member of NSSF, FPC and GOA",
+  "Backed by WP Engine's 99.95% uptime SLA",
+];
+---
+
+<ul
+  class="proof-bar mt-6 max-w-xl text-sm font-medium tracking-wide text-muted"
+  aria-label="Why dealers pick FFL Accelerator"
+>
+  {ITEMS.map((item) => <li>{item}</li>)}
+</ul>
+
+<style>
+  .proof-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  @media (width >= 640px) {
+    .proof-bar {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .proof-bar li + li::before {
+      content: "\00B7";
+      padding: 0 0.5em;
+    }
+  }
+</style>
