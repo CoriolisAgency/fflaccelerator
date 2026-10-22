@@ -21,6 +21,15 @@ import { withBase } from "../lib/base";
           </h3>
           <div class="feature-card__body">
             <FeatureLines features={group.features} />
+            {group.id === "pos" && (
+              <p class="mt-4 text-sm leading-relaxed">
+                Your register and your records are separate jobs. See{" "}
+                <a
+                  href={withBase("guides/gun-store-software/")}
+                  class="text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
+                >which FFL software does which job</a>.
+              </p>
+            )}
           </div>
         </article>
       ))

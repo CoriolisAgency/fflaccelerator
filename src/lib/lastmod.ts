@@ -13,11 +13,11 @@
  * /privacy/ is noindex, follow and out of the sitemap, so it has no entry.
  */
 export const LASTMOD: Readonly<Record<string, string>> = {
-  // 60313fd "drop Corestore from plans" (#37), via src/lib/plans.ts
-  "/": "2026-10-21T22:13:06-04:00",
-  "/plan/": "2026-10-21T22:13:06-04:00",
-  // 0a72a84 SEO-U28 address removal, via src/lib/site.ts (contact: page file)
-  "/about/": "2026-10-21T15:40:54-04:00",
-  "/contact/": "2026-10-21T15:40:54-04:00",
-  "/guides/gun-store-software/": "2026-10-21T15:40:54-04:00",
+  // SEO-U23 part 3 commit (homepage guide link, guide/about/contact copy,
+  // plans.ts WPE uptime SLA line). / and /plan/ via plans.ts + IncludedIndex.
+  "/": "2026-10-22T09:03:50-04:00",
+  "/plan/": "2026-10-22T09:03:50-04:00",
+  "/about/": "2026-10-22T09:03:50-04:00",
+  "/contact/": "2026-10-22T09:03:50-04:00",
+  "/guides/gun-store-software/": "2026-10-22T09:03:50-04:00",
 };
