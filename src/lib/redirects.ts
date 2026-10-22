@@ -46,9 +46,16 @@ function pair(from: string, to: string): RedirectRule[] {
   ];
 }
 
+/** One exact-path 301 for a file URL (for example /sitemap.xml). */
+function fileRedirect(from: string, to: string): RedirectRule {
+  if (!/\.[a-zA-Z0-9]+$/.test(from)) {
+    throw new Error(`fileRedirect is for file paths only: ${from}`);
+  }
+  return { from, to, status: 301 };
+}
+
 /** Permanent 301s. Slash and slashless both go to an on-site destination. */
 export const PERMANENT_REDIRECTS: RedirectRule[] = [
-  ...pair("/gunsearchagent-included", ON_SITE.home),
   ...pair("/ffl-ecommerce", ON_SITE.plan),
   ...pair("/ffl-dropshipping", ON_SITE.dropshipping),
   ...pair("/switch", ON_SITE.home),
@@ -70,10 +77,16 @@ export const PERMANENT_REDIRECTS: RedirectRule[] = [
     "/top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage",
     ON_SITE.guide,
   ),
-  ...pair("/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl", "/"),
-  ...pair("/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl", "/"),
-  ...pair("/understanding-the-different-types-of-ffls", "/"),
   ...pair("/author/devopscoriolisagency-com", ON_SITE.about),
+  // SEO-U23: old WordPress slugs for live pages (404 before this).
+  ...pair("/privacy-policy", "/privacy/"),
+  ...pair("/privacy-policy-2", "/privacy/"),
+  ...pair("/contact-us", "/contact/"),
+  // SEO-U23: one sitemap index. The static /sitemap.xml and the WordPress
+  // /sitemap_index.xml alias are gone; old fetchers land on the Astro index.
+  // Files, so no slashed form (and no Astro route) is registered.
+  fileRedirect("/sitemap.xml", "/sitemap-index.xml"),
+  fileRedirect("/sitemap_index.xml", "/sitemap-index.xml"),
 ];
 
 function gonePair(from: string): [string, string] {
@@ -119,10 +132,34 @@ const GONE_RETIRED = [
   ...gonePair("/category/shot-show"),
 ] as const;
 
+/**
+ * Retired in SEO-U23 (Chief, 2026-10-22). 410, not 301: no equivalent page.
+ * - /gunsearchagent-included: retired product; its successor is off-site and
+ *   FFLA cannot link it. Was 301 to /.
+ * - Three FFL-licensing articles: no equivalent page. Were 301 to /.
+ * - Old WordPress posts and service pages that answered 404.
+ */
+const GONE_U23 = [
+  ...gonePair("/gunsearchagent-included"),
+  ...gonePair("/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl"),
+  ...gonePair("/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl"),
+  ...gonePair("/understanding-the-different-types-of-ffls"),
+  ...gonePair("/starter-kits-for-ffls"),
+  ...gonePair(
+    "/the-average-roi-for-email-marketing-is-around-42-for-every-1-spent",
+  ),
+  ...gonePair("/coriolis-agency-announces-2026-shot-show-attendance"),
+  ...gonePair("/ffl-sales-accelerator"),
+  ...gonePair("/services/traffic-accelerator"),
+  ...gonePair("/testimonials"),
+  ...gonePair("/safety-policy"),
+] as const;
+
 /** Exact paths to 410 (gone). Do not invent replacement pages. */
 export const GONE_EXACT = [
   ...GONE_VENDOR_WP,
   ...GONE_RETIRED,
+  ...GONE_U23,
   "/wp-login.php",
   "/xmlrpc.php",
   "/wp-admin",
@@ -228,6 +265,8 @@ export function isSitemapExcluded(pageUrl: string): boolean {
     "/retailbi-and-axis",
     "/pricing",
     "/gunsearchagent-included",
+    // SEO-U23: noindex, follow. Stays linked in the footer.
+    "/privacy",
     "/how-to-start-a-gun-store-essential-tips-for-new-firearms-dealers",
   ];
   return skip.some(
@@ -272,7 +311,7 @@ export function toBulkRedirectCsv(): string {
     const target = `https://fflaccelerator.com${rule.to}`;
     return `${source},${target},301,TRUE,FALSE,FALSE,FALSE`;
   });
-  for (const path of [...GONE_VENDOR_WP, ...GONE_RETIRED]) {
+  for (const path of [...GONE_VENDOR_WP, ...GONE_RETIRED, ...GONE_U23]) {
     const source = `fflaccelerator.com${path}`;
     rows.push(`${source},https://${source},410,TRUE,FALSE,FALSE,FALSE`);
   }

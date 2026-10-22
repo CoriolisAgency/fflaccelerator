@@ -2,8 +2,6 @@
 # Do not 301 / or /plan/. The campaign door stays on this host.
 # Destinations stay on this host.
 
-/gunsearchagent-included / 301
-/gunsearchagent-included/ / 301
 /ffl-ecommerce /plan/ 301
 /ffl-ecommerce/ /plan/ 301
 /ffl-dropshipping /plan/#inventory-dropshipping 301
@@ -24,14 +22,16 @@
 /category/4473/ /guides/gun-store-software/ 301
 /top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage /guides/gun-store-software/ 301
 /top-5-reasons-firearms-retailers-should-switch-to-electronic-4473-storage/ /guides/gun-store-software/ 301
-/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl / 301
-/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/ / 301
-/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl / 301
-/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/ / 301
-/understanding-the-different-types-of-ffls / 301
-/understanding-the-different-types-of-ffls/ / 301
 /author/devopscoriolisagency-com /about/ 301
 /author/devopscoriolisagency-com/ /about/ 301
+/privacy-policy /privacy/ 301
+/privacy-policy/ /privacy/ 301
+/privacy-policy-2 /privacy/ 301
+/privacy-policy-2/ /privacy/ 301
+/contact-us /contact/ 301
+/contact-us/ /contact/ 301
+/sitemap.xml /sitemap-index.xml 301
+/sitemap_index.xml /sitemap-index.xml 301
 
 # Leftover WordPress / Woo junk with no real destination. 410 Gone
 /get-your-ffl-sot-with-orchids-ffl-university 410
@@ -70,6 +70,28 @@
 /trends/2025-q2/ 410
 /category/shot-show 410
 /category/shot-show/ 410
+/gunsearchagent-included 410
+/gunsearchagent-included/ 410
+/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl 410
+/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/ 410
+/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl 410
+/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/ 410
+/understanding-the-different-types-of-ffls 410
+/understanding-the-different-types-of-ffls/ 410
+/starter-kits-for-ffls 410
+/starter-kits-for-ffls/ 410
+/the-average-roi-for-email-marketing-is-around-42-for-every-1-spent 410
+/the-average-roi-for-email-marketing-is-around-42-for-every-1-spent/ 410
+/coriolis-agency-announces-2026-shot-show-attendance 410
+/coriolis-agency-announces-2026-shot-show-attendance/ 410
+/ffl-sales-accelerator 410
+/ffl-sales-accelerator/ 410
+/services/traffic-accelerator 410
+/services/traffic-accelerator/ 410
+/testimonials 410
+/testimonials/ 410
+/safety-policy 410
+/safety-policy/ 410
 /wp-login.php 410
 /xmlrpc.php 410
 /wp-admin 410
