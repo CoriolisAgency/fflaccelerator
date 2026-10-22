@@ -106,8 +106,9 @@ footer :focus-visible {
 }
 
 .hero-title {
-  white-space: nowrap;
-  text-wrap: nowrap;
+  white-space: normal;
+  text-wrap: balance;
+  overflow-wrap: break-word;
   font-size: clamp(1.85rem, 11.5vw, 2.75rem);
 }
 
@@ -119,12 +120,17 @@ footer :focus-visible {
 
 @media (width >= 1024px) {
   .hero-title {
-    font-size: clamp(2.85rem, 4.5vw, 4.5rem);
+    font-size: clamp(2.5rem, 3.6vw, 3.5rem);
   }
 }
 
 .hero-grid {
   display: grid;
+}
+
+/* Let grid columns shrink below their content so the H1 wraps instead of running under the photo. */
+.hero-grid > * {
+  min-width: 0;
 }
 
 .hero-photo {
