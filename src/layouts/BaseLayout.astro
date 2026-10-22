@@ -3,7 +3,7 @@ import "../styles/global.css";
 import AccelEmailCapture from "../components/AccelEmailCapture.astro";
 import SiteChrome from "../components/SiteChrome.astro";
 import UtmCapture from "@coriolis/lead-form/UtmCapture.astro";
-import { SITE, SITE_ORIGIN, CANON_PATHS, GSE_EMBED } from "../lib/site";
+import { SITE, SITE_ORIGIN, CANON_PATHS, DEFAULT_OG_IMAGE, GSE_EMBED } from "../lib/site";
 import { withBase } from "../lib/base";
 import type { FaqItem } from "../lib/faq";
 
@@ -13,6 +13,10 @@ interface Props {
   path?: string;
   /** Path under public/, no leading slash */
   ogImagePath?: string;
+  /** Pixel size and alt of a dedicated ogImagePath. Defaults apply only to the site-wide image. */
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
   /** Absolute override when the constructed URL is not enough. */
   canonicalUrl?: string;
   faq?: FaqItem[];
@@ -29,7 +33,10 @@ const {
   title = SITE.titleDefault,
   description = SITE.description,
   path = "/",
-  ogImagePath = CANON_PATHS.logo,
+  ogImagePath,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageAlt,
   canonicalUrl,
   faq,
   emailCapture = true,
@@ -43,7 +50,10 @@ const gaId = import.meta.env.PUBLIC_GA4_ID;
 const siteOrigin = Astro.site ?? new URL(SITE_ORIGIN);
 const pagePath = path === "/" ? "/" : withBase(path);
 const canonical = canonicalUrl ?? new URL(pagePath, siteOrigin).href;
-const ogAbs = new URL(withBase(ogImagePath), siteOrigin).href;
+const og = ogImagePath
+  ? { path: ogImagePath, width: ogImageWidth, height: ogImageHeight, alt: ogImageAlt ?? title }
+  : DEFAULT_OG_IMAGE;
+const ogAbs = new URL(withBase(og.path), siteOrigin).href;
 
 const graph: Record<string, unknown>[] = [
   {
@@ -138,10 +148,14 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogAbs} />
+    {og.width && <meta property="og:image:width" content={String(og.width)} />}
+    {og.height && <meta property="og:image:height" content={String(og.height)} />}
+    <meta property="og:image:alt" content={og.alt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogAbs} />
+    <meta name="twitter:image:alt" content={og.alt} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <UtmCapture />
     {

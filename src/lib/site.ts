@@ -34,3 +34,11 @@ export const CANON_PATHS = {
   icon: "brand/ffl-accelerator-icon.png",
   sales: "brand/sales-accelerator.jpg",
 } as const;
+
+/** Site-wide default share image (og:image, twitter:image). 1200x630 crop of the homepage hero. */
+export const DEFAULT_OG_IMAGE = {
+  path: "og/ffla-hero-og.jpg",
+  width: 1200,
+  height: 630,
+  alt: "FFL Accelerator: FFL Ecommerce as a Service. Your online store, run for you.",
+} as const;
