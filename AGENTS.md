@@ -17,6 +17,7 @@ Then:
 
 This block wins over anything below it, including any "push it" or work-on-main instructions. `BATTLEPLAN.md` and `BATTLEPLAN-ARCHIVE.md` in coriolis are a read-only archive now.
 Lane for this repo: FFLA and micro-sites (board prefix FFLA).
+SEO rules: coriolis/docs/seo/ARCHITECTURE.md
 <!-- END Coriolis process pointer -->
 
 ## Coriolis stack and product data rules (public-safe summary)
