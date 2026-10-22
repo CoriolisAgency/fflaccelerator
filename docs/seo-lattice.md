@@ -1,5 +1,7 @@
 # FFL Accelerator, SEO lattice
 
+> **Governed by `CoriolisAgency/coriolis` `docs/seo/`** (ARCHITECTURE.md, PAGE-MAP.md, LINK-PLAN.md). This file is FFLA's own page table. When this file and `docs/seo/` disagree, `docs/seo/` wins. Pointer header added Wed Oct 21, 2026 (Sprint 0, DC-4); no content change.
+
 ## Role
 
 This host is the retailer door for the managed ecommerce website. Contact, the plan, and privacy stay here.
