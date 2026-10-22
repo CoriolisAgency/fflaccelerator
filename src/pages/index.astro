@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
+import HomeHero from "../components/HomeHero.astro";
+import HomeIntro from "../components/HomeIntro.astro";
 import IncludedIndex from "../components/IncludedIndex.astro";
 import PhotoBand from "../components/PhotoBand.astro";
 import FaqBlock from "../components/FaqBlock.astro";
@@ -13,14 +14,8 @@ import { FAQ_HOME } from "../lib/faq";
   path="/"
   faq={FAQ_HOME}
 >
-  <Hero
-    image="photos/target.jpg"
-    alt="A paper shooting target"
-    focus="center"
-    primaryHref="#included"
-    primaryLabel="See What's Included"
-    heading="FFL Accelerator: the managed FFL website you own"
-  />
+  <HomeHero primaryHref="#included" primaryLabel="See What's Included" />
+  <HomeIntro />
   <IncludedIndex />
   <PhotoBand
     src="photos/case.jpg"
