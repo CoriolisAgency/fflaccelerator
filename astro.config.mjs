@@ -2,15 +2,13 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import { execFileSync } from "node:child_process";
-import { readdirSync } from "node:fs";
-import { copyFile, writeFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import { writeFile } from "node:fs/promises";
 import {
   astroRedirects,
   isSitemapExcluded,
   toCloudflareRedirects,
 } from "./src/lib/redirects.ts";
+import { LASTMOD } from "./src/lib/lastmod.ts";
 
 /**
  * Custom domain (default): https://fflaccelerator.com  → base /
@@ -25,38 +23,10 @@ function prettySitemapUrl(url) {
   return `${url}/`;
 }
 
-const repoRoot = fileURLToPath(new URL("./", import.meta.url));
-const buildTime = new Date().toISOString();
-
 /**
- * Map each static route ("/", "/about/", "/guides/x/") to its src/pages file.
- * Dynamic routes ([param]) are skipped and fall back to build time.
- */
-function pageSourcesByRoute() {
-  /** @type {Map<string, string>} */
-  const map = new Map();
-  /** @param {string} rel */
-  const walk = (rel) => {
-    const dir = new URL(`./src/pages/${rel}`, import.meta.url);
-    for (const ent of readdirSync(dir, { withFileTypes: true })) {
-      if (ent.isDirectory()) {
-        walk(`${rel}${ent.name}/`);
-        continue;
-      }
-      const m = ent.name.match(/^(.+)\.(astro|md|mdx|html)$/);
-      if (!m || m[1].includes("[")) continue;
-      const route = m[1] === "index" ? `/${rel}` : `/${rel}${m[1]}/`;
-      map.set(route, `src/pages/${rel}${ent.name}`);
-    }
-  };
-  walk("");
-  return map;
-}
-const pageSources = pageSourcesByRoute();
-
-/**
- * Sitemap <lastmod>: committer date of the last git commit that touched the
- * page's source file. Falls back to build time when git has no date for it.
+ * Sitemap <lastmod> from the committed map in src/lib/lastmod.ts.
+ * Fails the build when a sitemap URL has no entry, so a new page can't ship
+ * without one.
  * @param {string} url
  */
 function sitemapLastmod(url) {
@@ -64,18 +34,11 @@ function sitemapLastmod(url) {
   let path = new URL(url).pathname;
   if (path.startsWith(b)) path = `/${path.slice(b.length)}`;
   if (!path.endsWith("/")) path = `${path}/`;
-  const file = pageSources.get(path);
-  if (!file) return buildTime;
-  try {
-    const out = execFileSync("git", ["log", "-1", "--format=%cI", "--", file], {
-      cwd: repoRoot,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    }).trim();
-    return out ? new Date(out).toISOString() : buildTime;
-  } catch {
-    return buildTime;
+  const lastmod = LASTMOD[path];
+  if (!lastmod) {
+    throw new Error(`No sitemap lastmod for ${path}. Add it to src/lib/lastmod.ts`);
   }
+  return new Date(lastmod).toISOString();
 }
 
 /** Emit `_redirects` so Cloudflare Pages / Netlify can apply 301 + 410. */
@@ -85,25 +48,6 @@ function emitRedirectsFile() {
     hooks: {
       "astro:build:done": async ({ dir }) => {
         await writeFile(new URL("_redirects", dir), toCloudflareRedirects());
-      },
-    },
-  };
-}
-
-/**
- * GSC still requests the old WordPress /sitemap_index.xml.
- * GitHub Pages has no rewrite engine, so copy the Astro-generated index.
- * Same file as /sitemap-index.xml — not a second sitemap.
- */
-function emitWpSitemapIndexAlias() {
-  return {
-    name: "emit-wp-sitemap-index-alias",
-    hooks: {
-      "astro:build:done": async ({ dir }) => {
-        await copyFile(
-          new URL("sitemap-index.xml", dir),
-          new URL("sitemap_index.xml", dir),
-        );
       },
     },
   };
@@ -123,7 +67,6 @@ export default defineConfig({
         return { ...item, url, lastmod: sitemapLastmod(url) };
       },
     }),
-    emitWpSitemapIndexAlias(),
     emitRedirectsFile(),
   ],
   vite: {

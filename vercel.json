@@ -36,16 +36,6 @@
       "permanent": true
     },
     {
-      "source": "/gunsearchagent-included",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/gunsearchagent-included/",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
       "source": "/ffl-ecommerce",
       "destination": "/plan/",
       "statusCode": 301
@@ -146,36 +136,6 @@
       "statusCode": 301
     },
     {
-      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/understanding-the-different-types-of-ffls",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/understanding-the-different-types-of-ffls/",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
       "source": "/author/devopscoriolisagency-com",
       "destination": "/about/",
       "statusCode": 301
@@ -183,6 +143,46 @@
     {
       "source": "/author/devopscoriolisagency-com/",
       "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy-2",
+      "destination": "/privacy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy-2/",
+      "destination": "/privacy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap-index.xml",
       "statusCode": 301
     }
   ],
@@ -329,6 +329,94 @@
     },
     {
       "source": "/category/shot-show/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/gunsearchagent-included",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/gunsearchagent-included/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/step-by-step-guide-to-obtaining-your-federal-firearms-license-ffl/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/top-5-common-mistakes-to-avoid-when-applying-for-your-ffl/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/understanding-the-different-types-of-ffls",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/understanding-the-different-types-of-ffls/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/starter-kits-for-ffls",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/starter-kits-for-ffls/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/the-average-roi-for-email-marketing-is-around-42-for-every-1-spent",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/the-average-roi-for-email-marketing-is-around-42-for-every-1-spent/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/coriolis-agency-announces-2026-shot-show-attendance",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/coriolis-agency-announces-2026-shot-show-attendance/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-sales-accelerator",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ffl-sales-accelerator/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/services/traffic-accelerator",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/services/traffic-accelerator/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/testimonials",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/testimonials/",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/safety-policy",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/safety-policy/",
       "destination": "/api/gone"
     },
     {
