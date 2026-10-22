@@ -21,7 +21,7 @@ export const FAQ_HOME: FaqItem[] = [
     a: "No. Bring the register you already run. We connect it when you want the floor and the site in sync.",
   },
   {
-    q: "I'm on a hosted catalog or Gearfire. Can you replace the site without going dark?",
+    q: "I'm on a hosted catalog platform. Can you replace the site without going dark?",
     a: "Yes. We build WooCommerce on your domain first, move what ranks, test a live cart, then cut DNS. Do not give notice until the new store is ready.",
   },
   {
