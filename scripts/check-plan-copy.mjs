@@ -88,6 +88,17 @@ const FORBIDDEN = [
   "Cloudflare DNS & CDN",
   "Corestore POS",
   "SLA with 99.95% uptime guarantee",
+  "uptime guarantee",
+  "uptime commitment",
+];
+
+// SEO-U23 part 4: uptime is credited only to WP Engine's 99.95% uptime SLA.
+// These are checked on llms.txt and /lp/ too (whitespace-normalized,
+// case-insensitive), since the FORBIDDEN loop below only reads / and /plan/.
+const UPTIME_FORBIDDEN = [
+  "uptime guarantee",
+  "uptime commitment",
+  "99.99",
 ];
 
 function decode(html) {
@@ -123,6 +134,19 @@ for (const rel of pages) {
   }
   for (const line of FORBIDDEN) {
     if (html.includes(line)) errors.push(`${rel} still has dropped line: ${line}`);
+  }
+}
+
+for (const rel of ["dist/llms.txt", "dist/lp/index.html"]) {
+  let text;
+  try {
+    text = load(rel).replace(/\s+/g, " ").toLowerCase();
+  } catch {
+    errors.push(`missing ${rel}`);
+    continue;
+  }
+  for (const line of UPTIME_FORBIDDEN) {
+    if (text.includes(line)) errors.push(`${rel} has uptime-promise wording: ${line}`);
   }
 }
 

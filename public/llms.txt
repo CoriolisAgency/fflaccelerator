@@ -5,7 +5,7 @@ FFL Accelerator is Coriolis's managed WooCommerce website for FFL dealers. We bu
 Publisher: Coriolis, LLC. Greenville, SC. Phone (279) 258-6771.
 
 ## What you get
-A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, register integration when you want it, email campaigns, and analytics including on-site search. Webmaster included. 99.95% uptime commitment.
+A store on your domain. Hosting, design, FFL checkout, 21 distributor catalogs, register integration when you want it, email campaigns, and analytics including on-site search. Webmaster included. Backed by WP Engine's 99.95% uptime SLA.
 
 ## Pages
 - https://fflaccelerator.com/ : the offer, a managed FFL website you own.
