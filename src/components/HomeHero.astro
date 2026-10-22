@@ -1,0 +1,251 @@
+---
+/**
+ * FFLA-HOME-HERO (2026-10-22-ffla-home-hero): homepage hero built on
+ * Paul's Meta ad image. The H1 and subline are live HTML text; the image
+ * variants in public/photos/hero/ have the baked-in logo and words painted
+ * out (flat navy), so nothing reads twice.
+ *
+ * Desktop (>= 1024px): full-width 16:9 image, copy over the navy left half.
+ * Tablet and phone: art-directed right-side crop (dealer and monitor) on
+ * top, copy stacked below on the same navy. The copy column never shares
+ * space with the photo subject, and the H1 wraps inside its own column.
+ */
+import CtaRow from "./CtaRow.astro";
+import { withBase } from "../lib/base";
+
+interface Props {
+  primaryHref?: string;
+  primaryLabel?: string;
+}
+
+const { primaryHref, primaryLabel } = Astro.props;
+
+const ALT =
+  "FFL dealer at a store counter with an ecommerce dashboard on the monitor";
+
+function set(name: string, ext: "avif" | "webp", widths: number[]) {
+  return widths
+    .map((w) => `${withBase(`photos/hero/${name}-${w}.${ext}`)} ${w}w`)
+    .join(", ");
+}
+
+const FULL = [640, 960, 1280, 1920];
+const TABLET = [768, 1160];
+const MOBILE = [450, 675, 900];
+const DESKTOP_SIZES = "(min-width: 1280px) 1280px, 100vw";
+---
+
+<section class="home-hero" aria-labelledby="home-hero-title">
+  <picture class="home-hero__media">
+    <source
+      media="(min-width: 1024px)"
+      type="image/avif"
+      srcset={set("ffla-hero", "avif", FULL)}
+      sizes={DESKTOP_SIZES}
+      width="1920"
+      height="1080"
+    />
+    <source
+      media="(min-width: 1024px)"
+      type="image/webp"
+      srcset={set("ffla-hero", "webp", FULL)}
+      sizes={DESKTOP_SIZES}
+      width="1920"
+      height="1080"
+    />
+    <source
+      media="(min-width: 640px)"
+      type="image/avif"
+      srcset={set("ffla-hero-tablet", "avif", TABLET)}
+      sizes="100vw"
+      width="1160"
+      height="960"
+    />
+    <source
+      media="(min-width: 640px)"
+      type="image/webp"
+      srcset={set("ffla-hero-tablet", "webp", TABLET)}
+      sizes="100vw"
+      width="1160"
+      height="960"
+    />
+    <source
+      type="image/avif"
+      srcset={set("ffla-hero-mobile", "avif", MOBILE)}
+      sizes="100vw"
+      width="900"
+      height="1080"
+    />
+    <source
+      type="image/webp"
+      srcset={set("ffla-hero-mobile", "webp", MOBILE)}
+      sizes="100vw"
+      width="900"
+      height="1080"
+    />
+    <img
+      src={withBase("photos/hero/ffla-hero-1280.webp")}
+      alt={ALT}
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="home-hero__img"
+    />
+  </picture>
+  <div class="home-hero__copy">
+    <h1 id="home-hero-title" class="home-hero__title">FFL Ecommerce <span class="home-hero__accent">as a Service</span></h1>
+    <p class="home-hero__sub">Your online store, run for you.</p>
+    <div class="home-hero__cta">
+      <CtaRow primaryHref={primaryHref} primaryLabel={primaryLabel} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-hero {
+    --hero-navy: #0a0e19;
+    --hero-accent: #f49e10;
+    position: relative;
+    overflow: hidden;
+    background: var(--hero-navy);
+    color: #fff;
+  }
+
+  .home-hero__media {
+    position: relative;
+    display: block;
+  }
+
+  /* Phone and tablet: the crop fades into the navy the copy sits on. */
+  .home-hero__media::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 32%;
+    background: linear-gradient(to bottom, rgb(10 14 25 / 0), var(--hero-navy));
+    pointer-events: none;
+  }
+
+  .home-hero__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 72svh;
+    object-fit: cover;
+    object-position: 45% 30%;
+  }
+
+  .home-hero__copy {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    margin-top: -3.5rem;
+    padding: 0 1.25rem 2.75rem;
+  }
+
+  .home-hero__title {
+    margin: 0;
+    max-width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  /* The accent bar spans the whole "as a Service" line, like the ad. */
+  .home-hero__accent {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 0.06em;
+    padding-bottom: 0.2em;
+    background: linear-gradient(var(--hero-accent), var(--hero-accent)) left
+      bottom / 100% 0.085em no-repeat;
+  }
+
+  .home-hero__sub {
+    margin: 1.1rem 0 0;
+    max-width: 100%;
+    font-family: "Barlow Condensed", "Arial Narrow", var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(1.3rem, 5.4vw, 1.75rem);
+    line-height: 1.2;
+    color: #c3cfdf;
+    overflow-wrap: break-word;
+  }
+
+  .home-hero__cta > :global(div) {
+    margin-top: 1.75rem;
+  }
+
+  .home-hero__cta :global(a:last-child) {
+    color: #fff;
+    text-decoration-color: rgb(255 255 255 / 0.45);
+  }
+
+  .home-hero__cta :global(a:last-child:hover) {
+    text-decoration-color: #fff;
+  }
+
+  .home-hero :global(:focus-visible) {
+    outline-color: var(--color-gold);
+  }
+
+  @media (width >= 640px) {
+    .home-hero__copy {
+      padding: 0 2rem 3.25rem;
+    }
+  }
+
+  @media (width >= 1024px) {
+    .home-hero {
+      display: flex;
+      align-items: center;
+      aspect-ratio: 16 / 9;
+      min-height: 32rem;
+      max-height: calc(100svh - 4.5rem);
+    }
+
+    .home-hero__media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .home-hero__media::after {
+      display: none;
+    }
+
+    .home-hero__img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      max-height: none;
+      object-position: right center;
+    }
+
+    .home-hero__copy {
+      width: 50%;
+      margin-top: 0;
+      padding: 2rem 2.5rem 2rem clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .home-hero__title {
+      font-size: min(4.75rem, 5.2vw);
+    }
+
+    .home-hero__sub {
+      font-size: min(1.85rem, 2.1vw);
+      margin-top: 1.4rem;
+    }
+
+    .home-hero__cta > :global(div) {
+      margin-top: 2.25rem;
+    }
+  }
+</style>

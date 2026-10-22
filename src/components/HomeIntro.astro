@@ -1,0 +1,32 @@
+---
+/**
+ * FFLA-HOME-HERO: the plan copy that used to sit in the old homepage hero,
+ * moved directly under the new image hero. Same words, same order; the
+ * scripts/check-plan-copy.mjs lines for / still render here.
+ */
+import ProofBar from "./ProofBar.astro";
+import { PLAN } from "../lib/plans";
+---
+
+<section class="border-b border-line">
+  <div
+    class="mx-auto grid max-w-7xl gap-x-16 gap-y-6 px-5 py-12 sm:px-8 lg:grid-cols-2 lg:py-16"
+  >
+    <div class="min-w-0">
+      <p class="flex items-center gap-3 text-sm font-medium text-ink">
+        <span class="h-px w-8 bg-gold" aria-hidden="true"></span>
+        {PLAN.eyebrow}
+      </p>
+      <h2 class="type-display mt-5 text-3xl text-ink sm:text-4xl">
+        A managed WooCommerce website for FFL dealers, on your domain.
+      </h2>
+      <p class="mt-5 text-sm font-medium tracking-wide text-muted">{PLAN.badge}</p>
+      <ProofBar />
+    </div>
+    <div class="min-w-0">
+      <p class="text-base leading-relaxed text-ink sm:text-lg">{PLAN.description}</p>
+      <p class="mt-4 text-base leading-relaxed text-muted">{PLAN.stack}</p>
+      <p class="type-pull mt-6 text-2xl text-ink sm:text-3xl">{PLAN.pull}</p>
+    </div>
+  </div>
+</section>
