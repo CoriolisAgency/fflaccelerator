@@ -40,7 +40,6 @@ const LINES = [
   "AIM Point of Sale",
   "MicroBiz POS",
   "Trident 1 POS",
-  "Corestore POS",
   "and other registers",
   "Unlimited API Requests",
   "Unlimited Webhooks",
@@ -87,6 +86,7 @@ const FORBIDDEN = [
   "VIP support Monday through Friday",
   "On-site technical SEO",
   "Cloudflare DNS & CDN",
+  "Corestore POS",
 ];
 
 function decode(html) {
