@@ -106,7 +106,7 @@ export const GROUPS: readonly FeatureGroup[] = [
           "All Other Plugins",
         ],
       },
-      "Free Email & Chat Support — One Hour Response Time",
+      "Free Email & Chat Support: One Hour Response Time",
       "Concierge Onboarding",
     ],
   },
@@ -118,7 +118,7 @@ export const GROUPS: readonly FeatureGroup[] = [
         label: "API Based POS Integration:",
         items: [
           "AIM Point of Sale",
-          "MicroBiz POS",
+          "GunBiz POS",
           "Trident 1 POS",
           "and other registers",
         ],
