@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaRow from "../components/CtaRow.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import ProofBar from "../components/ProofBar.astro";
+import LeadForm from "@coriolis/lead-form/LeadForm.astro";
+import { FAQ_HOME_BASED } from "../lib/faq";
+import { PATHS, linkClass, planAnchor } from "../lib/links";
+import { SITE } from "../lib/site";
+import { withBase } from "../lib/base";
+---
+
+<BaseLayout
+  title="FFL Software for a Home-Based Business | FFL Accelerator"
+  description="FFL software for a home based business: records software, a website, and a register only if you sell in person. Small business FFL software, explained."
+  path="/ffl-software-home-based-business/"
+  faq={FAQ_HOME_BASED}
+>
+  <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h1 class="type-display text-5xl sm:text-6xl">
+      FFL software for a home-based business
+    </h1>
+    <p class="mt-6 text-lg leading-relaxed">
+      A home-based FFL usually needs two pieces of software: records software
+      and a website. A register only matters if you also sell in person. FFL
+      Accelerator is the website.
+    </p>
+    <ProofBar />
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">The software a home-based FFL needs</h2>
+      <p class="mt-4 leading-relaxed">
+        Small business FFL software doesn't have to be one big system. It's
+        three separate jobs, and a home-based shop may only need two of them.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        <strong>Records.</strong> Records software keeps the bound book and the
+        paperwork your license depends on. That job belongs to a dedicated
+        records vendor and your counsel. It is not us, and nothing on this site
+        is legal advice.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        <strong>The register.</strong> Optional. If you don't sell at a counter,
+        you may not need one.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        <strong>The website.</strong> Your public store, on your own domain, and
+        you own it. This is the job FFL Accelerator does.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        See <a href={withBase(PATHS.guide)} class={linkClass}>which FFL software does which job</a>.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">Selling without a storefront or stock</h2>
+      <p class="mt-4 leading-relaxed">
+        Dropshipping can run without a retail floor. You still need a valid FFL.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        FFL Accelerator connects <a href={planAnchor("inventory-dropshipping")} class={linkClass}>distributor catalogs</a>, keeps inventory updated, and handles automated dropshipping. Sell your own stock, the catalogs, or both.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        FFL Checkout handles the FFL step at checkout. Your records system stays
+        your records system.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Rules for running from home depend on where you are. Ask your attorney
+        before you set up. This is not legal advice.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">If you also sell in person</h2>
+      <p class="mt-4 leading-relaxed">
+        Keep the register you already run. FFL Accelerator connects your
+        existing register when you want the counter and the site to share
+        inventory, and any register that works with WooCommerce can connect.
+        When it's connected, the register and the website sync both ways.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">What the website includes</h2>
+      <p class="mt-4 leading-relaxed">
+        Hosting, design, FFL Checkout, distributor catalogs, email campaigns and
+        analytics, with a webmaster included. Pick a setup: Basic Setup, a
+        Branded Online Storefront, or Retail Setup, a Full Custom Website. Then
+        one monthly plan. Month to month. MSA at signup.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        See <a href={withBase(PATHS.plan)} class={linkClass}>what's included</a>, and how we handle <a href={withBase(PATHS.hosting)} class={linkClass}>hosting and upkeep</a>.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Already selling online? We can <a href={withBase(PATHS.migration)} class={linkClass}>move your current site</a> without taking it offline.
+      </p>
+    </section>
+  </article>
+
+  <FaqBlock items={FAQ_HOME_BASED} title="Questions from home-based FFLs" />
+
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h2 class="type-display text-3xl">Tell us how you sell today</h2>
+    <p class="mt-4 text-lg leading-relaxed">
+      Online only, by appointment, or at a counter. Tell us how you work and
+      we'll show you where the website fits. Rather talk? Call <a href={SITE.phoneHref} class={linkClass}>{SITE.phone}</a>.
+    </p>
+    <div class="relative mt-8 bg-paper-2 p-6 sm:p-8">
+      <LeadForm site="fflaccelerator" defaultPillar="Ecommerce" pillars={["Ecommerce"]} />
+    </div>
+    <CtaRow />
+  </section>
+</BaseLayout>

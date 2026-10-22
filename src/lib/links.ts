@@ -12,6 +12,9 @@ export const PATHS = {
   guide: "/guides/gun-store-software/",
   confirmed: "/confirmed/",
   lp: "/lp/",
+  migration: "/ffl-website-migration/",
+  hosting: "/managed-ffl-website-hosting/",
+  homeBased: "/ffl-software-home-based-business/",
 } as const;
 
 export function planAnchor(id: string): string {

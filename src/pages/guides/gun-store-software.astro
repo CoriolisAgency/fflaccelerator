@@ -4,6 +4,8 @@ import CtaRow from "../../components/CtaRow.astro";
 import FaqBlock from "../../components/FaqBlock.astro";
 import LeadForm from "@coriolis/lead-form/LeadForm.astro";
 import { FAQ_GUIDE } from "../../lib/faq";
+import { linkClass } from "../../lib/links";
+import { withBase } from "../../lib/base";
 
 const jobs = [
   {
@@ -116,7 +118,11 @@ const answers = [
 
     <section class="mt-12 border-t border-line pt-8">
       <h2 class="type-display text-3xl">Where the website fits</h2>
-      {fits.map((line) => <p class="mt-4 leading-relaxed">{line}</p>)}
+      {fits.slice(0, 2).map((line) => <p class="mt-4 leading-relaxed">{line}</p>)}
+      <p class="mt-4 leading-relaxed">
+        Selling from home? See <a href={withBase("ffl-software-home-based-business/")} class={linkClass}>FFL software for a home-based business</a>.
+      </p>
+      {fits.slice(2).map((line) => <p class="mt-4 leading-relaxed">{line}</p>)}
     </section>
 
     <section class="mt-12 border-t border-line pt-8">
@@ -140,6 +146,9 @@ const answers = [
       <ul class="ticks mt-4">
         {answers.map((line) => <li>{line}</li>)}
       </ul>
+      <p class="mt-4 leading-relaxed">
+        More on <a href={withBase("ffl-website-migration/")} class={linkClass}>moving an FFL website</a> and <a href={withBase("managed-ffl-website-hosting/")} class={linkClass}>who keeps the site running</a>.
+      </p>
     </section>
   </article>
 

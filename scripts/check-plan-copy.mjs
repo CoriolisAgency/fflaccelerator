@@ -137,7 +137,27 @@ for (const rel of pages) {
   }
 }
 
-for (const rel of ["dist/llms.txt", "dist/lp/index.html"]) {
+// SEO-U12: the three new pages carry none of the plan LINES, so they get
+// the FORBIDDEN and uptime checks only (not the LINES check above).
+const u12Pages = [
+  "dist/ffl-website-migration/index.html",
+  "dist/managed-ffl-website-hosting/index.html",
+  "dist/ffl-software-home-based-business/index.html",
+];
+for (const rel of u12Pages) {
+  let html;
+  try {
+    html = load(rel);
+  } catch {
+    errors.push(`missing ${rel}`);
+    continue;
+  }
+  for (const line of FORBIDDEN) {
+    if (html.includes(line)) errors.push(`${rel} still has dropped line: ${line}`);
+  }
+}
+
+for (const rel of ["dist/llms.txt", "dist/lp/index.html", ...u12Pages]) {
   let text;
   try {
     text = load(rel).replace(/\s+/g, " ").toLowerCase();

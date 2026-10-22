@@ -7,6 +7,8 @@ import Talk from "../components/Talk.astro";
 import CtaRow from "../components/CtaRow.astro";
 import { FAQ_PLAN } from "../lib/faq";
 import { GROUPS, SETUP, SWITCH_STEPS } from "../lib/plans";
+import { linkClass } from "../lib/links";
+import { withBase } from "../lib/base";
 
 const planTitle = "What's Included in a Managed FFL Website | FFL Accelerator";
 const planDescription =
@@ -55,6 +57,12 @@ const toc = [
           <div class="mt-5 lg:col-span-7 lg:mt-1">
             {group.lede ? <p class="mb-4 max-w-xl">{group.lede}</p> : null}
             <FeatureLines features={group.features} />
+            {group.id === "support" ? (
+              <p class="mt-4">More on <a href={withBase("managed-ffl-website-hosting/")} class={linkClass}>managed FFL website hosting</a>.</p>
+            ) : null}
+            {group.id === "inventory-dropshipping" ? (
+              <p class="mt-4">More on <a href={withBase("ffl-software-home-based-business/")} class={linkClass}>selling from home</a>.</p>
+            ) : null}
             <Talk />
           </div>
         </section>
@@ -75,6 +83,7 @@ const toc = [
         </p>
         <div class="mt-4">
           <FeatureLines features={SWITCH_STEPS} />
+          <p class="mt-4">See <a href={withBase("ffl-website-migration/")} class={linkClass}>how an FFL website migration works</a>.</p>
         </div>
         <Talk />
       </div>

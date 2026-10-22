@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaRow from "../components/CtaRow.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import ProofBar from "../components/ProofBar.astro";
+import LeadForm from "@coriolis/lead-form/LeadForm.astro";
+import { FAQ_MIGRATION } from "../lib/faq";
+import { SWITCH_STEPS } from "../lib/plans";
+import { PATHS, linkClass, planAnchor } from "../lib/links";
+import { SITE } from "../lib/site";
+import { withBase } from "../lib/base";
+
+// D-A9 Google review quote, verbatim, attributed by shop name only.
+const quote = {
+  text: "Paul and his team took the time to understand that we are not a simple one-category retail operation. Responsive, patient, and willing to work through the details instead of a one-size-fits-all website.",
+  shop: "Down Range Chico",
+};
+---
+
+<BaseLayout
+  title="FFL Website Migration Without Going Dark | FFL Accelerator"
+  description="FFL website migration done in order: we build your store on your domain, move what ranks, test a live cart, then point the domain. You keep the site."
+  path="/ffl-website-migration/"
+  faq={FAQ_MIGRATION}
+>
+  <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h1 class="type-display text-5xl sm:text-6xl">
+      FFL website migration without going dark
+    </h1>
+    <p class="mt-6 text-lg leading-relaxed">
+      Switching FFL website companies should not take your store offline. We
+      build the new WooCommerce store on your domain first, move what ranks,
+      test a live cart, then point the domain. Don't give notice until the new
+      store is ready.
+    </p>
+    <ProofBar />
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">How an FFL website migration works</h2>
+      <ol class="mt-4 list-decimal space-y-3 pl-6">
+        {SWITCH_STEPS.map((line) => <li class="leading-relaxed">{line}</li>)}
+      </ol>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">
+        Keep your domain, your rankings work and your register
+      </h2>
+      <p class="mt-4 leading-relaxed">
+        Your domain stays yours. We build on it before you give notice, so
+        shoppers keep finding you at the same address.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        We redirect the pages that already rank, so the work you have done
+        points at the new store. No one can promise rankings after a switch, and
+        we don't.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Keep the register you already run. FFL Accelerator connects your
+        existing register only if you want the counter and the site to share
+        inventory. When it's connected, the register and the website sync both
+        ways. Not sure what goes where? See <a href={withBase(PATHS.guide)} class={linkClass}>which FFL software does which job</a>.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">What moves, and what you check before launch</h2>
+      <p class="mt-4 leading-relaxed">
+        Move the catalog you care about: your stock, the distributor feeds, or
+        both.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Before the domain moves, checkout, payments and tax get turned on. Then
+        you buy a mixed cart yourself and make sure it clears. If it doesn't
+        clear, the domain doesn't move.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        DNS and email administration are part of the plan. Moving the site has
+        no impact on your shop's email.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Need your store data moved too? Data migrations are available on request.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        A switch usually takes from about a week to several weeks, depending on
+        the features you need.
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="type-display text-3xl">What it costs</h2>
+      <p class="mt-4 leading-relaxed">
+        Pick a setup: Basic Setup, a Branded Online Storefront, or Retail Setup,
+        a Full Custom Website. Then one monthly plan. Month to month. MSA at
+        signup. See <a href={planAnchor("setup")} class={linkClass}>setup</a> and <a href={withBase(PATHS.plan)} class={linkClass}>what's included</a>.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        After launch, we keep it running. That's <a href={withBase(PATHS.hosting)} class={linkClass}>managed FFL website hosting</a>.
+      </p>
+    </section>
+
+    <figure class="mt-12 border-t border-line pt-8">
+      <blockquote class="text-lg leading-relaxed">
+        <p>"{quote.text}"</p>
+      </blockquote>
+      <figcaption class="mt-2 text-sm font-medium tracking-wide text-muted">
+        {quote.shop}
+      </figcaption>
+    </figure>
+  </article>
+
+  <FaqBlock items={FAQ_MIGRATION} title="Questions about switching" />
+
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
+    <h2 class="type-display text-3xl">Tell us what you run today</h2>
+    <p class="mt-4 text-lg leading-relaxed">
+      Tell us about your current site and your register. We'll show you how
+      your switch would go. Rather talk? Call <a href={SITE.phoneHref} class={linkClass}>{SITE.phone}</a>.
+    </p>
+    <div class="relative mt-8 bg-paper-2 p-6 sm:p-8">
+      <LeadForm site="fflaccelerator" defaultPillar="Ecommerce" pillars={["Ecommerce"]} />
+    </div>
+    <CtaRow />
+  </section>
+</BaseLayout>
