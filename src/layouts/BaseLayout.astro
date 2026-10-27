@@ -1,10 +1,10 @@
 ---
 import "../styles/global.css";
-import AccelEmailCapture from "../components/AccelEmailCapture.astro";
 import SiteChrome from "../components/SiteChrome.astro";
 import UtmCapture from "@coriolis/lead-form/UtmCapture.astro";
 import { SITE, SITE_ORIGIN, CANON_PATHS, DEFAULT_OG_IMAGE, GSE_EMBED } from "../lib/site";
 import { withBase } from "../lib/base";
+import { FFLA_POPUP_CONFIG } from "../lib/popup-config";
 import type { FaqItem } from "../lib/faq";
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
   /** Absolute override when the constructed URL is not enough. */
   canonicalUrl?: string;
   faq?: FaqItem[];
-  /** Email capture modal. Off for confirm and contact. @default true */
+  /** Lane pop-up. Off for confirm and contact. On for /lp/. @default true */
   emailCapture?: boolean;
   noindex?: boolean;
   /** robots "noindex, follow": out of search, links still followed (e.g. /privacy/). */
@@ -109,6 +109,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": graph,
 };
+
+const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)}`;
 ---
 
 <!doctype html>
@@ -248,6 +250,15 @@ const jsonLd = {
     <SiteChrome adLanding={adLanding}>
       <slot />
     </SiteChrome>
-    {emailCapture ? <AccelEmailCapture /> : null}
+    {
+      emailCapture ? (
+        <script is:inline set:html={popupConfigJs}></script>
+      ) : null
+    }
+    {
+      emailCapture ? (
+        <script is:inline src={withBase("popup/coriolis-popup.v1.js")} defer></script>
+      ) : null
+    }
   </body>
 </html>

@@ -82,6 +82,55 @@ if (subBad.status !== 400) {
   process.exit(1);
 }
 
+const { loadPopupHandler } = await import("./load-popup-handler.mjs");
+const popupHandler = await loadPopupHandler();
+const popupGet = await popupHandler.GET();
+const popupGetJson = await popupGet.json();
+if (popupGet.status !== 200 || popupGetJson.ok !== true || popupGetJson.site !== "ffla") {
+  console.error("popup GET failed", popupGet.status, popupGetJson);
+  await popupHandler.cleanup();
+  await mock.close();
+  process.exit(1);
+}
+if (popupGet.headers.get("cache-control") !== "no-store") {
+  console.error("popup GET missing cache-control no-store");
+  await popupHandler.cleanup();
+  await mock.close();
+  process.exit(1);
+}
+const popupBefore = mock.hits.length;
+const popupOk = await post(popupHandler.POST, "https://fflaccelerator.com/api/popup", {
+  email: "reader@example.com",
+  t: 2000,
+  website: "",
+});
+if (popupOk.status !== 200 || !popupOk.json.ok) {
+  console.error("popup POST success failed", popupOk);
+  await popupHandler.cleanup();
+  await mock.close();
+  process.exit(1);
+}
+const popupHit = mock.hits[popupBefore];
+if (!popupHit?.raw.includes("popup_fflaccelerator")) {
+  console.error("popup did not forward legacy source", popupHit);
+  await popupHandler.cleanup();
+  await mock.close();
+  process.exit(1);
+}
+const popupBad = await post(popupHandler.POST, "https://fflaccelerator.com/api/popup", {
+  email: "not-an-email",
+  t: 2000,
+  website: "",
+});
+if (popupBad.status !== 400) {
+  console.error("popup invalid email expected 400", popupBad);
+  await popupHandler.cleanup();
+  await mock.close();
+  process.exit(1);
+}
+await popupHandler.cleanup();
+console.log("popup handler checks passed (compiled GET/POST, legacy source popup_fflaccelerator)");
+
 let lead;
 let leadModule;
 try {

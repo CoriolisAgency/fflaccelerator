@@ -34,6 +34,8 @@ jobs:
           git config --global --add url."$u".insteadOf https://github.com/
           git config --global --add url."$u".insteadOf ssh://git@github.com/
           npm ci
+      - name: test handlers
+        run: npm run test:handlers
       - name: build
         run: npm run build
         env:
