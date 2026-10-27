@@ -12,7 +12,7 @@
     "astro": "astro",
     "gen:vercel": "node --experimental-strip-types scripts/gen-vercel-redirects.mjs",
     "check:links": "node scripts/check-banned-links.mjs",
-    "test:handlers": "node --experimental-strip-types scripts/check-handlers.mjs"
+    "test:handlers": "node --experimental-strip-types scripts/check-handlers.mjs && node --experimental-strip-types scripts/test-popup.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

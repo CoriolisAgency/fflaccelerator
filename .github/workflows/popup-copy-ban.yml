@@ -1,0 +1,19 @@
+name: popup-copy-ban
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  copy-ban:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Popup copy-ban (terms from repo secret; skips with a warning if unset)
+        env:
+          POPUP_BANNED_TERMS: ${{ secrets.POPUP_BANNED_TERMS }}
+        run: node scripts/popup-copy-ban.mjs popup-kit public/popup src/lib/popup-config.ts scripts/test-popup.mjs scripts/verify-popup.mjs scripts/popup-copy-ban.mjs
