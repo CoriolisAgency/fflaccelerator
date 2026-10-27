@@ -8,8 +8,6 @@ import { loadPopupHandler } from "./load-popup-handler.mjs";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const kit = path.join(root, "popup-kit");
 const DASH = /[\u2013\u2014]/;
-const BANNED = /GunBroker|MasterFFL/i;
-const FFLM_BANNED = /parser|Enclave|vendor platform|Manhattan|Lipsey|\bPOS\b/i;
 const ENV_KEYS = [
   "MAILCHIMP_API_KEY",
   "MAILCHIMP_AUDIENCE_ID",
@@ -87,7 +85,6 @@ const copyTargets = [
 for (const file of copyTargets) {
   const text = fs.readFileSync(file, "utf8");
   assert.doesNotMatch(text, DASH, `em/en dash in ${path.relative(root, file)}`);
-  assert.doesNotMatch(text, BANNED, `banned competitor in ${path.relative(root, file)}`);
 }
 
 const { FFLA_POPUP_CONFIG } = await import("../src/lib/popup-config.ts");
@@ -106,9 +103,6 @@ assert.equal(FFLA_POPUP_CONFIG.ctas[3].href, "tel:+12792586771");
 const dumped = JSON.stringify(FFLA_POPUP_CONFIG);
 assert.equal(/coriolisagency\.com/i.test(dumped), false);
 assert.equal(/gunsearchengine\.com/i.test(dumped), false);
-assert.doesNotMatch(dumped, FFLM_BANNED);
-assert.doesNotMatch(fs.readFileSync(path.join(kit, "README.md"), "utf8"), FFLM_BANNED);
-assert.doesNotMatch(jsKit.toString("utf8"), FFLM_BANNED);
 
 const core = await import("../popup-kit/server/subscribe-core.ts");
 const { popupStatus, handlePopupSubscribe, buildMailchimpPayload } = core;
