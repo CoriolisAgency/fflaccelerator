@@ -45,7 +45,9 @@ const {
   adLanding = false,
 } = Astro.props;
 
-const gaId = import.meta.env.PUBLIC_GA4_ID;
+// FFLA lead tracking (Paul 2026-11-03 4:26 PM ET): the existing Coriolis GA4 tag
+// unless PUBLIC_GA4_ID sets a dedicated stream.
+const gaId = import.meta.env.PUBLIC_GA4_ID || "G-E7F2ZRVKTW";
 
 const siteOrigin = Astro.site ?? new URL(SITE_ORIGIN);
 const pagePath = path === "/" ? "/" : withBase(path);
