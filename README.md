@@ -45,7 +45,7 @@ Optional: `LEAD_FORM_HOST=fflaccelerator.com`.
 
 Optional Mailgun, sent only after Ops accepts a lead: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_SUBJECT_PREFIX`.
 
-gtag loads the existing Coriolis GA4 tag (`G-E7F2ZRVKTW`) unless `PUBLIC_GA4_ID` sets a dedicated web stream. On a successful contact post the page fires `generate_lead` once. A successful popup fires `sign_up` when gtag is loaded.
+gtag loads the fflaccelerator.com GA4 stream `G-W5CPQ32S57` (property 483580363) and Google Ads `AW-11455995505`. On a successful contact post the page fires `generate_lead` once. A successful popup fires `sign_up` when gtag is loaded.
 
 Every page loads the GunSearchEngine observe embed (`public/embed.js` on gunsearchengine.com) with site key `pk_live_87fae3f0e1b11b555706fd4216fe44fa` and `data-mode="observe"`. That is a public publishable key. There is no chat widget and no shopper link to GSE.
 

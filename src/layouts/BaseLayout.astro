@@ -45,9 +45,10 @@ const {
   adLanding = false,
 } = Astro.props;
 
-// FFLA lead tracking (Paul 2026-11-03 4:26 PM ET): the existing Coriolis GA4 tag
-// unless PUBLIC_GA4_ID sets a dedicated stream.
-const gaId = import.meta.env.PUBLIC_GA4_ID || "G-E7F2ZRVKTW";
+// FFLA-LEAD-TRACKING (Paul 2026-11-03 4:26 PM ET): the existing fflaccelerator.com
+// GA4 stream (property 483580363) and Google Ads, on one gtag. Public IDs.
+const gaId = "G-W5CPQ32S57";
+const adsId = "AW-11455995505";
 
 const siteOrigin = Astro.site ?? new URL(SITE_ORIGIN);
 const pagePath = path === "/" ? "/" : withBase(path);
@@ -170,13 +171,14 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             is:inline
           />
-          <script is:inline define:vars={{ gaId }}>
+          <script is:inline define:vars={{ gaId, adsId }}>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
               dataLayer.push(arguments);
             }
             gtag("js", new Date());
             gtag("config", gaId);
+            gtag("config", adsId);
           </script>
         </>
       ) : null
