@@ -22,8 +22,17 @@ function vercelConfig() {
     { source: "/:path*/", has: www, destination: "https://fflaccelerator.com/:path*/", permanent: true },
     { source: "/:path*", has: www, destination: "https://fflaccelerator.com/:path*", permanent: true },
   ];
+  // FFLA lead tracking (Paul 2026-11-03 4:26 PM ET): no built-in trailingSlash,
+  // which also 308'd /api/lead to /api/lead/. This rule adds the slash for pages
+  // only: never /api/*, never a last segment with a dot (files), as before.
+  const slashRedirect = {
+    source: "/:path((?!api(?:/|$))(?:[^/]+/)*[^/.]+)",
+    destination: "/:path/",
+    permanent: true,
+  };
   const redirects = [
     ...hostRedirects,
+    slashRedirect,
     ...PERMANENT_REDIRECTS.map((rule) => ({
       source: rule.from,
       destination: rule.to,
@@ -43,7 +52,6 @@ function vercelConfig() {
     rewrites.push({ source: `${base}/:path*/`, destination: "/api/gone" });
   }
   return {
-    trailingSlash: true,
     installCommand: VERCEL_INSTALL_COMMAND,
     redirects,
     rewrites,
