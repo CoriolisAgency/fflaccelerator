@@ -176,6 +176,9 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
             function gtag() {
               dataLayer.push(arguments);
             }
+            // define:vars wraps this script in a function, so expose gtag
+            // for the generate_lead hook below.
+            window.gtag = gtag;
             gtag("js", new Date());
             gtag("config", gaId);
             gtag("config", adsId);
@@ -197,7 +200,10 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
           if (sent) return;
           sent = true;
           if (typeof window.gtag === "function") {
-            window.gtag("event", "generate_lead", { method: "contact_form" });
+            window.gtag("event", "generate_lead", {
+              method: "contact_form",
+              transport_type: "beacon",
+            });
           }
         }
         function isLeadUrl(input) {
