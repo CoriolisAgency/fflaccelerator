@@ -4,6 +4,8 @@ import {
   type PopupSubscribeBody,
 } from "../popup-kit/server/subscribe-core.js";
 
+// POPUP-PARK (Paul 2026-11-04 via Chief): parked, GET reports enabled:false. Set true to un-park.
+const POPUPS_ENABLED: boolean = false;
 const SITE = "ffla" as const;
 const LANE = "ffla-managed";
 const WINDOW_MS = 10 * 60 * 1000;
@@ -45,7 +47,7 @@ export async function GET(): Promise<Response> {
   const status = popupStatus(process.env, SITE);
   return json(200, {
     ok: true,
-    enabled: status.enabled,
+    enabled: POPUPS_ENABLED && status.enabled,
     backend: status.backend,
     lane: LANE,
     site: SITE,

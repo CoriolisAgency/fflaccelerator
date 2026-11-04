@@ -1,5 +1,9 @@
 /** Inline window.CORIOLIS_POPUP for the FFLA site. Copy is from the shared SPEC. */
 
+// POPUP-PARK (Paul 2026-11-04 5:21/5:23 PM ET via Chief; FFLA in scope 6:08 PM ET):
+// the pop-up is parked. Code is kept; set true to un-park (see popup-kit/PARKED.md).
+export const FFLA_POPUPS_ENABLED: boolean = false;
+
 export const FFLA_POPUP_CONFIG = {
   site: "ffla",
   lane: "ffla-managed",
