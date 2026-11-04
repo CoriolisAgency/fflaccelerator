@@ -12,6 +12,16 @@ if (scripts.length < 2) {
   console.error("check-ga-lead: gtag bootstrap or lead hook missing from dist/lp/index.html");
   process.exit(1);
 }
+// G-W5CPQ32S57 has no standalone Google tag (gtag/js 404s), so the library
+// loads from the Ads tag and configs both IDs. Never the Coriolis property.
+if (!html.includes('src="https://www.googletagmanager.com/gtag/js?id=AW-11455995505"')) {
+  console.error("check-ga-lead: gtag/js must load from AW-11455995505");
+  process.exit(1);
+}
+if (html.includes("G-E7F2ZRVKTW")) {
+  console.error("check-ga-lead: G-E7F2ZRVKTW must not appear on /lp/");
+  process.exit(1);
+}
 const ctx = {
   document: { readyState: "complete", querySelectorAll: () => [] },
   fetch: async () => ({ clone: () => ({ json: async () => ({ ok: true }) }) }),
