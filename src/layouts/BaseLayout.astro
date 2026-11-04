@@ -4,7 +4,7 @@ import SiteChrome from "../components/SiteChrome.astro";
 import UtmCapture from "@coriolis/lead-form/UtmCapture.astro";
 import { SITE, SITE_ORIGIN, CANON_PATHS, DEFAULT_OG_IMAGE, GSE_EMBED } from "../lib/site";
 import { withBase } from "../lib/base";
-import { FFLA_POPUP_CONFIG } from "../lib/popup-config";
+import { FFLA_POPUP_CONFIG, FFLA_POPUPS_ENABLED } from "../lib/popup-config";
 import type { FaqItem } from "../lib/faq";
 
 interface Props {
@@ -115,6 +115,8 @@ const jsonLd = {
 };
 
 const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)}`;
+// POPUP-PARK: pop-up mount is off while FFLA_POPUPS_ENABLED is false.
+const showPopup = FFLA_POPUPS_ENABLED && emailCapture;
 ---
 
 <!doctype html>
@@ -261,12 +263,12 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
       <slot />
     </SiteChrome>
     {
-      emailCapture ? (
+      showPopup ? (
         <script is:inline set:html={popupConfigJs}></script>
       ) : null
     }
     {
-      emailCapture ? (
+      showPopup ? (
         <script is:inline src={withBase("popup/coriolis-popup.v1.js")} defer></script>
       ) : null
     }
