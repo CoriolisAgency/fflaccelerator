@@ -45,10 +45,11 @@ const {
   adLanding = false,
 } = Astro.props;
 
-// FFLA-LEAD-TRACKING (Paul 2026-11-03 4:26 PM ET): the existing fflaccelerator.com
-// GA4 stream (property 483580363) and Google Ads, on one gtag. Public IDs.
+// FFLA-LEAD-TRACKING (Paul 2026-11-03 4:26 PM ET; Option 1, 7:38 PM ET): the
+// fflaccelerator.com GA4 stream (property 483580363) only, loaded through its
+// own standalone Google tag. No Ads config here: Ads gets leads via GA4 import.
 const gaId = "G-W5CPQ32S57";
-const adsId = "AW-11455995505";
+const gtagLoaderId = "GT-TNSG4PSJ";
 
 const siteOrigin = Astro.site ?? new URL(SITE_ORIGIN);
 const pagePath = path === "/" ? "/" : withBase(path);
@@ -168,10 +169,10 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
         <>
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtagLoaderId}`}
             is:inline
           />
-          <script is:inline define:vars={{ gaId, adsId }}>
+          <script is:inline define:vars={{ gaId }}>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
               dataLayer.push(arguments);
@@ -181,7 +182,6 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
             window.gtag = gtag;
             gtag("js", new Date());
             gtag("config", gaId);
-            gtag("config", adsId);
           </script>
         </>
       ) : null
@@ -202,6 +202,7 @@ const popupConfigJs = `window.CORIOLIS_POPUP=${JSON.stringify(FFLA_POPUP_CONFIG)
           if (typeof window.gtag === "function") {
             window.gtag("event", "generate_lead", {
               method: "contact_form",
+              send_to: "G-W5CPQ32S57",
               transport_type: "beacon",
             });
           }
