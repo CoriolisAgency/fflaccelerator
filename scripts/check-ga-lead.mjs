@@ -13,7 +13,7 @@ if (scripts.length < 2) {
   process.exit(1);
 }
 // Option 1 (Paul 7:38 PM ET): gtag/js loads from the standalone FFLA Google
-// tag GT-TNSG4PSJ, only G-W5CPQ32S57 is configured, and nothing references
+// tag GT-TNSG4PSJ, only GT-TNSG4PSJ is configured, and nothing references
 // the Ads ID (its tag is the Coriolis combined tag) or the Coriolis property.
 if (!html.includes('src="https://www.googletagmanager.com/gtag/js?id=GT-TNSG4PSJ"')) {
   console.error("check-ga-lead: gtag/js must load from GT-TNSG4PSJ");
@@ -45,13 +45,13 @@ if (!lead) {
   console.error("check-ga-lead: generate_lead not pushed after json.ok");
   process.exit(1);
 }
-if (!lead[2] || lead[2].send_to !== "G-W5CPQ32S57") {
-  console.error("check-ga-lead: generate_lead must send_to G-W5CPQ32S57");
+if (lead[2] && "send_to" in lead[2]) {
+  console.error("check-ga-lead: generate_lead must not set send_to");
   process.exit(1);
 }
 const configs = (ctx.dataLayer || []).filter((e) => e && e[0] === "config").map((e) => e[1]);
-if (configs.length !== 1 || configs[0] !== "G-W5CPQ32S57") {
-  console.error("check-ga-lead: only G-W5CPQ32S57 may be configured, got " + configs.join(","));
+if (configs.length !== 1 || configs[0] !== "GT-TNSG4PSJ") {
+  console.error("check-ga-lead: only GT-TNSG4PSJ may be configured, got " + configs.join(","));
   process.exit(1);
 }
 console.log("check-ga-lead: generate_lead fires after json.ok on /lp/");
